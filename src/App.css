@@ -36,3 +36,35 @@
     transform: rotate(360deg);
   }
 }
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.social-links a {
+  color: #61dafb;
+  text-decoration: none;
+  font-size: 24px;
+}
+.social-links a:hover {
+  color: #21a1f1;
+}
+.social-links a:visited {
+  color: #61dafb;
+}
+.social-links a:active {
+  color: #1e90ff;
+}
+@media (max-width: 600px) {
+  .App-header {
+    font-size: calc(10px + 1.5vmin);
+  }
+  .social-links a {
+    font-size: 20px;
+  }
+}
+.footer-text {
+  font-size: 14px;
+  color: #61dafb;
+  text-align: center;
+}
