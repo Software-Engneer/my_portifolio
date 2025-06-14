@@ -1,0 +1,141 @@
+.creative-section {
+  padding: 4rem 2rem;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+.creative-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: #333;
+  font-weight: 700;
+}
+
+.creative-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.creative-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.creative-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.creative-image {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  position: relative;
+}
+
+.creative-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.creative-card:hover .creative-image img {
+  transform: scale(1.05);
+}
+
+.creative-content {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.creative-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+  font-weight: 600;
+}
+
+.creative-description {
+  color: #666;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+.creative-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.creative-tag {
+  background-color: #e9ecef;
+  color: #495057;
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.creative-tag:hover {
+  background-color: #dee2e6;
+  transform: translateY(-2px);
+}
+
+.view-more-link {
+  display: inline-block;
+  background-color: #64ffda;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  text-align: center;
+  font-weight: 500;
+}
+
+.view-more-link:hover {
+  background-color: #64ffda;
+  transform: translateY(-2px);
+}
+
+.creative-date {
+  color: #666;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .creative-section {
+    padding: 2rem 1rem;
+  }
+
+  .creative-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .creative-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .creative-image {
+    height: 200px;
+  }
+} 

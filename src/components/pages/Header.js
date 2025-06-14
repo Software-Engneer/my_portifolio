@@ -49,8 +49,8 @@ const Header = () => {
               </a>
             </li>
             <li>
-              <a href="/creativity" className={styles.navLink}>
-                <span className={styles.linkText}>Creativity</span>
+              <a href="/creative" className={styles.navLink}>
+                <span className={styles.linkText}>Creative</span>
                 <span className={styles.linkUnderline}></span>
               </a>
             </li>

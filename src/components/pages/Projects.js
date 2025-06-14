@@ -9,7 +9,7 @@ const projects = [
     description: "A brief description of the project and its main features. This project demonstrates my skills in web development.",
     technologies: ["React", "Node.js", "MongoDB"],
     image: "/path-to-your-image.jpg",
-    githubLink: "https://github.com/yourusername/project-one"
+    githubLink: "https://github.com/Software-Engneer"
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ const projects = [
     description: "Another amazing project showcasing different aspects of my development capabilities.",
     technologies: ["JavaScript", "Express", "PostgreSQL"],
     image: "/path-to-your-image.jpg",
-    githubLink: "https://github.com/yourusername/project-two"
+    githubLink: "https://github.com/Software-Engneer"
   }
 ];
 
