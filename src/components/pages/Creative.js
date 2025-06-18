@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Layout from './Layout';
+import { API_ENDPOINTS, fetchFromAPI } from '../../config/api';
 import './Creative.css';
 
 const Creative = () => {
@@ -11,21 +12,13 @@ const Creative = () => {
     const fetchCreativeWorks = async () => {
       try {
         setLoading(true);
-        // Use the static JSON file from public folder
-        const response = await fetch('/creative.json');
+        const response = await fetchFromAPI(API_ENDPOINTS.CREATIVE);
         
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const data = await response.json();
-        console.log('Fetched creative works:', data);
-        
-        if (data.works && Array.isArray(data.works)) {
-          setCreativeWorks(data.works);
+        if (response && response.works && Array.isArray(response.works)) {
+          setCreativeWorks(response.works);
         } else {
-          console.error('Expected an array of creative works, but received:', data);
-          setError('Invalid data format received');
+          console.error('Invalid API response format:', response);
+          setError('Invalid data format received from server');
         }
       } catch (error) {
         console.error('Error fetching creative works:', error);
@@ -70,12 +63,28 @@ const Creative = () => {
             {creativeWorks.map((work) => (
               <div className="creative-card" key={work.id}>
                 <div className="creative-image">
-                  <img src={work.image} alt={work.title} />
+                  <img 
+                    src={work.image} 
+                    alt={work.title}
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzJjM2U1MCIvPjx0ZXh0IHg9IjUwJSIgeT0iNDUlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5DcmVhdGl2ZTwvdGV4dD48dGV4dCB4PSI1MCUiIHk9IjU1JSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE2IiBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+V29yazwvdGV4dD48L3N2Zz4=';
+                    }}
+                  />
                 </div>
                 <div className="creative-content">
                   <h3 className="creative-title">{work.title}</h3>
                   <p className="creative-description">{work.description}</p>
-                  <a href="#" className="view-more-link">View More</a>
+                  {work.link && (
+                    <a 
+                      href={work.link} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="view-more-link"
+                    >
+                      View More
+                    </a>
+                  )}
                 </div>
               </div>
             ))}
