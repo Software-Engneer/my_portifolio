@@ -12,7 +12,7 @@ const Header = () => {
     };
 
     const handleResize = () => {
-      if (window.innerWidth > 550) {
+      if (window.innerWidth > 768) {  // Back to original 768px
         setIsMenuOpen(false);
       }
     };
