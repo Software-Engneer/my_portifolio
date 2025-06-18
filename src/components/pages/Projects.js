@@ -1,27 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Layout from './Layout';
 import './Projects.css';
 
-const projects = [
-  {
-    id: 1,
-    title: "Project One",
-    description: "A brief description of the project and its main features. This project demonstrates my skills in web development.",
-    technologies: ["React", "Node.js", "MongoDB"],
-    image: "/path-to-your-image.jpg",
-    githubLink: "https://github.com/Software-Engneer"
-  },
-  {
-    id: 2,
-    title: "Project Two",
-    description: "Another amazing project showcasing different aspects of my development capabilities.",
-    technologies: ["JavaScript", "Express", "PostgreSQL"],
-    image: "/path-to-your-image.jpg",
-    githubLink: "https://github.com/Software-Engneer"
-  }
-];
-
 const Projects = () => {
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const response = await fetch('/api/projects');
+        const data = await response.json();
+        console.log('Fetched projects:', data);
+        if (data.projects && Array.isArray(data.projects)) {
+          setProjects(data.projects);
+        } else {
+          console.error('Expected an array of projects, but received:', data);
+        }
+      } catch (error) {
+        console.error('Error fetching projects:', error);
+      }
+    };
+
+    fetchProjects();
+  }, []);
+
   return (
     <Layout>
       <section className="projects-section" id="projects">
