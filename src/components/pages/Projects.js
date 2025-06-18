@@ -11,24 +11,11 @@ const Projects = () => {
     const fetchProjects = async () => {
       try {
         setLoading(true);
-        // Make sure to use the correct API endpoint
-        const response = await fetch('/api/projects', {
-          method: 'GET',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-          },
-        });
-
-        // Check if the response is ok
+        // Use the static JSON file from public folder
+        const response = await fetch('/projects.json');
+        
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        // Check if the response is JSON
-        const contentType = response.headers.get('content-type');
-        if (!contentType || !contentType.includes('application/json')) {
-          throw new TypeError("Oops, we haven't got JSON!");
         }
 
         const data = await response.json();
@@ -38,7 +25,7 @@ const Projects = () => {
           setProjects(data.projects);
         } else {
           console.error('Expected an array of projects, but received:', data);
-          setError('Invalid data format received from server');
+          setError('Invalid data format received');
         }
       } catch (error) {
         console.error('Error fetching projects:', error);
