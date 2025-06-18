@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Layout from './Layout';
+import { API_ENDPOINTS, fetchFromAPI } from '../../config/api';
 import './Projects.css';
 
 const Projects = () => {
@@ -7,25 +8,33 @@ const Projects = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  // Default project image as a data URL
+  const DEFAULT_PROJECT_IMAGE = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzJjM2U1MCIvPjx0ZXh0IHg9IjUwJSIgeT0iNDUlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5Qcm9qZWN0PC90ZXh0Pjx0ZXh0IHg9IjUwJSIgeT0iNTUlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5JbWFnZTwvdGV4dD48L3N2Zz4=';
+
+  // Project images mapping
+  const projectImages = {
+    'E-commerce Platform': '/images/ecommerce.jpg',
+    'Task Management App': '/images/taskmanager.jpg',
+    'Portfolio Website': '/images/portfolio.jpg'
+  };
+
   useEffect(() => {
     const fetchProjects = async () => {
       try {
         setLoading(true);
-        // Use the static JSON file from public folder
-        const response = await fetch('/projects.json');
+        const response = await fetchFromAPI(API_ENDPOINTS.PROJECTS);
         
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const data = await response.json();
-        console.log('Fetched projects:', data);
-        
-        if (data.projects && Array.isArray(data.projects)) {
-          setProjects(data.projects);
+        // The API returns { projects: [...] }
+        if (response && response.projects && Array.isArray(response.projects)) {
+          // Add image paths to projects
+          const projectsWithImages = response.projects.map(project => ({
+            ...project,
+            image: projectImages[project.title] || DEFAULT_PROJECT_IMAGE
+          }));
+          setProjects(projectsWithImages);
         } else {
-          console.error('Expected an array of projects, but received:', data);
-          setError('Invalid data format received');
+          console.error('Invalid API response format:', response);
+          setError('Invalid data format received from server');
         }
       } catch (error) {
         console.error('Error fetching projects:', error);
@@ -72,7 +81,14 @@ const Projects = () => {
             {projects.map((project) => (
               <div className="project-card" key={project.id}>
                 <div className="project-image">
-                  <img src={project.image} alt={project.title} />
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = DEFAULT_PROJECT_IMAGE;
+                    }}
+                  />
                 </div>
                 <div className="project-content">
                   <h3 className="project-title">{project.title}</h3>
