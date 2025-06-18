@@ -11,9 +11,8 @@ const Header = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
-    // Add resize handler to close menu when window is resized
     const handleResize = () => {
-      if (window.innerWidth > 768) {
+      if (window.innerWidth > 550) {
         setIsMenuOpen(false);
       }
     };
@@ -27,7 +26,6 @@ const Header = () => {
     };
   }, []);
 
-  // Handle click outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (navRef.current && !navRef.current.contains(event.target)) {
@@ -35,7 +33,6 @@ const Header = () => {
       }
     };
 
-    // Handle body scroll
     if (isMenuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
@@ -49,10 +46,6 @@ const Header = () => {
     };
   }, [isMenuOpen]);
 
-  const handleMenuClick = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
   return (
     <header className={`${styles.header} ${isScrolled ? styles.scrolled : ""}`}>
       <div className={styles.headerContent}>
@@ -65,7 +58,7 @@ const Header = () => {
 
         <button 
           className={`${styles.menuButton} ${isMenuOpen ? styles.active : ""}`}
-          onClick={handleMenuClick}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle menu"
         >
           <span></span>
