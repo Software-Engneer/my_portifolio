@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./Header.module.css";
+import Layout from "./Layout";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -46,64 +47,66 @@ const Header = () => {
   }, [isMenuOpen]);
 
   return (
-    <header className={`${styles.header} ${isScrolled ? styles.scrolled : ""}`}> 
-      <div className={styles.headerContent}>
-        <a href="/" className={styles.logo}>
-          <span className={styles.logoText}>
-            <span className={styles.logoHighlight}>Innovative</span>Tech
-          </span>
-          <span className={styles.logoSubtext}>Malawi</span>
-        </a>
+    <Layout>
+      <header className={`${styles.header} ${isScrolled ? styles.scrolled : ""}`}> 
+        <div className={styles.headerContent}>
+          <a href="/" className={styles.logo}>
+            <span className={styles.logoText}>
+              <span className={styles.logoHighlight}>Innovative</span>Tech
+            </span>
+            <span className={styles.logoSubtext}>Malawi</span>
+          </a>
 
-        <button
-          className={`${styles.menuButton} ${isMenuOpen ? styles.active : ""}`}
-          onClick={() => setIsMenuOpen((open) => !open)}
-          aria-label="Toggle menu"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+          <button
+            className={`${styles.menuButton} ${isMenuOpen ? styles.active : ""}`}
+            onClick={() => setIsMenuOpen((open) => !open)}
+            aria-label="Toggle menu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
 
-        <nav
-          ref={navRef}
-          className={`${styles.nav} ${isMenuOpen ? styles.active : ""}`}
-        >
-          <ul className={styles.navList}>
-            <li>
-              <a href="/" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>
-                <span className={styles.linkText}>Home</span>
-                <span className={styles.linkUnderline}></span>
-              </a>
-            </li>
-            <li>
-              <a href="/projects" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>
-                <span className={styles.linkText}>Projects</span>
-                <span className={styles.linkUnderline}></span>
-              </a>
-            </li>
-            <li>
-              <a href="/creative" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>
-                <span className={styles.linkText}>Creative</span>
-                <span className={styles.linkUnderline}></span>
-              </a>
-            </li>
-            <li>
-              <a href="/contact" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>
-                <span className={styles.linkText}>Contact</span>
-                <span className={styles.linkUnderline}></span>
-              </a>
-            </li>
-            <li>
-              <a href="/about" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>
-                <span className={styles.linkText}>About</span>
-                <span className={styles.linkUnderline}></span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+          <nav
+            ref={navRef}
+            className={`${styles.nav} ${isMenuOpen ? styles.active : ""}`}
+          >
+            <ul className={styles.navList}>
+              <li>
+                <a href="/" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>
+                  <span className={styles.linkText}>Home</span>
+                  <span className={styles.linkUnderline}></span>
+                </a>
+              </li>
+              <li>
+                <a href="/projects" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>
+                  <span className={styles.linkText}>Projects</span>
+                  <span className={styles.linkUnderline}></span>
+                </a>
+              </li>
+              <li>
+                <a href="/creative" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>
+                  <span className={styles.linkText}>Creative</span>
+                  <span className={styles.linkUnderline}></span>
+                </a>
+              </li>
+              <li>
+                <a href="/contact" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>
+                  <span className={styles.linkText}>Contact</span>
+                  <span className={styles.linkUnderline}></span>
+                </a>
+              </li>
+              <li>
+                <a href="/about" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>
+                  <span className={styles.linkText}>About</span>
+                  <span className={styles.linkUnderline}></span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+    </Layout>
   );
 };
 
