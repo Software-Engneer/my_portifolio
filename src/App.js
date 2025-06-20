@@ -4,7 +4,7 @@ import { Auth0Provider } from '@auth0/auth0-react';
 import { AuthProvider } from './components/auth/AuthContext';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import Header from './components/pages/Header';
-import Navigation from './components/Navigation';
+// import Navigation from './components/Navigation';
 import Home from './components/pages/Home';
 import About from './components/pages/About';
 import Contact from './components/pages/Contact';
@@ -28,7 +28,7 @@ function App() {
       <Router>
         <AuthProvider>
           <Header />
-          <Navigation />
+          {/* <Navigation /> */}
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
