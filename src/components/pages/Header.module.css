@@ -126,7 +126,7 @@
   transform: translateY(-9px) rotate(-45deg);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 200px) {
   .headerContent {
     padding: 0 2vw;
   }
@@ -160,14 +160,14 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 200px) {
   .nav {
     width: 90vw;
     padding: 4rem 1rem 1rem;
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 200px) {
   .nav {
     width: 100vw;
     padding: 3rem 0.5rem 0.5rem;
