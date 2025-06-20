@@ -4,7 +4,7 @@ import { Auth0Provider } from '@auth0/auth0-react';
 import { AuthProvider } from './components/auth/AuthContext';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import Header from './components/pages/Header';
-// import Navigation from './components/Navigation';
+import Layout from './components/pages/Layout';
 import Home from './components/pages/Home';
 import About from './components/pages/About';
 import Contact from './components/pages/Contact';
@@ -27,24 +27,25 @@ function App() {
     >
       <Router>
         <AuthProvider>
-          <Header />
-          {/* <Navigation /> */}
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/creative" element={<Creative />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route
-              path="/admin"
-              element={
-                <ProtectedRoute>
-                  <Dashboard />
-                </ProtectedRoute>
-              }
-            />
-          </Routes>
+          <Layout>
+            <Header />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/creative" element={<Creative />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route
+                path="/admin"
+                element={
+                  <ProtectedRoute>
+                    <Dashboard />
+                  </ProtectedRoute>
+                }
+              />
+            </Routes>
+          </Layout>
         </AuthProvider>
         <footer>
           <p className="footer-text">© 2025 My Portfolio</p>

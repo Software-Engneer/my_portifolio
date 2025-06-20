@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Layout from './Layout';
 import { API_ENDPOINTS, fetchFromAPI } from '../../config/api';
 import './Projects.css';
 
@@ -50,71 +49,65 @@ const Projects = () => {
   // Show loading state
   if (loading) {
     return (
-      <Layout>
-        <div className="loading-container">
-          <p>Loading projects...</p>
-        </div>
-      </Layout>
+      <div className="loading-container">
+        <p>Loading projects...</p>
+      </div>
     );
   }
 
   // Show error state
   if (error) {
     return (
-      <Layout>
-        <div className="error-container">
-          <p>{error}</p>
-          <button onClick={() => window.location.reload()}>Retry</button>
-        </div>
-      </Layout>
+      <div className="error-container">
+        <p>{error}</p>
+        <button onClick={() => window.location.reload()}>Retry</button>
+      </div>
     );
   }
 
   return (
-    <Layout>
-      <section className="projects-section" id="projects">
-        <h2 className="section-title">My Projects</h2>
-        {projects.length === 0 ? (
-          <p className="no-projects">No projects available at the moment.</p>
-        ) : (
-          <div className="projects-grid">
-            {projects.map((project) => (
-              <div className="project-card" key={project.id}>
-                <div className="project-image">
-                  <img 
-                    src={project.image} 
-                    alt={project.title}
-                    onError={(e) => {
-                      e.target.onerror = null;
-                      e.target.src = DEFAULT_PROJECT_IMAGE;
-                    }}
-                  />
-                </div>
-                <div className="project-content">
-                  <h3 className="project-title">{project.title}</h3>
-                  <p className="project-description">{project.description}</p>
-                  <div className="project-technologies">
-                    {project.technologies.map((tech, index) => (
-                      <span key={index} className="tech-tag">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                  <a
-                    href={project.githubLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="github-link"
-                  >
-                    View on GitHub
-                  </a>
-                </div>
+    <section className="projects-section" id="projects">
+      <h2 className="section-title">My Projects</h2>
+      {projects.length === 0 ? (
+        <p className="no-projects">No projects available at the moment.</p>
+      ) : (
+        <div className="projects-grid">
+          {projects.map((project) => (
+            <div className="project-card" key={project.id}>
+              <div className="project-image">
+                <img 
+                  src={project.image} 
+                  alt={project.title}
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = DEFAULT_PROJECT_IMAGE;
+                  }}
+                />
               </div>
-            ))}
-          </div>
-        )}
-      </section>
-    </Layout>
+              <div className="project-content">
+                <h3 className="project-title">{project.title}</h3>
+                <p className="project-description">{project.description}</p>
+                <div className="project-technologies">
+                  {project.technologies.map((tech, index) => (
+                    <span key={index} className="tech-tag">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+                <a
+                  href={project.githubLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="github-link"
+                >
+                  View on GitHub
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </section>
   );
 };
 
