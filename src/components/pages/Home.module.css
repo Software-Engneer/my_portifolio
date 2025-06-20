@@ -141,3 +141,7 @@
 .homeContainer {
   padding-top: 90px;
 }
+
+.homeContainer h2 {
+  text-align: center;
+}
