@@ -12,7 +12,7 @@ const Header = () => {
     };
 
     const handleResize = () => {
-      if (window.innerWidth > 600) {  // Now closes at 600px
+      if (window.innerWidth > 400) {  // Now closes at 600px
         setIsMenuOpen(false);
       }
     };
