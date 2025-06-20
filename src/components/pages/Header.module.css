@@ -144,7 +144,7 @@
     top: 90px;
     right: -100vw;
     width: 70vw;
-    height: calc(100vh - 90px);
+    bottom: 20px;
     background: white;
     flex-direction: column;
     gap: 2vw;
