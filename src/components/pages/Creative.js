@@ -7,21 +7,38 @@ const Creative = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  // Default creative work image as a data URL
+  const DEFAULT_CREATIVE_IMAGE = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzJjM2U1MCIvPjx0ZXh0IHg9IjUwJSIgeT0iNDUlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5DcmVhdGl2ZTwvdGV4dD48dGV4dCB4PSI1MCUiIHk9IjU1JSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE2IiBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+V29yazwvdGV4dD48L3N2Zz4=';
+
   useEffect(() => {
     const fetchCreativeWorks = async () => {
       try {
         setLoading(true);
+        setError(null);
+        
+        console.log('Fetching creative works from:', API_ENDPOINTS.CREATIVE);
         const response = await fetchFromAPI(API_ENDPOINTS.CREATIVE);
         
+        console.log('API Response:', response);
+        
         if (response && response.works && Array.isArray(response.works)) {
-          setCreativeWorks(response.works);
+          // Process the creative works and ensure they have proper image URLs
+          const processedWorks = response.works.map(work => ({
+            ...work,
+            image: work.image || DEFAULT_CREATIVE_IMAGE,
+            // Ensure the image URL is absolute if it's a relative path
+            imageUrl: work.image ? (work.image.startsWith('http') ? work.image : `${process.env.REACT_APP_API_URL || 'http://localhost:5000'}${work.image}`) : DEFAULT_CREATIVE_IMAGE
+          }));
+          
+          console.log('Processed creative works:', processedWorks);
+          setCreativeWorks(processedWorks);
         } else {
           console.error('Invalid API response format:', response);
           setError('Invalid data format received from server');
         }
       } catch (error) {
         console.error('Error fetching creative works:', error);
-        setError('Failed to load creative works. Please try again later.');
+        setError(`Failed to load creative works: ${error.message}`);
       } finally {
         setLoading(false);
       }
@@ -29,6 +46,12 @@ const Creative = () => {
 
     fetchCreativeWorks();
   }, []);
+
+  const handleImageError = (e, workId) => {
+    console.warn(`Failed to load image for work ${workId}, using fallback`);
+    e.target.onerror = null; // Prevent infinite loop
+    e.target.src = DEFAULT_CREATIVE_IMAGE;
+  };
 
   if (loading) {
     return (
@@ -58,17 +81,24 @@ const Creative = () => {
             <div className="creative-card" key={work.id}>
               <div className="creative-image">
                 <img 
-                  src={work.image} 
-                  alt={work.title}
-                  onError={(e) => {
-                    e.target.onerror = null;
-                    e.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzJjM2U1MCIvPjx0ZXh0IHg9IjUwJSIgeT0iNDUlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5DcmVhdGl2ZTwvdGV4dD48dGV4dCB4PSI1MCUiIHk9IjU1JSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE2IiBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+V29yazwvdGV4dD48L3N2Zz4=';
-                  }}
+                  src={work.imageUrl || work.image} 
+                  alt={work.title || 'Creative Work'}
+                  onError={(e) => handleImageError(e, work.id)}
+                  loading="lazy"
                 />
               </div>
               <div className="creative-content">
                 <h3 className="creative-title">{work.title}</h3>
                 <p className="creative-description">{work.description}</p>
+                {work.tags && work.tags.length > 0 && (
+                  <div className="creative-tags">
+                    {work.tags.map((tag, index) => (
+                      <span key={index} className="creative-tag">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
                 {work.link && (
                   <a 
                     href={work.link} 
@@ -78,6 +108,9 @@ const Creative = () => {
                   >
                     View More
                   </a>
+                )}
+                {work.date && (
+                  <p className="creative-date">{work.date}</p>
                 )}
               </div>
             </div>
