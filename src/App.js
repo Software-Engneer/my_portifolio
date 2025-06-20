@@ -25,8 +25,8 @@ function App() {
         screen_hint: 'login'
       }}
     >
-      <AuthProvider>
-        <Router>
+      <Router>
+        <AuthProvider>
           <Header />
           <Navigation />
           <Routes>
@@ -45,8 +45,8 @@ function App() {
               }
             />
           </Routes>
-        </Router>
-      </AuthProvider>
+        </AuthProvider>
+      </Router>
     </Auth0Provider>
   );
 }
