@@ -46,6 +46,24 @@ function App() {
             />
           </Routes>
         </AuthProvider>
+        <footer>
+          <p className="footer-text">© 2025 My Portfolio</p>
+          <p className="footer-text">All rights reserved.</p>
+          <p className="social-links">
+            <a 
+              href="https://github.com/Software-Engneer" 
+              target="_blank" 
+              rel="noopener noreferrer">
+              GitHub
+            </a> | 
+            <a 
+              href="https://www.linkedin.com/in/chikondi-matumula-521757302/" 
+              target="_blank" 
+              rel="noopener noreferrer">
+              LinkedIn
+            </a>
+          </p>
+        </footer>
       </Router>
     </Auth0Provider>
   );
