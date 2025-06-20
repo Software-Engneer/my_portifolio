@@ -141,9 +141,9 @@
   }
   .nav {
     position: fixed;
-    top: 90px;
+    top: 85px;
     right: -100vw;
-    width: 70vw;
+    width: 30vw;
     height: 300px;
     bottom: 50px;
     background: white;
