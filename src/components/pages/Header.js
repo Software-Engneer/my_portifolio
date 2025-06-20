@@ -32,18 +32,15 @@ const Header = () => {
       }
     };
 
-    if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
-      document.body.style.overflow = 'unset';
     };
   }, [isMenuOpen]);
+
+  const toggleMenu = () => {
+    setIsMenuOpen((open) => !open);
+  };
 
   return (
     <header className={`${styles.header} ${isScrolled ? styles.scrolled : ""}`}> 
@@ -57,7 +54,7 @@ const Header = () => {
 
         <button
           className={`${styles.menuButton} ${isMenuOpen ? styles.active : ""}`}
-          onClick={() => setIsMenuOpen((open) => !open)}
+          onClick={toggleMenu}
           aria-label="Toggle menu"
         >
           <span></span>
