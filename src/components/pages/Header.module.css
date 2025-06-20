@@ -141,7 +141,7 @@
   }
   .nav {
     position: fixed;
-    top: 95px;
+    top: 100px;
     right: -100vw;
     width: 30vw;
     height: 300px;
