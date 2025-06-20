@@ -12,7 +12,7 @@ const Header = () => {
     };
 
     const handleResize = () => {
-      if (window.innerWidth > 200) {  // Now closes at 200px
+      if (window.innerWidth > 900) {
         setIsMenuOpen(false);
       }
     };
@@ -56,9 +56,9 @@ const Header = () => {
           <span className={styles.logoSubtext}>Malawi</span>
         </a>
 
-        <button 
-          className={`${styles.menuButton} ${isMenuOpen ? styles.active : ""}`}
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        <button
+          className={`nav-menu-button${isMenuOpen ? ' active' : ''}`}
+          onClick={() => setIsMenuOpen((open) => !open)}
           aria-label="Toggle menu"
         >
           <span></span>
@@ -66,9 +66,10 @@ const Header = () => {
           <span></span>
         </button>
 
-        <div className={`${styles.menuOverlay} ${isMenuOpen ? styles.active : ""}`} />
-        
-        <nav ref={navRef} className={`${styles.nav} ${isMenuOpen ? styles.active : ""}`}>
+        <nav
+          ref={navRef}
+          className={`${styles.nav} ${isMenuOpen ? styles.active + ' open' : ''}`}
+        >
           <ul className={styles.navList}>
             <li>
               <a href="/" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>
