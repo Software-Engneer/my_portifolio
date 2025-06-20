@@ -147,12 +147,4 @@
     width: 100vw;
     padding: 3rem 0.5rem 0.5rem;
   }
-}
-
-.main {
-  flex: 1;
-  margin-top: 80px; /* Height of the header */
-  padding: 2rem 4vw;
-  background-color: #527aa1;
-  box-sizing: border-box;
 } 
