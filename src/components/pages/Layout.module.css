@@ -10,6 +10,12 @@
   padding: 2rem 4vw;
   background-color: #f8f9fa;
   box-sizing: border-box;
+  margin-top: 16px;
+}
+
+/* Add a shadow to the header for visual separation */
+.header {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
 }
 
 @media (max-width: 900px) {
