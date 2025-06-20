@@ -139,7 +139,7 @@
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 200px) {
   .menuButton {
     display: flex;
   }
@@ -167,7 +167,7 @@
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 200px) {
   .headerContent {
     padding: 0 1vw;
   }
@@ -180,7 +180,7 @@
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 200px) {
   .headerContent {
     padding: 0 0.5vw;
   }
