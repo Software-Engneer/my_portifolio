@@ -141,10 +141,10 @@
   }
   .nav {
     position: fixed;
-    top: 0;
+    top: 90px;
     right: -100vw;
     width: 70vw;
-    height: 100vh;
+    height: calc(100vh - 90px);
     background: white;
     flex-direction: column;
     gap: 2vw;
