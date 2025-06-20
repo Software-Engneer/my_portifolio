@@ -6,7 +6,7 @@
 
 .main {
   flex: 1;
-  margin-top: 80px; /* Height of the header */
+  /* margin-top: 80px; */
   padding: 2rem 4vw;
   background-color: #f8f9fa;
   box-sizing: border-box;
