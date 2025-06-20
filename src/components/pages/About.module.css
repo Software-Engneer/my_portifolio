@@ -1,11 +1,12 @@
 .aboutContainer {
   min-height: calc(100vh - 80px);
   background-color: #f8f9fa;
-  padding: 4rem 2rem;
+  padding: 4rem 4vw;
+  box-sizing: border-box;
 }
 
 .aboutContent {
-  max-width: 1200px;
+  max-width: 100vw;
   margin: 0 auto;
 }
 
@@ -16,7 +17,7 @@
 
 .qualificationSection h2,
 .contactSection h2 {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   color: #333;
   margin-bottom: 2rem;
   text-align: center;
@@ -25,14 +26,14 @@
 .qualificationCard {
   background: white;
   border-radius: 10px;
-  padding: 2rem;
+  padding: 2rem 2vw;
   margin-bottom: 2rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .qualificationCard h3 {
   color: #2d2d2d;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   margin-bottom: 1.5rem;
   border-bottom: 2px solid #64ffda;
   padding-bottom: 0.5rem;
@@ -44,37 +45,37 @@
 
 .qualificationItem h4 {
   color: #333;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   margin-bottom: 0.5rem;
 }
 
 .institution {
   color: #666;
-  font-size: 1.1rem;
+  font-size: 1rem;
   margin-bottom: 0.25rem;
 }
 
 .year {
   color: #888;
-  font-size: 1rem;
+  font-size: 0.95rem;
 }
 
 .skillsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
+  gap: 2vw;
   margin-top: 1.5rem;
 }
 
 .skillCategory {
   background: #f8f9fa;
-  padding: 1.5rem;
+  padding: 1.5rem 1vw;
   border-radius: 8px;
 }
 
 .skillCategory h4 {
   color: #333;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   margin-bottom: 1rem;
   border-bottom: 1px solid #64ffda;
   padding-bottom: 0.5rem;
@@ -103,16 +104,16 @@
 .contactCard {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
+  gap: 2vw;
   background: white;
   border-radius: 10px;
-  padding: 2rem;
+  padding: 2rem 2vw;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .contactItem {
   text-align: center;
-  padding: 1.5rem;
+  padding: 1.5rem 1vw;
   background: #f8f9fa;
   border-radius: 8px;
   transition: transform 0.3s ease;
@@ -146,16 +147,50 @@
   color: #64ffda;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .aboutContainer {
-    padding: 2rem 1rem;
+    padding: 2rem 2vw;
   }
-
-  .skillsGrid {
-    grid-template-columns: 1fr;
+  .qualificationSection h2,
+  .contactSection h2 {
+    font-size: 1.7rem;
   }
+  .qualificationCard h3 {
+    font-size: 1.2rem;
+  }
+  .skillsGrid, .contactCard {
+    gap: 1.5vw;
+  }
+}
 
-  .contactCard {
-    grid-template-columns: 1fr;
+@media (max-width: 600px) {
+  .aboutContainer {
+    padding: 1rem 1vw;
+  }
+  .qualificationSection h2,
+  .contactSection h2 {
+    font-size: 1.2rem;
+  }
+  .qualificationCard, .contactCard {
+    padding: 1rem 0.5vw;
+  }
+  .skillsGrid, .contactCard {
+    gap: 1vw;
+  }
+}
+
+@media (max-width: 400px) {
+  .aboutContainer {
+    padding: 0.5rem 0.2vw;
+  }
+  .qualificationSection h2,
+  .contactSection h2 {
+    font-size: 1rem;
+  }
+  .qualificationCard, .contactCard {
+    padding: 0.5rem 0.1vw;
+  }
+  .skillsGrid, .contactCard {
+    gap: 0.5vw;
   }
 } 

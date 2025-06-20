@@ -1,12 +1,13 @@
 .projects-section {
-  padding: 4rem 2rem;
+  padding: 4rem 4vw;
   background-color: #f8f9fa;
   min-height: 100vh;
+  box-sizing: border-box;
 }
 
 .section-title {
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   margin-bottom: 3rem;
   color: #333;
   font-weight: 700;
@@ -15,10 +16,11 @@
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
+  gap: 2vw;
+  max-width: 100vw;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 1vw;
+  box-sizing: border-box;
 }
 
 .project-card {
@@ -49,6 +51,7 @@
   object-fit: cover;
   border-radius: 8px 8px 0 0;
   transition: transform 0.3s ease;
+  max-width: 100%;
 }
 
 .project-card:hover .project-image img {
@@ -56,14 +59,14 @@
 }
 
 .project-content {
-  padding: 1.5rem;
+  padding: 1.5rem 1vw;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
 }
 
 .project-title {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   margin-bottom: 1rem;
   color: #333;
   font-weight: 600;
@@ -115,23 +118,57 @@
   transform: translateY(-2px);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .projects-section {
-    padding: 2rem 1rem;
+    padding: 2rem 2vw;
   }
-
   .section-title {
-    font-size: 2rem;
+    font-size: 1.7rem;
     margin-bottom: 2rem;
   }
+  .projects-grid {
+    gap: 1.5vw;
+  }
+}
 
+@media (max-width: 768px) {
+  .projects-section {
+    padding: 2rem 1vw;
+  }
+  .section-title {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+  }
   .projects-grid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 1vw;
   }
-
   .project-image {
-    height: 200px;
+    height: 160px;
+  }
+}
+
+@media (max-width: 600px) {
+  .projects-section {
+    padding: 1rem 0.5vw;
+  }
+  .section-title {
+    font-size: 1.1rem;
+  }
+  .project-image {
+    height: 120px;
+  }
+}
+
+@media (max-width: 400px) {
+  .projects-section {
+    padding: 0.5rem 0.2vw;
+  }
+  .section-title {
+    font-size: 1rem;
+  }
+  .project-image {
+    height: 80px;
   }
 }
 

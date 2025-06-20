@@ -2,16 +2,17 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 1.2rem 4vw;
   background-color: #ffffff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
   z-index: 1000;
+  box-sizing: border-box;
 }
 
 .nav-brand a {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: bold;
   color: #333;
   text-decoration: none;
@@ -24,7 +25,7 @@
 
 .nav-links {
   display: flex;
-  gap: 1.5rem;
+  gap: 2vw;
   align-items: center;
 }
 
@@ -35,6 +36,7 @@
   transition: color 0.3s ease;
   padding: 0.5rem 0;
   position: relative;
+  font-size: 1.1rem;
 }
 
 .nav-links a:hover {
@@ -59,7 +61,7 @@
   background-color: #007bff;
   color: white;
   border: none;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1vw;
   border-radius: 4px;
   cursor: pointer;
   font-weight: 500;
@@ -70,25 +72,60 @@
   background-color: #0056b3;
 }
 
+@media (max-width: 900px) {
+  .navigation {
+    padding: 1rem 2vw;
+  }
+  .nav-brand a {
+    font-size: 1.5rem;
+  }
+  .nav-links {
+    gap: 1.5vw;
+  }
+}
+
 @media (max-width: 768px) {
   .navigation {
     flex-direction: column;
-    padding: 1rem;
+    padding: 1rem 1vw;
   }
-
   .nav-links {
     flex-direction: column;
     width: 100%;
-    gap: 1rem;
+    gap: 1vw;
     margin-top: 1rem;
   }
-
   .nav-links a {
     width: 100%;
     text-align: center;
+    font-size: 1rem;
   }
-
   .auth-button {
     width: 100%;
+    padding: 0.5rem 0.5vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .navigation {
+    padding: 0.5rem 0.5vw;
+  }
+  .nav-brand a {
+    font-size: 1.1rem;
+  }
+  .nav-links {
+    gap: 0.5vw;
+  }
+}
+
+@media (max-width: 400px) {
+  .navigation {
+    padding: 0.2rem 0.2vw;
+  }
+  .nav-brand a {
+    font-size: 1rem;
+  }
+  .nav-links {
+    gap: 0.2vw;
   }
 } 

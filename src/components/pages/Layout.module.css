@@ -7,6 +7,25 @@
 .main {
   flex: 1;
   margin-top: 80px; /* Height of the header */
-  padding: 2rem;
+  padding: 2rem 4vw;
   background-color: #f8f9fa;
+  box-sizing: border-box;
+}
+
+@media (max-width: 900px) {
+  .main {
+    padding: 1.5rem 2vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .main {
+    padding: 1rem 1vw;
+  }
+}
+
+@media (max-width: 400px) {
+  .main {
+    padding: 0.5rem 0.2vw;
+  }
 } 

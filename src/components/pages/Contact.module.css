@@ -1,11 +1,12 @@
 .contactContainer {
-  max-width: 1200px;
+  max-width: 100vw;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 2rem 4vw;
+  box-sizing: border-box;
 }
 
 .contactContainer h2 {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   color: #333;
   margin-bottom: 2rem;
   text-align: center;
@@ -19,16 +20,17 @@
 .contactInfo {
   background: white;
   border-radius: 10px;
-  padding: 2rem;
+  padding: 2rem 2vw;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 600px;
+  box-sizing: border-box;
 }
 
 .infoCard {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
+  gap: 2vw;
 }
 
 .infoItem {
@@ -36,7 +38,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 1.5rem;
+  padding: 1.5rem 1vw;
   background: #f8f9fa;
   border-radius: 8px;
   transition: transform 0.3s ease;
@@ -54,7 +56,7 @@
 
 .infoItem h4 {
   color: #333;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   margin-bottom: 0.5rem;
 }
 
@@ -70,12 +72,44 @@
   color: #64ffda;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .contactContainer {
-    padding: 1rem;
+    padding: 2rem 2vw;
   }
-
+  .contactContainer h2 {
+    font-size: 1.7rem;
+  }
   .infoCard {
-    grid-template-columns: 1fr;
+    gap: 1.5vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .contactContainer {
+    padding: 1rem 1vw;
+  }
+  .contactContainer h2 {
+    font-size: 1.2rem;
+  }
+  .infoCard {
+    gap: 1vw;
+  }
+  .infoItem {
+    padding: 1rem 0.5vw;
+  }
+}
+
+@media (max-width: 400px) {
+  .contactContainer {
+    padding: 0.5rem 0.2vw;
+  }
+  .contactContainer h2 {
+    font-size: 1rem;
+  }
+  .infoCard {
+    gap: 0.5vw;
+  }
+  .infoItem {
+    padding: 0.5rem 0.1vw;
   }
 } 

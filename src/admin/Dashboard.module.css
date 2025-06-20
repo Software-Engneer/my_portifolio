@@ -5,7 +5,7 @@
 
 .header {
   background-color: #ffffff;
-  padding: 1rem 2rem;
+  padding: 1.2rem 4vw;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: space-between;
@@ -15,20 +15,20 @@
 .header h1 {
   margin: 0;
   color: #333;
-  font-size: 1.8rem;
+  font-size: 2rem;
 }
 
 .userInfo {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1vw;
 }
 
 .logoutButton {
   background-color: #dc3545;
   color: white;
   border: none;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1vw;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -46,8 +46,9 @@
 .sidebar {
   width: 250px;
   background-color: #ffffff;
-  padding: 2rem;
+  padding: 2rem 2vw;
   box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
 }
 
 .sidebar nav ul {
@@ -75,13 +76,14 @@
 
 .mainContent {
   flex: 1;
-  padding: 2rem;
+  padding: 2rem 2vw;
+  box-sizing: border-box;
 }
 
 .section {
   background-color: #ffffff;
   border-radius: 8px;
-  padding: 2rem;
+  padding: 2rem 2vw;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -89,17 +91,18 @@
   margin-top: 0;
   color: #333;
   margin-bottom: 2rem;
+  font-size: 1.5rem;
 }
 
 .stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
+  gap: 2vw;
 }
 
 .statCard {
   background-color: #f8f9fa;
-  padding: 1.5rem;
+  padding: 1.5rem 1vw;
   border-radius: 8px;
   text-align: center;
 }
@@ -118,21 +121,44 @@
   font-weight: bold;
 }
 
-@media (max-width: 768px) {
-  .content {
-    flex-direction: column;
+@media (max-width: 900px) {
+  .header h1 {
+    font-size: 1.5rem;
   }
-
-  .sidebar {
-    width: 100%;
-    padding: 1rem;
+  .sidebar, .mainContent, .section {
+    padding: 1.5rem 1vw;
   }
-
-  .mainContent {
-    padding: 1rem;
-  }
-
   .stats {
-    grid-template-columns: 1fr;
+    gap: 1.5vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    padding: 1rem 1vw;
+  }
+  .header h1 {
+    font-size: 1.2rem;
+  }
+  .sidebar, .mainContent, .section {
+    padding: 1rem 0.5vw;
+  }
+  .stats {
+    gap: 1vw;
+  }
+}
+
+@media (max-width: 400px) {
+  .header {
+    padding: 0.5rem 0.2vw;
+  }
+  .header h1 {
+    font-size: 1rem;
+  }
+  .sidebar, .mainContent, .section {
+    padding: 0.5rem 0.1vw;
+  }
+  .stats {
+    gap: 0.5vw;
   }
 } 
