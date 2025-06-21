@@ -139,33 +139,44 @@
   .menuButton {
     display: flex;
   }
+  
+  /* Mobile menu - completely hidden by default */
   .nav {
-    position: fixed;
-    top: 90px;
-    right: -100%;
-    width: 70vw;
-    height: 400px;
-    background: white;
-    flex-direction: column;
-    gap: 2vw;
-    align-items: flex-start;
-    padding: 2rem 1.5rem 1.5rem;
-    transition: right 0.3s ease;
-    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-    overflow-y: auto;
-    z-index: 1001;
-    display: flex;
+    position: fixed !important;
+    top: 90px !important;
+    right: -100% !important;
+    width: 70vw !important;
+    height: 400px !important;
+    background: white !important;
+    flex-direction: column !important;
+    gap: 2vw !important;
+    align-items: flex-start !important;
+    padding: 2rem 1.5rem 1.5rem !important;
+    transition: right 0.3s ease !important;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1) !important;
+    overflow-y: auto !important;
+    z-index: 1001 !important;
+    display: flex !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
   }
+  
+  /* Mobile menu - only visible when active */
   .nav.active {
-    right: 0;
+    right: 0 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
   }
+  
   .navList {
-    flex-direction: column;
-    gap: 1.2rem;
-    width: 100%;
+    flex-direction: column !important;
+    gap: 1.2rem !important;
+    width: 100% !important;
   }
   .navLink {
-    font-size: 1.1rem;
+    font-size: 1.1rem !important;
   }
 }
 
