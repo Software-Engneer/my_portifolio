@@ -53,6 +53,8 @@ const Creative = () => {
   // Handle rating change for creative works
   const handleRatingChange = async (creativeId, newRating) => {
     try {
+      console.log('Handling rating change for creative work:', creativeId, 'new rating:', newRating);
+      
       // Optimistically update the UI
       setCreativeWorks(prevWorks =>
         prevWorks.map(work =>
@@ -64,6 +66,7 @@ const Creative = () => {
 
       // Send the update to the API
       await rateCreativeWork(creativeId, newRating);
+      console.log('Rating updated successfully');
     } catch (error) {
       console.error('Error updating creative work rating:', error);
       // Revert the optimistic update on error

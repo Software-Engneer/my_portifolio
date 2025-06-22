@@ -67,7 +67,9 @@ export const updateProjectRating = async (projectId, rating) => {
 
 // Helper function to rate creative work
 export const rateCreativeWork = async (creativeId, rating) => {
-  return fetchFromAPI(API_ENDPOINTS.CREATIVE_RATING(creativeId), {
+  const url = API_ENDPOINTS.CREATIVE_RATING(creativeId);
+  console.log('Calling creative rating API:', url, { rating });
+  return fetchFromAPI(url, {
     method: 'POST',
     body: JSON.stringify({ rating }),
   });
