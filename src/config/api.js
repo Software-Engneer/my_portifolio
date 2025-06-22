@@ -13,7 +13,7 @@ export const API_ENDPOINTS = {
   CONTACT: `${API_BASE_URL}/contact`,
   CREATIVE: `${API_BASE_URL}/creative`,
   PROJECT_RATING: (id) => `${API_BASE_URL}/projects/${id}/rating`,
-  CREATIVE_RATING: (id) => `${API_BASE_URL}/creative/${id}/rate`,
+  CREATIVE_RATING: (id) => `${API_BASE_URL}/creative/rate/${id}`,
 };
 
 export const fetchFromAPI = async (endpoint, options = {}) => {
