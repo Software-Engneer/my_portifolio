@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { API_ENDPOINTS, fetchFromAPI } from '../../config/api';
+import { API_ENDPOINTS, fetchFromAPI, updateProjectRating } from '../../config/api';
+import StarRating from '../StarRating';
 import './Projects.css';
 
 const Projects = () => {
@@ -28,7 +29,8 @@ const Projects = () => {
           // Add image paths to projects
           const projectsWithImages = response.projects.map(project => ({
             ...project,
-            image: projectImages[project.title] || DEFAULT_PROJECT_IMAGE
+            image: projectImages[project.title] || DEFAULT_PROJECT_IMAGE,
+            rating: project.rating || 0
           }));
           setProjects(projectsWithImages);
         } else {
@@ -45,6 +47,34 @@ const Projects = () => {
 
     fetchProjects();
   }, []);
+
+  // Handle rating change
+  const handleRatingChange = async (projectId, newRating) => {
+    try {
+      // Optimistically update the UI
+      setProjects(prevProjects =>
+        prevProjects.map(project =>
+          project.id === projectId
+            ? { ...project, rating: newRating }
+            : project
+        )
+      );
+
+      // Send the update to the API
+      await updateProjectRating(projectId, newRating);
+    } catch (error) {
+      console.error('Error updating rating:', error);
+      // Revert the optimistic update on error
+      setProjects(prevProjects =>
+        prevProjects.map(project =>
+          project.id === projectId
+            ? { ...project, rating: project.rating }
+            : project
+        )
+      );
+      alert('Failed to update rating. Please try again.');
+    }
+  };
 
   // Show loading state
   if (loading) {
@@ -94,6 +124,11 @@ const Projects = () => {
                     </span>
                   ))}
                 </div>
+                <StarRating
+                  rating={project.rating}
+                  onRatingChange={handleRatingChange}
+                  projectId={project.id}
+                />
                 <a
                   href={project.githubLink}
                   target="_blank"

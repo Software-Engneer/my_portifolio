@@ -27,12 +27,7 @@ const Creative = () => {
             ...work,
             image: work.image || DEFAULT_CREATIVE_IMAGE,
             // Ensure the image URL is absolute if it's a relative path
-            imageUrl: work.image ? (work.image.startsWith('http') ? work.image : `${process.env.REACT_APP_API_URL || 'http://localhost:5000'}${work.image}`) : DEFAULT_CREATIVE_IMAGE,
-            // Add default rating and interaction data
-            rating: work.rating || Math.floor(Math.random() * 5) + 1, // Random rating 1-5
-            likes: work.likes || Math.floor(Math.random() * 100) + 10, // Random likes 10-109
-            views: work.views || Math.floor(Math.random() * 500) + 50, // Random views 50-549
-            isLiked: false // Track if user has liked this work
+            imageUrl: work.image ? (work.image.startsWith('http') ? work.image : `${process.env.REACT_APP_API_URL || 'http://localhost:5000'}${work.image}`) : DEFAULT_CREATIVE_IMAGE
           }));
           
           console.log('Processed creative works:', processedWorks);
@@ -56,50 +51,6 @@ const Creative = () => {
     console.warn(`Failed to load image for work ${workId}, using fallback`);
     e.target.onerror = null; // Prevent infinite loop
     e.target.src = DEFAULT_CREATIVE_IMAGE;
-  };
-
-  const handleLike = (workId) => {
-    setCreativeWorks(prevWorks => 
-      prevWorks.map(work => {
-        if (work.id === workId) {
-          return {
-            ...work,
-            likes: work.isLiked ? work.likes - 1 : work.likes + 1,
-            isLiked: !work.isLiked
-          };
-        }
-        return work;
-      })
-    );
-  };
-
-  const handleView = (workId) => {
-    setCreativeWorks(prevWorks => 
-      prevWorks.map(work => {
-        if (work.id === workId) {
-          return {
-            ...work,
-            views: work.views + 1
-          };
-        }
-        return work;
-      })
-    );
-  };
-
-  const renderStars = (rating) => {
-    const stars = [];
-    for (let i = 1; i <= 5; i++) {
-      stars.push(
-        <span 
-          key={i} 
-          className={`star ${i <= rating ? 'filled' : 'empty'}`}
-        >
-          ★
-        </span>
-      );
-    }
-    return stars;
   };
 
   if (loading) {
@@ -134,36 +85,11 @@ const Creative = () => {
                   alt={work.title || 'Creative Work'}
                   onError={(e) => handleImageError(e, work.id)}
                   loading="lazy"
-                  onClick={() => handleView(work.id)}
                 />
               </div>
               <div className="creative-content">
                 <h3 className="creative-title">{work.title}</h3>
                 <p className="creative-description">{work.description}</p>
-                
-                {/* Star Rating */}
-                <div className="rating-section">
-                  <div className="stars">
-                    {renderStars(work.rating)}
-                  </div>
-                  <span className="rating-text">({work.rating}/5)</span>
-                </div>
-
-                {/* Interaction Stats */}
-                <div className="interaction-stats">
-                  <div className="stat-item">
-                    <button 
-                      className={`like-button ${work.isLiked ? 'liked' : ''}`}
-                      onClick={() => handleLike(work.id)}
-                    >
-                      ❤️ {work.likes}
-                    </button>
-                  </div>
-                  <div className="stat-item">
-                    <span className="view-count">👁️ {work.views}</span>
-                  </div>
-                </div>
-
                 {work.tags && work.tags.length > 0 && (
                   <div className="creative-tags">
                     {work.tags.map((tag, index) => (

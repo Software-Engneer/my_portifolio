@@ -12,6 +12,7 @@ export const API_ENDPOINTS = {
   ABOUT: `${API_BASE_URL}/about`,
   CONTACT: `${API_BASE_URL}/contact`,
   CREATIVE: `${API_BASE_URL}/creative`,
+  PROJECT_RATING: (id) => `${API_BASE_URL}/projects/${id}/rating`,
 };
 
 export const fetchFromAPI = async (endpoint, options = {}) => {
@@ -53,4 +54,12 @@ export const fetchFromAPI = async (endpoint, options = {}) => {
     console.error('API Error:', error);
     throw error;
   }
+};
+
+// Helper function to update project rating
+export const updateProjectRating = async (projectId, rating) => {
+  return fetchFromAPI(API_ENDPOINTS.PROJECT_RATING(projectId), {
+    method: 'PATCH',
+    body: JSON.stringify({ rating }),
+  });
 }; 
