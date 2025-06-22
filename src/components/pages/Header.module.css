@@ -128,13 +128,17 @@
 
 @media (max-width: 900px) {
   .headerContent {
-    padding: 0 2vw;
+    padding: 0 4vw;
+    justify-content: space-between;
   }
   .navList {
     gap: 1.5rem;
   }
   .logoText {
-    font-size: 2rem;
+    font-size: 2.2rem;
+  }
+  .logoSubtext {
+    font-size: 1.1rem;
   }
   .menuButton {
     display: flex;
@@ -151,7 +155,7 @@
     flex-direction: column !important;
     gap: 2vw !important;
     align-items: flex-start !important;
-    padding: 2rem 1.5rem 1.5rem !important;
+    padding: 2.5rem 2rem 2rem !important;
     transition: right 0.3s ease !important;
     box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1) !important;
     overflow-y: auto !important;
@@ -172,36 +176,51 @@
   
   .navList {
     flex-direction: column !important;
-    gap: 1.2rem !important;
+    gap: 1.5rem !important;
     width: 100% !important;
   }
   .navLink {
-    font-size: 1.1rem !important;
+    font-size: 1.3rem !important;
+    padding: 0.75rem 0 !important;
   }
 }
 
 @media (max-width: 600px) {
   .headerContent {
-    padding: 0 1vw;
+    padding: 0 5vw;
+    justify-content: space-between;
   }
   .logoText {
-    font-size: 1.3rem;
+    font-size: 1.8rem;
+  }
+  .logoSubtext {
+    font-size: 1rem;
   }
   .nav {
-    width: 90vw;
-    padding: 4rem 1rem 1rem;
+    width: 85vw;
+    padding: 3rem 2.5rem 2rem;
+  }
+  .navLink {
+    font-size: 1.2rem !important;
   }
 }
 
 @media (max-width: 400px) {
   .headerContent {
-    padding: 0 0.5vw;
+    padding: 0 6vw;
+    justify-content: space-between;
   }
   .logoText {
-    font-size: 1.1rem;
+    font-size: 1.5rem;
+  }
+  .logoSubtext {
+    font-size: 0.9rem;
   }
   .nav {
     width: 100vw;
-    padding: 3rem 0.5rem 0.5rem;
+    padding: 3.5rem 3rem 2rem;
+  }
+  .navLink {
+    font-size: 1.1rem !important;
   }
 } 
