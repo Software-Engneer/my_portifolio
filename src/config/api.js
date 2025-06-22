@@ -13,6 +13,7 @@ export const API_ENDPOINTS = {
   CONTACT: `${API_BASE_URL}/contact`,
   CREATIVE: `${API_BASE_URL}/creative`,
   PROJECT_RATING: (id) => `${API_BASE_URL}/projects/${id}/rating`,
+  CREATIVE_RATING: (id) => `${API_BASE_URL}/creative/${id}/rate`,
 };
 
 export const fetchFromAPI = async (endpoint, options = {}) => {
@@ -60,6 +61,14 @@ export const fetchFromAPI = async (endpoint, options = {}) => {
 export const updateProjectRating = async (projectId, rating) => {
   return fetchFromAPI(API_ENDPOINTS.PROJECT_RATING(projectId), {
     method: 'PATCH',
+    body: JSON.stringify({ rating }),
+  });
+};
+
+// Helper function to rate creative work
+export const rateCreativeWork = async (creativeId, rating) => {
+  return fetchFromAPI(API_ENDPOINTS.CREATIVE_RATING(creativeId), {
+    method: 'POST',
     body: JSON.stringify({ rating }),
   });
 }; 

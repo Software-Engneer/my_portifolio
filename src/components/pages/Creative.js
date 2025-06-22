@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { API_ENDPOINTS, fetchFromAPI } from '../../config/api';
+import { API_ENDPOINTS, fetchFromAPI, rateCreativeWork } from '../../config/api';
+import StarRating from '../StarRating';
 import './Creative.css';
 
 const Creative = () => {
@@ -27,7 +28,9 @@ const Creative = () => {
             ...work,
             image: work.image || DEFAULT_CREATIVE_IMAGE,
             // Ensure the image URL is absolute if it's a relative path
-            imageUrl: work.image ? (work.image.startsWith('http') ? work.image : `${process.env.REACT_APP_API_URL || 'http://localhost:5000'}${work.image}`) : DEFAULT_CREATIVE_IMAGE
+            imageUrl: work.image ? (work.image.startsWith('http') ? work.image : `${process.env.REACT_APP_API_URL || 'http://localhost:5000'}${work.image}`) : DEFAULT_CREATIVE_IMAGE,
+            // Ensure rating is available
+            rating: Math.round(work.rating || 0)
           }));
           
           console.log('Processed creative works:', processedWorks);
@@ -46,6 +49,34 @@ const Creative = () => {
 
     fetchCreativeWorks();
   }, []);
+
+  // Handle rating change for creative works
+  const handleRatingChange = async (creativeId, newRating) => {
+    try {
+      // Optimistically update the UI
+      setCreativeWorks(prevWorks =>
+        prevWorks.map(work =>
+          work.id === creativeId
+            ? { ...work, rating: newRating }
+            : work
+        )
+      );
+
+      // Send the update to the API
+      await rateCreativeWork(creativeId, newRating);
+    } catch (error) {
+      console.error('Error updating creative work rating:', error);
+      // Revert the optimistic update on error
+      setCreativeWorks(prevWorks =>
+        prevWorks.map(work =>
+          work.id === creativeId
+            ? { ...work, rating: work.rating }
+            : work
+        )
+      );
+      alert('Failed to update rating. Please try again.');
+    }
+  };
 
   const handleImageError = (e, workId) => {
     console.warn(`Failed to load image for work ${workId}, using fallback`);
@@ -90,15 +121,20 @@ const Creative = () => {
               <div className="creative-content">
                 <h3 className="creative-title">{work.title}</h3>
                 <p className="creative-description">{work.description}</p>
-                {work.tags && work.tags.length > 0 && (
+                {work.technologies && work.technologies.length > 0 && (
                   <div className="creative-tags">
-                    {work.tags.map((tag, index) => (
+                    {work.technologies.map((tech, index) => (
                       <span key={index} className="creative-tag">
-                        {tag}
+                        {tech}
                       </span>
                     ))}
                   </div>
                 )}
+                <StarRating
+                  rating={work.rating}
+                  onRatingChange={handleRatingChange}
+                  projectId={work.id}
+                />
                 {work.link && (
                   <a 
                     href={work.link} 
@@ -109,8 +145,8 @@ const Creative = () => {
                     View More
                   </a>
                 )}
-                {work.date && (
-                  <p className="creative-date">{work.date}</p>
+                {work.year && (
+                  <p className="creative-date">{work.year}</p>
                 )}
               </div>
             </div>
