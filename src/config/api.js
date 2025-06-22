@@ -60,7 +60,7 @@ export const fetchFromAPI = async (endpoint, options = {}) => {
 // Helper function to update project rating
 export const updateProjectRating = async (projectId, rating) => {
   return fetchFromAPI(API_ENDPOINTS.PROJECT_RATING(projectId), {
-    method: 'PATCH',
+    method: 'POST',
     body: JSON.stringify({ rating }),
   });
 };
