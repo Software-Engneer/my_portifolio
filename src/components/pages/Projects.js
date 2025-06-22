@@ -25,10 +25,13 @@ const Projects = () => {
         
         // The API returns { projects: [...] }
         if (response && response.projects && Array.isArray(response.projects)) {
-          // Add image paths to projects
+          // Add image URLs to projects
+          const apiBase = process.env.REACT_APP_API_URL || 'http://localhost:5000';
           const projectsWithImages = response.projects.map(project => ({
             ...project,
-            image: projectImages[project.title] || DEFAULT_PROJECT_IMAGE
+            imageUrl: project.image
+              ? (project.image.startsWith('http') ? project.image : `${apiBase}${project.image}`)
+              : DEFAULT_PROJECT_IMAGE
           }));
           setProjects(projectsWithImages);
         } else {
@@ -76,7 +79,7 @@ const Projects = () => {
             <div className="project-card" key={project.id}>
               <div className="project-image">
                 <img 
-                  src={project.image} 
+                  src={project.imageUrl} 
                   alt={project.title}
                   onError={(e) => {
                     e.target.onerror = null;
