@@ -12,7 +12,7 @@ function About() {
             <div className={styles.qualificationItem}>
               <h4>Bachelor of Science in Computer Science</h4>
               <p className={styles.institution}>University of Malawi</p>
-              <p className={styles.year}>2020 - 2024</p>
+              <p className={styles.year}>2020 - 2025</p>
             </div>
           </div>
 
