@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { API_ENDPOINTS, fetchFromAPI, rateCreativeWork } from '../../config/api';
-import StarRating from '../StarRating';
+import { API_ENDPOINTS, fetchFromAPI } from '../../config/api';
 import './Creative.css';
 
 const Creative = () => {
@@ -28,9 +27,7 @@ const Creative = () => {
             ...work,
             image: work.image || DEFAULT_CREATIVE_IMAGE,
             // Ensure the image URL is absolute if it's a relative path
-            imageUrl: work.image ? (work.image.startsWith('http') ? work.image : `${process.env.REACT_APP_API_URL || 'http://localhost:5000'}${work.image}`) : DEFAULT_CREATIVE_IMAGE,
-            // Ensure rating is available
-            rating: Math.round(work.rating || 0)
+            imageUrl: work.image ? (work.image.startsWith('http') ? work.image : `${process.env.REACT_APP_API_URL || 'http://localhost:5000'}${work.image}`) : DEFAULT_CREATIVE_IMAGE
           }));
           
           console.log('Processed creative works:', processedWorks);
@@ -49,37 +46,6 @@ const Creative = () => {
 
     fetchCreativeWorks();
   }, []);
-
-  // Handle rating change for creative works
-  const handleRatingChange = async (creativeId, newRating) => {
-    try {
-      console.log('Handling rating change for creative work:', creativeId, 'new rating:', newRating);
-      
-      // Optimistically update the UI
-      setCreativeWorks(prevWorks =>
-        prevWorks.map(work =>
-          work.id === creativeId
-            ? { ...work, rating: newRating }
-            : work
-        )
-      );
-
-      // Send the update to the API
-      await rateCreativeWork(creativeId, newRating);
-      console.log('Rating updated successfully');
-    } catch (error) {
-      console.error('Error updating creative work rating:', error);
-      // Revert the optimistic update on error
-      setCreativeWorks(prevWorks =>
-        prevWorks.map(work =>
-          work.id === creativeId
-            ? { ...work, rating: work.rating }
-            : work
-        )
-      );
-      alert('Failed to update rating. Please try again.');
-    }
-  };
 
   const handleImageError = (e, workId) => {
     console.warn(`Failed to load image for work ${workId}, using fallback`);
@@ -133,11 +99,6 @@ const Creative = () => {
                     ))}
                   </div>
                 )}
-                <StarRating
-                  rating={work.rating}
-                  onRatingChange={handleRatingChange}
-                  projectId={work.id}
-                />
                 {work.link && (
                   <a 
                     href={work.link} 
