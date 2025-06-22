@@ -12,9 +12,9 @@ const Projects = () => {
 
   // Project images mapping
   const projectImages = {
-    'E-commerce Platform': '/images/ecommerce.jpg',
-    'Task Management App': '/images/taskmanager.jpg',
-    'Portfolio Website': '/images/portfolio.jpg'
+    'E-commerce Platform': process.env.PUBLIC_URL + '/images/ecommerce.jpg',
+    'Task Management App': process.env.PUBLIC_URL + '/images/taskmanager.jpg',
+    'Portfolio Website': process.env.PUBLIC_URL + '/images/portfolio.jpg'
   };
 
   useEffect(() => {
