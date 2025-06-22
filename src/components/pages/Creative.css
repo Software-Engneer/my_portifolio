@@ -1,14 +1,16 @@
 .creative-section {
   padding-top: 90px;
-  padding: 4rem 4vw;
+  padding: 4rem 6vw;
   background-color: #f8f9fa;
   min-height: 100vh;
   box-sizing: border-box;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .creative-title {
   text-align: center;
-  font-size: 2.2rem;
+  font-size: 2.5rem;
   margin-bottom: 3rem;
   color: #333;
   font-weight: 700;
@@ -16,11 +18,11 @@
 
 .creative-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2vw;
-  max-width: 100vw;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2.5vw;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 0 1vw;
+  padding: 0 2vw;
   box-sizing: border-box;
 }
 
@@ -28,7 +30,7 @@
   background: white;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
@@ -36,7 +38,7 @@
 
 .creative-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 .creative-image {
@@ -48,7 +50,7 @@
 
 .creative-image img {
   width: 100%;
-  height: 100%;
+  height: 250px;
   object-fit: cover;
   transition: transform 0.3s ease;
   max-width: 100%;
@@ -59,39 +61,40 @@
 }
 
 .creative-content {
-  padding: 1.5rem 1vw;
+  padding: 2rem 2vw;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
 }
 
 .creative-title {
-  font-size: 1.3rem;
-  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  margin-bottom: 1.5rem;
   color: #333;
   font-weight: 600;
 }
 
 .creative-description {
   color: #666;
-  margin-bottom: 1.5rem;
-  line-height: 1.6;
+  margin-bottom: 2rem;
+  line-height: 1.7;
   flex-grow: 1;
+  font-size: 1.1rem;
 }
 
 .creative-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
 }
 
 .creative-tag {
   background-color: #e9ecef;
   color: #495057;
-  padding: 0.35rem 0.75rem;
+  padding: 0.5rem 1rem;
   border-radius: 20px;
-  font-size: 0.875rem;
+  font-size: 0.9rem;
   font-weight: 500;
   transition: all 0.2s ease;
 }
@@ -120,61 +123,83 @@
 
 .creative-date {
   color: #666;
-  font-size: 0.875rem;
-  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
 }
 
 @media (max-width: 900px) {
   .creative-section {
-    padding: 2rem 2vw;
+    padding: 3rem 4vw;
   }
   .creative-title {
-    font-size: 1.7rem;
-    margin-bottom: 2rem;
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
   }
   .creative-grid {
-    gap: 1.5vw;
+    gap: 2vw;
+    padding: 0 1.5vw;
+  }
+  .creative-content {
+    padding: 1.5rem 1.5vw;
   }
 }
 
 @media (max-width: 768px) {
   .creative-section {
-    padding: 2rem 1vw;
+    padding: 2.5rem 3vw;
   }
   .creative-title {
-    font-size: 1.3rem;
-    margin-bottom: 1.5rem;
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
   }
   .creative-grid {
     grid-template-columns: 1fr;
-    gap: 1vw;
+    gap: 2vw;
+    padding: 0 1vw;
   }
   .creative-image {
-    height: 160px;
+    height: 200px;
+  }
+  .creative-image img {
+    height: 200px;
   }
 }
 
 @media (max-width: 600px) {
   .creative-section {
-    padding: 1rem 0.5vw;
+    padding: 2rem 3vw;
   }
   .creative-title {
-    font-size: 1.1rem;
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
   }
   .creative-image {
-    height: 120px;
+    height: 180px;
+  }
+  .creative-image img {
+    height: 180px;
+  }
+  .creative-content {
+    padding: 1.5rem 1.5vw;
   }
 }
 
 @media (max-width: 400px) {
   .creative-section {
-    padding: 0.5rem 0.2vw;
+    padding: 1.5rem 2vw;
   }
   .creative-title {
-    font-size: 1rem;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
   }
   .creative-image {
-    height: 80px;
+    height: 150px;
+  }
+  .creative-image img {
+    height: 150px;
+  }
+  .creative-content {
+    padding: 1rem 1vw;
   }
 }
 
@@ -186,11 +211,11 @@
   justify-content: center;
   min-height: 50vh;
   text-align: center;
-  padding: 2rem;
+  padding: 3rem;
 }
 
 .error-container button {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   padding: 0.75rem 1.5rem;
   background-color: #64ffda;
   border: none;
@@ -206,9 +231,9 @@
 
 .no-works {
   text-align: center;
-  padding: 2rem;
+  padding: 3rem;
   color: #666;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 
 .creative-image img {
@@ -220,8 +245,8 @@
 
 .creative-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2.5rem;
   padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -229,16 +254,16 @@
 
 @media (max-width: 768px) {
   .creative-grid {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    padding: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 1.5rem;
   }
 }
 
 @media (max-width: 480px) {
   .creative-grid {
     grid-template-columns: 1fr;
-    gap: 1rem;
-    padding: 0.5rem;
+    gap: 1.5rem;
+    padding: 1rem;
   }
 } 
