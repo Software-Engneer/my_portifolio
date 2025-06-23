@@ -10,13 +10,6 @@ const Projects = () => {
   // Default project image as a data URL
   const DEFAULT_PROJECT_IMAGE = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzJjM2U1MCIvPjx0ZXh0IHg9IjUwJSIgeT0iNDUlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5Qcm9qZWN0PC90ZXh0Pjx0ZXh0IHg9IjUwJSIgeT0iNTUlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5JbWFnZTwvdGV4dD48L3N2Zz4=';
 
-  // Project images mapping
-  const projectImages = {
-    'E-commerce Platform': process.env.PUBLIC_URL + '/images/ecommerce.jpg',
-    'Task Management App': process.env.PUBLIC_URL + '/images/taskmanager.jpg',
-    'Portfolio Website': process.env.PUBLIC_URL + '/images/portfolio.jpg'
-  };
-
   useEffect(() => {
     const fetchProjects = async () => {
       try {
@@ -25,14 +18,22 @@ const Projects = () => {
         
         // The API returns { projects: [...] }
         if (response && response.projects && Array.isArray(response.projects)) {
-          // Add image URLs to projects
+          // Add image URLs to projects using the backend API
           const apiBase = process.env.REACT_APP_API_URL || 'http://localhost:5000';
-          const projectsWithImages = response.projects.map(project => ({
-            ...project,
-            imageUrl: project.image
+          console.log('API Base URL:', apiBase);
+          
+          const projectsWithImages = response.projects.map(project => {
+            const imageUrl = project.image
               ? (project.image.startsWith('http') ? project.image : `${apiBase}${project.image}`)
-              : DEFAULT_PROJECT_IMAGE
-          }));
+              : DEFAULT_PROJECT_IMAGE;
+            
+            console.log(`Project: ${project.title}, Image URL: ${imageUrl}`);
+            
+            return {
+              ...project,
+              imageUrl: imageUrl
+            };
+          });
           setProjects(projectsWithImages);
         } else {
           console.error('Invalid API response format:', response);
