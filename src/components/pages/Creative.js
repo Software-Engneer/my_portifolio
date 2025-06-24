@@ -23,12 +23,25 @@ const Creative = () => {
         
         if (response && response.works && Array.isArray(response.works)) {
           // Process the creative works and ensure they have proper image URLs
-          const processedWorks = response.works.map(work => ({
-            ...work,
-            image: work.image || DEFAULT_CREATIVE_IMAGE,
-            // Ensure the image URL is absolute if it's a relative path
-            imageUrl: work.image ? (work.image.startsWith('http') ? work.image : `${process.env.REACT_APP_API_URL || 'http://localhost:5000'}${work.image}`) : DEFAULT_CREATIVE_IMAGE
-          }));
+          const apiBase = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+          console.log('Creative API Base URL:', apiBase);
+          
+          const processedWorks = response.works.map(work => {
+            // Handle multiple images for creative works
+            const processedImages = work.images ? work.images.map(image => {
+              const imageUrl = image.startsWith('http') ? image : `${apiBase}${image}`;
+              console.log(`Creative Work: ${work.title}, Image URL: ${imageUrl}`);
+              return imageUrl;
+            }) : [];
+            
+            return {
+              ...work,
+              image: work.image || (processedImages.length > 0 ? processedImages[0] : DEFAULT_CREATIVE_IMAGE),
+              // Ensure the image URL is absolute if it's a relative path
+              imageUrl: work.image ? (work.image.startsWith('http') ? work.image : `${apiBase}${work.image}`) : (processedImages.length > 0 ? processedImages[0] : DEFAULT_CREATIVE_IMAGE),
+              processedImages: processedImages
+            };
+          });
           
           console.log('Processed creative works:', processedWorks);
           setCreativeWorks(processedWorks);
