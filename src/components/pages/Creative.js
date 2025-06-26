@@ -23,7 +23,7 @@ const Creative = () => {
         
         if (response && response.works && Array.isArray(response.works)) {
           // Process the creative works and ensure they have proper image URLs
-          const apiBase = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+          const apiBase = (process.env.REACT_APP_API_URL || 'http://localhost:5000').replace(/\/api$/, '');
           console.log('Creative API Base URL:', apiBase);
           
           const processedWorks = response.works.map(work => {
