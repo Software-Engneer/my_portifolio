@@ -2,15 +2,16 @@
   padding-top: 90px;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 4rem 6vw;
+  padding: 4rem 8vw;
   box-sizing: border-box;
 }
 
 .contactContainer h2 {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   color: #333;
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
   text-align: center;
+  font-weight: 600;
 }
 
 .contactContent {
@@ -20,9 +21,9 @@
 
 .contactInfo {
   background: white;
-  border-radius: 12px;
-  padding: 3rem 3vw;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  padding: 4rem 4vw;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 800px;
   box-sizing: border-box;

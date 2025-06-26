@@ -88,28 +88,26 @@
 }
 
 .homeContainer {
-  padding-top: 90px;
+  padding: 4rem 8vw;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 3rem 2vw;
   box-sizing: border-box;
 }
 
 .homeContainer h2 {
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 3rem;
+  font-size: 2.8rem;
   color: #333;
-  font-weight: 700;
+  margin-bottom: 3.5rem;
+  text-align: center;
+  font-weight: 600;
 }
 
 .intro {
-  max-width: 90vw;
-  margin: 0 auto;
-  padding: 3rem 3vw;
-  background-color: #f8f9fa;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: white;
+  border-radius: 16px;
+  padding: 4rem 4vw;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 3rem;
 }
 
 .intro p {
@@ -123,14 +121,15 @@
 
 @media (max-width: 900px) {
   .homeContainer {
-    padding: 2.5rem 3vw;
+    padding: 3rem 5vw;
   }
   .homeContainer h2 {
-    font-size: 2rem;
-    margin-bottom: 2.5rem;
+    font-size: 2.2rem;
+    margin-bottom: 3rem;
   }
   .intro {
-    padding: 2.5rem 2.5vw;
+    padding: 3rem 3vw;
+    margin-bottom: 2.5rem;
   }
   .intro p {
     font-size: 1rem;
@@ -139,14 +138,15 @@
 
 @media (max-width: 600px) {
   .homeContainer {
-    padding: 2rem 4vw;
+    padding: 2.5rem 4vw;
   }
   .homeContainer h2 {
-    font-size: 1.6rem;
-    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    margin-bottom: 2.5rem;
   }
   .intro {
-    padding: 2rem 2vw;
+    padding: 2.5rem 2.5vw;
+    margin-bottom: 2rem;
   }
   .intro p {
     font-size: 0.95rem;
@@ -155,14 +155,15 @@
 
 @media (max-width: 400px) {
   .homeContainer {
-    padding: 1.5rem 5vw;
+    padding: 2rem 3vw;
   }
   .homeContainer h2 {
-    font-size: 1.4rem;
-    margin-bottom: 1.5rem;
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
   }
   .intro {
-    padding: 1.5rem 1.5vw;
+    padding: 2rem 2vw;
+    margin-bottom: 1.5rem;
   }
   .intro p {
     font-size: 0.9rem;

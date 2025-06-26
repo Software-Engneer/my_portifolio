@@ -7,30 +7,30 @@
 .main {
   flex: 1;
   margin-top: 90px;
-  padding: 3rem 6vw;
+  padding: 4rem 8vw;
   background-color: #f0f2f3;
   box-sizing: border-box;
 }
 
 /* Add a shadow to the header for visual separation */
 .header {
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
 }
 
 @media (max-width: 900px) {
   .main {
-    padding: 2.5rem 4vw;
+    padding: 3rem 5vw;
   }
 }
 
 @media (max-width: 600px) {
   .main {
-    padding: 2rem 3vw;
+    padding: 2.5rem 4vw;
   }
 }
 
 @media (max-width: 400px) {
   .main {
-    padding: 1.5rem 2vw;
+    padding: 2rem 3vw;
   }
 } 
