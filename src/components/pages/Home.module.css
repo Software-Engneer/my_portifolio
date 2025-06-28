@@ -293,6 +293,48 @@
   transform: scale(1.05);
 }
 
+.websiteLink {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(255, 255, 255, 0.95);
+  color: #333;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.card:hover .websiteLink {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.websiteLink:hover {
+  background: #64ffda;
+  color: #1a1a1a;
+  transform: translateY(0) scale(1.1);
+  box-shadow: 0 6px 16px rgba(100, 255, 218, 0.3);
+}
+
+.websiteLink svg {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.websiteLink:hover svg {
+  transform: rotate(45deg);
+}
+
 .featuredBadge {
   position: absolute;
   top: 12px;

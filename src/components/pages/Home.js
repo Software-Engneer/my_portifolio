@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { fetchFromAPI, API_ENDPOINTS } from "../../config/api";
 import styles from "./Home.module.css";
 
+// Get the API URL from environment variables, with fallback to deployed API
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://portifolio-api-1-wtml.onrender.com/api';
+
 function Home() {
   const [homeData, setHomeData] = useState(null);
   const [projects, setProjects] = useState([]);
@@ -12,6 +15,24 @@ function Home() {
   const [error, setError] = useState(null);
   const [projectsError, setProjectsError] = useState(null);
   const [creativeError, setCreativeError] = useState(null);
+
+  // Helper function to construct full image URL
+  const getImageUrl = (imagePath) => {
+    if (!imagePath) return null;
+    
+    // If it's already a full URL, return as is
+    if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
+      return imagePath;
+    }
+    
+    // If it's a data URL, return as is
+    if (imagePath.startsWith('data:')) {
+      return imagePath;
+    }
+    
+    // Construct full URL with API base
+    return `${API_BASE_URL}${imagePath}`;
+  };
 
   useEffect(() => {
     const fetchHomeData = async () => {
@@ -137,12 +158,25 @@ function Home() {
               <div key={project.id} className={styles.card}>
                 <div className={styles.cardImage}>
                   <img 
-                    src={project.image} 
+                    src={getImageUrl(project.image)} 
                     alt={project.title}
                     onError={(e) => {
                       e.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2U5ZWNlZiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiM2NjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5Qcm9qZWN0IEltYWdlPC90ZXh0Pjwvc3ZnPg==';
                     }}
                   />
+                  {project.githubLink && (
+                    <a 
+                      href={project.githubLink} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className={styles.websiteLink}
+                      title="View Project"
+                    >
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </a>
+                  )}
                 </div>
                 <div className={styles.cardContent}>
                   <h4 className={styles.cardTitle}>{project.title}</h4>
@@ -181,7 +215,7 @@ function Home() {
               <div key={work.id} className={styles.card}>
                 <div className={styles.cardImage}>
                   <img 
-                    src={work.images && work.images[0]} 
+                    src={getImageUrl(work.images && work.images[0])} 
                     alt={work.title}
                     onError={(e) => {
                       e.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2U5ZWNlZiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiM2NjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5DcmVhdGl2ZSBJbWFnZTwvdGV4dD48L3N2Zz4=';
