@@ -6,6 +6,13 @@ if (process.env.NODE_ENV === 'development') {
   console.log('API Base URL:', API_BASE_URL);
 }
 
+// Always log the API URL for debugging
+console.log('🔧 API Configuration:', {
+  API_BASE_URL,
+  NODE_ENV: process.env.NODE_ENV,
+  REACT_APP_API_URL: process.env.REACT_APP_API_URL
+});
+
 export const API_ENDPOINTS = {
   HOME: `${API_BASE_URL}/home`,
   PROJECTS: `${API_BASE_URL}/projects`,
@@ -14,8 +21,13 @@ export const API_ENDPOINTS = {
   CREATIVE: `${API_BASE_URL}/creative`,
 };
 
+console.log('🎯 API Endpoints:', API_ENDPOINTS);
+
 export const fetchFromAPI = async (endpoint, options = {}) => {
   try {
+    console.log('🌐 Making API request to:', endpoint);
+    console.log('📋 Request options:', options);
+    
     // Add a timeout to the fetch request
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
@@ -32,8 +44,16 @@ export const fetchFromAPI = async (endpoint, options = {}) => {
 
     clearTimeout(timeoutId);
 
+    console.log('📡 Response received:', {
+      status: response.status,
+      statusText: response.statusText,
+      headers: Object.fromEntries(response.headers.entries())
+    });
+
     // Check if the response is JSON
     const contentType = response.headers.get('content-type');
+    console.log('📄 Content-Type:', contentType);
+    
     if (!contentType || !contentType.includes('application/json')) {
       throw new Error(`Expected JSON response but got ${contentType}`);
     }
@@ -45,12 +65,14 @@ export const fetchFromAPI = async (endpoint, options = {}) => {
       );
     }
 
-    return await response.json();
+    const data = await response.json();
+    console.log('✅ Parsed response data:', data);
+    return data;
   } catch (error) {
     if (error.name === 'AbortError') {
       throw new Error('Request timed out. Please try again.');
     }
-    console.error('API Error:', error);
+    console.error('❌ API Error:', error);
     throw error;
   }
 }; 

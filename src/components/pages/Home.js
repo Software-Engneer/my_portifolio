@@ -10,22 +10,48 @@ function Home() {
   useEffect(() => {
     const fetchHomeData = async () => {
       try {
+        console.log('🔄 Starting to fetch home data...');
+        console.log('📍 API Endpoint:', API_ENDPOINTS.HOME);
         setLoading(true);
         setError(null);
+        
+        // Test with simple fetch first
+        console.log('🧪 Testing simple fetch...');
+        try {
+          const testResponse = await fetch(API_ENDPOINTS.HOME);
+          console.log('🧪 Simple fetch response:', {
+            status: testResponse.status,
+            ok: testResponse.ok,
+            statusText: testResponse.statusText
+          });
+        } catch (testError) {
+          console.error('🧪 Simple fetch failed:', testError);
+        }
+        
         const data = await fetchFromAPI(API_ENDPOINTS.HOME);
+        console.log('✅ API Response received:', data);
         setHomeData(data);
       } catch (err) {
+        console.error('❌ Error fetching home data:', err);
+        console.error('❌ Error details:', {
+          message: err.message,
+          stack: err.stack,
+          name: err.name
+        });
         setError(err.message);
-        console.error('Error fetching home data:', err);
       } finally {
         setLoading(false);
+        console.log('🏁 Fetch operation completed');
       }
     };
 
     fetchHomeData();
   }, []);
 
+  console.log('🎯 Current state:', { homeData, loading, error });
+
   if (loading) {
+    console.log('⏳ Rendering loading state');
     return (
       <div className={styles.homeContainer}>
         <div className={styles.loading}>Loading...</div>
@@ -34,6 +60,7 @@ function Home() {
   }
 
   if (error) {
+    console.log('🚨 Rendering error state:', error);
     return (
       <div className={styles.homeContainer}>
         <div className={styles.error}>
@@ -45,6 +72,7 @@ function Home() {
     );
   }
 
+  console.log('📄 Rendering home content with data:', homeData);
   return (
     <div className={styles.homeContainer}>
       <h2>{homeData?.title || 'Welcome to My Portfolio'}</h2>
