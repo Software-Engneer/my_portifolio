@@ -105,7 +105,6 @@ function Home() {
     return (
       <div className={styles.homeContainer}>
         <div className={styles.loading}>
-          <h2>Loading...</h2>
           <p>Loading data...</p>
         </div>
       </div>
