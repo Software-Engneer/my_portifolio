@@ -169,3 +169,163 @@
     font-size: 0.9rem;
   }
 }
+
+/* Loading and Error States */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.error {
+  text-align: center;
+  padding: 2rem;
+  background: #fff3f3;
+  border: 1px solid #ffcdd2;
+  border-radius: 8px;
+  margin: 2rem 0;
+}
+
+.error h2 {
+  color: #d32f2f;
+  margin-bottom: 1rem;
+}
+
+.error p {
+  color: #666;
+  margin: 0.5rem 0;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 3rem 2rem;
+  border-radius: 16px;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.hero h3 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.hero h4 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+/* Featured Section */
+.featured {
+  background: white;
+  border-radius: 16px;
+  padding: 3rem 2rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  margin-top: 3rem;
+}
+
+.featured h3 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.featuredItems {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.featuredItem {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 12px;
+  border-left: 4px solid #667eea;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.featuredItem:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.featuredItem h4 {
+  font-size: 1.3rem;
+  color: #333;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.featuredItem p {
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Responsive adjustments for new sections */
+@media (max-width: 900px) {
+  .hero h3 {
+    font-size: 2rem;
+  }
+  
+  .hero h4 {
+    font-size: 1.3rem;
+  }
+  
+  .hero p {
+    font-size: 1rem;
+  }
+  
+  .featured h3 {
+    font-size: 1.8rem;
+  }
+  
+  .featuredItems {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    padding: 2rem 1.5rem;
+  }
+  
+  .hero h3 {
+    font-size: 1.8rem;
+  }
+  
+  .hero h4 {
+    font-size: 1.2rem;
+  }
+  
+  .featured {
+    padding: 2rem 1.5rem;
+  }
+  
+  .featured h3 {
+    font-size: 1.6rem;
+  }
+  
+  .featuredItem {
+    padding: 1.5rem;
+  }
+  
+  .featuredItem h4 {
+    font-size: 1.2rem;
+  }
+}
