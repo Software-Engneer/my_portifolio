@@ -19,7 +19,7 @@ const Projects = () => {
         // The API returns { projects: [...] }
         if (response && response.projects && Array.isArray(response.projects)) {
           // Use API base URL without /api for images
-          const apiBase = (process.env.REACT_APP_API_URL || 'http://localhost:5000').replace(/\/api$/, '');
+          const apiBase = (process.env.REACT_APP_API_URL || 'https://portifolio-api-1-wtml.onrender.com').replace(/\/api$/, '');
           console.log('API Base URL (for images):', apiBase);
           
           const projectsWithImages = response.projects.map(project => {
