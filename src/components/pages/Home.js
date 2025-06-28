@@ -4,8 +4,14 @@ import styles from "./Home.module.css";
 
 function Home() {
   const [homeData, setHomeData] = useState(null);
+  const [projects, setProjects] = useState([]);
+  const [creativeWorks, setCreativeWorks] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [projectsLoading, setProjectsLoading] = useState(true);
+  const [creativeLoading, setCreativeLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [projectsError, setProjectsError] = useState(null);
+  const [creativeError, setCreativeError] = useState(null);
 
   useEffect(() => {
     const fetchHomeData = async () => {
@@ -32,10 +38,46 @@ function Home() {
       }
     };
 
+    const fetchProjects = async () => {
+      try {
+        console.log('🔄 Fetching projects...');
+        setProjectsLoading(true);
+        setProjectsError(null);
+        
+        const data = await fetchFromAPI(API_ENDPOINTS.PROJECTS);
+        console.log('✅ Projects data received:', data);
+        setProjects(data.projects || []);
+      } catch (err) {
+        console.error('❌ Error fetching projects:', err);
+        setProjectsError(err.message);
+      } finally {
+        setProjectsLoading(false);
+      }
+    };
+
+    const fetchCreativeWorks = async () => {
+      try {
+        console.log('🔄 Fetching creative works...');
+        setCreativeLoading(true);
+        setCreativeError(null);
+        
+        const data = await fetchFromAPI(API_ENDPOINTS.CREATIVE);
+        console.log('✅ Creative works data received:', data);
+        setCreativeWorks(data.works || []);
+      } catch (err) {
+        console.error('❌ Error fetching creative works:', err);
+        setCreativeError(err.message);
+      } finally {
+        setCreativeLoading(false);
+      }
+    };
+
     fetchHomeData();
+    fetchProjects();
+    fetchCreativeWorks();
   }, []);
 
-  console.log('🎯 Current state:', { homeData, loading, error });
+  console.log('🎯 Current state:', { homeData, loading, error, projects, creativeWorks });
 
   if (loading) {
     console.log('⏳ Rendering loading state');
@@ -77,6 +119,101 @@ function Home() {
           <p>{homeData.hero.description}</p>
         </div>
       )}
+
+      {/* Projects Section */}
+      <section className={styles.projectsSection}>
+        <h3 className={styles.sectionTitle}>Projects</h3>
+        {projectsLoading ? (
+          <div className={styles.loading}>
+            <p>Loading projects...</p>
+          </div>
+        ) : projectsError ? (
+          <div className={styles.error}>
+            <p>Error loading projects: {projectsError}</p>
+          </div>
+        ) : (
+          <div className={styles.cardsGrid}>
+            {projects.slice(0, 4).map((project) => (
+              <div key={project.id} className={styles.card}>
+                <div className={styles.cardImage}>
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    onError={(e) => {
+                      e.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2U5ZWNlZiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiM2NjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5Qcm9qZWN0IEltYWdlPC90ZXh0Pjwvc3ZnPg==';
+                    }}
+                  />
+                </div>
+                <div className={styles.cardContent}>
+                  <h4 className={styles.cardTitle}>{project.title}</h4>
+                  <p className={styles.cardDescription}>{project.description}</p>
+                  {project.technologies && project.technologies.length > 0 && (
+                    <div className={styles.technologies}>
+                      {project.technologies.slice(0, 3).map((tech, index) => (
+                        <span key={index} className={styles.techTag}>{tech}</span>
+                      ))}
+                      {project.technologies.length > 3 && (
+                        <span className={styles.techTag}>+{project.technologies.length - 3}</span>
+                      )}
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </section>
+
+      {/* Creative Work Section */}
+      <section className={styles.creativeSection}>
+        <h3 className={styles.sectionTitle}>Creative Work</h3>
+        {creativeLoading ? (
+          <div className={styles.loading}>
+            <p>Loading creative works...</p>
+          </div>
+        ) : creativeError ? (
+          <div className={styles.error}>
+            <p>Error loading creative works: {creativeError}</p>
+          </div>
+        ) : (
+          <div className={styles.cardsGrid}>
+            {creativeWorks.slice(0, 4).map((work) => (
+              <div key={work.id} className={styles.card}>
+                <div className={styles.cardImage}>
+                  <img 
+                    src={work.images && work.images[0]} 
+                    alt={work.title}
+                    onError={(e) => {
+                      e.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2U5ZWNlZiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiM2NjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5DcmVhdGl2ZSBJbWFnZTwvdGV4dD48L3N2Zz4=';
+                    }}
+                  />
+                  {work.featured && (
+                    <div className={styles.featuredBadge}>Featured</div>
+                  )}
+                </div>
+                <div className={styles.cardContent}>
+                  <h4 className={styles.cardTitle}>{work.title}</h4>
+                  <p className={styles.cardDescription}>{work.description}</p>
+                  <div className={styles.workMeta}>
+                    <span className={styles.workType}>{work.type}</span>
+                    <span className={styles.workYear}>{work.year}</span>
+                  </div>
+                  {work.technologies && work.technologies.length > 0 && (
+                    <div className={styles.technologies}>
+                      {work.technologies.slice(0, 2).map((tech, index) => (
+                        <span key={index} className={styles.techTag}>{tech}</span>
+                      ))}
+                      {work.technologies.length > 2 && (
+                        <span className={styles.techTag}>+{work.technologies.length - 2}</span>
+                      )}
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </section>
 
       {homeData?.featured && homeData.featured.items && homeData.featured.items.length > 0 && (
         <div className={styles.featured}>
