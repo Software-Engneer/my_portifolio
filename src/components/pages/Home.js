@@ -240,42 +240,54 @@ function Home() {
             <p>Error loading creative works: {creativeError}</p>
           </div>
         ) : (
-          <div className={styles.cardsGrid}>
-            {creativeWorks.slice(0, 4).map((work) => (
-              <div key={work.id} className={styles.card}>
-                <div className={styles.cardImage}>
-                  <img 
-                    src={getImageUrl(work.images && work.images[0])} 
-                    alt={work.title}
-                    onError={(e) => {
-                      e.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2U5ZWNlZiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiM2NjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5DcmVhdGl2ZSBJbWFnZTwvdGV4dD48L3N2Zz4=';
-                    }}
-                  />
-                  {work.featured && (
-                    <div className={styles.featuredBadge}>Featured</div>
-                  )}
-                </div>
-                <div className={styles.cardContent}>
-                  <h4 className={styles.cardTitle}>{work.title}</h4>
-                  <p className={styles.cardDescription}>{work.description}</p>
-                  <div className={styles.workMeta}>
-                    <span className={styles.workType}>{work.type}</span>
-                    <span className={styles.workYear}>{work.year}</span>
+          <>
+            <div className={styles.cardsGrid}>
+              {creativeWorks.slice(0, 4).map((work) => (
+                <div key={work.id} className={styles.card}>
+                  <div className={styles.cardImage}>
+                    <img 
+                      src={getImageUrl(work.images && work.images[0])} 
+                      alt={work.title}
+                      onError={(e) => {
+                        e.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2U5ZWNlZiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiM2NjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5DcmVhdGl2ZSBJbWFnZTwvdGV4dD48L3N2Zz4=';
+                      }}
+                    />
+                    {work.featured && (
+                      <div className={styles.featuredBadge}>Featured</div>
+                    )}
                   </div>
-                  {work.technologies && work.technologies.length > 0 && (
-                    <div className={styles.technologies}>
-                      {work.technologies.slice(0, 2).map((tech, index) => (
-                        <span key={index} className={styles.techTag}>{tech}</span>
-                      ))}
-                      {work.technologies.length > 2 && (
-                        <span className={styles.techTag}>+{work.technologies.length - 2}</span>
-                      )}
+                  <div className={styles.cardContent}>
+                    <h4 className={styles.cardTitle}>{work.title}</h4>
+                    <p className={styles.cardDescription}>{work.description}</p>
+                    <div className={styles.workMeta}>
+                      <span className={styles.workType}>{work.type}</span>
+                      <span className={styles.workYear}>{work.year}</span>
                     </div>
-                  )}
+                    {work.technologies && work.technologies.length > 0 && (
+                      <div className={styles.technologies}>
+                        {work.technologies.slice(0, 2).map((tech, index) => (
+                          <span key={index} className={styles.techTag}>{tech}</span>
+                        ))}
+                        {work.technologies.length > 2 && (
+                          <span className={styles.techTag}>+{work.technologies.length - 2}</span>
+                        )}
+                      </div>
+                    )}
+                  </div>
                 </div>
+              ))}
+            </div>
+            {creativeWorks.length > 4 && (
+              <div className={styles.exploreMoreContainer}>
+                <button 
+                  onClick={() => navigate('/creative')} 
+                  className={styles.exploreMoreButton}
+                >
+                  Explore More Creative Work
+                </button>
               </div>
-            ))}
-          </div>
+            )}
+          </>
         )}
       </section>
 
