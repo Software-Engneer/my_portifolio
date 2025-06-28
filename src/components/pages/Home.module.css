@@ -637,6 +637,78 @@
   }
   
   .featuredItem h4 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* Explore More Button Styles */
+.exploreMoreContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e0e0e0;
+}
+
+.exploreMoreButton {
+  background: linear-gradient(135deg, #64ffda 0%, #00bcd4 100%);
+  color: #1a1a1a;
+  border: none;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(100, 255, 218, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.exploreMoreButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(100, 255, 218, 0.4);
+  background: linear-gradient(135deg, #00bcd4 0%, #64ffda 100%);
+}
+
+.exploreMoreButton:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(100, 255, 218, 0.3);
+}
+
+@media (max-width: 900px) {
+  .exploreMoreContainer {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+  }
+  
+  .exploreMoreButton {
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .exploreMoreContainer {
+    margin-top: 2rem;
+    padding-top: 1rem;
+  }
+  
+  .exploreMoreButton {
+    padding: 0.8rem 1.8rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .exploreMoreContainer {
+    margin-top: 1.5rem;
+    padding-top: 0.8rem;
+  }
+  
+  .exploreMoreButton {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
   }
 }

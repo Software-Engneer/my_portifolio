@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { fetchFromAPI, API_ENDPOINTS } from "../../config/api";
 import styles from "./Home.module.css";
 
@@ -15,6 +16,7 @@ function Home() {
   const [error, setError] = useState(null);
   const [projectsError, setProjectsError] = useState(null);
   const [creativeError, setCreativeError] = useState(null);
+  const navigate = useNavigate();
 
   // Helper function to construct full image URL
   const getImageUrl = (imagePath) => {
@@ -152,65 +154,77 @@ function Home() {
             <p>Error loading projects: {projectsError}</p>
           </div>
         ) : (
-          <div className={styles.cardsGrid}>
-            {projects.slice(0, 4).map((project) => {
-              console.log('🔍 Rendering project:', project);
-              console.log('🔗 Project link:', project.projectLink);
-              return (
-                <div key={project.id} className={styles.card}>
-                  <div className={styles.cardImage}>
-                    <img 
-                      src={getImageUrl(project.image)} 
-                      alt={project.title}
-                      onError={(e) => {
-                        e.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2U5ZWNlZiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiM2NjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5Qcm9qZWN0IEltYWdlPC90ZXh0Pjwvc3ZnPg==';
-                      }}
-                    />
-                    {project.projectLink && (
-                      <a 
-                        href={project.projectLink} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className={styles.websiteLink}
-                        title="View Live Project"
-                      >
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                      </a>
-                    )}
-                    {!project.projectLink && project.githubLink && (
-                      <a 
-                        href={project.githubLink} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className={styles.websiteLink}
-                        title="View Source Code"
-                      >
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                      </a>
-                    )}
+          <>
+            <div className={styles.cardsGrid}>
+              {projects.slice(0, 4).map((project) => {
+                console.log('🔍 Rendering project:', project);
+                console.log('🔗 Project link:', project.projectLink);
+                return (
+                  <div key={project.id} className={styles.card}>
+                    <div className={styles.cardImage}>
+                      <img 
+                        src={getImageUrl(project.image)} 
+                        alt={project.title}
+                        onError={(e) => {
+                          e.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2U5ZWNlZiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiM2NjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5Qcm9qZWN0IEltYWdlPC90ZXh0Pjwvc3ZnPg==';
+                        }}
+                      />
+                      {project.projectLink && (
+                        <a 
+                          href={project.projectLink} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className={styles.websiteLink}
+                          title="View Live Project"
+                        >
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        </a>
+                      )}
+                      {!project.projectLink && project.githubLink && (
+                        <a 
+                          href={project.githubLink} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className={styles.websiteLink}
+                          title="View Source Code"
+                        >
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        </a>
+                      )}
+                    </div>
+                    <div className={styles.cardContent}>
+                      <h4 className={styles.cardTitle}>{project.title}</h4>
+                      <p className={styles.cardDescription}>{project.description}</p>
+                      {project.technologies && project.technologies.length > 0 && (
+                        <div className={styles.technologies}>
+                          {project.technologies.slice(0, 3).map((tech, index) => (
+                            <span key={index} className={styles.techTag}>{tech}</span>
+                          ))}
+                          {project.technologies.length > 3 && (
+                            <span className={styles.techTag}>+{project.technologies.length - 3}</span>
+                          )}
+                        </div>
+                      )}
+                    </div>
                   </div>
-                  <div className={styles.cardContent}>
-                    <h4 className={styles.cardTitle}>{project.title}</h4>
-                    <p className={styles.cardDescription}>{project.description}</p>
-                    {project.technologies && project.technologies.length > 0 && (
-                      <div className={styles.technologies}>
-                        {project.technologies.slice(0, 3).map((tech, index) => (
-                          <span key={index} className={styles.techTag}>{tech}</span>
-                        ))}
-                        {project.technologies.length > 3 && (
-                          <span className={styles.techTag}>+{project.technologies.length - 3}</span>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+                );
+              })}
+            </div>
+            {projects.length > 4 && (
+              <div className={styles.exploreMoreContainer}>
+                <button 
+                  onClick={() => navigate('/projects')} 
+                  className={styles.exploreMoreButton}
+                >
+                  Explore More Projects
+                </button>
+              </div>
+            )}
+          </>
         )}
       </section>
 
