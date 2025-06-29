@@ -156,11 +156,14 @@ function Home() {
         ) : (
           <>
             <div className={styles.cardsGrid}>
-              {projects.slice(0, 4).map((project) => {
+              {projects.slice(0, 4).map((project, index) => {
                 console.log('🔍 Rendering project:', project);
                 console.log('🔗 Project link:', project.projectLink);
                 return (
-                  <div key={project.id} className={styles.card}>
+                  <div 
+                    key={project.id} 
+                    className={`${styles.card} ${index === 0 ? styles.firstCard : ''}`}
+                  >
                     <div className={styles.cardImage}>
                       <img 
                         src={getImageUrl(project.image)} 
