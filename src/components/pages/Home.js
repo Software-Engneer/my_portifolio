@@ -135,7 +135,7 @@ function Home() {
       <h2>{homeData?.title || 'Welcome to My Portfolio'}</h2>
       
       {homeData?.hero && (
-        <div className={styles.hero}>
+        <div className={`${styles.hero} ${styles.heroCard}`}>
           <h3>{homeData.hero.title}</h3>
           <h4>{homeData.hero.subtitle}</h4>
           <p>{homeData.hero.description}</p>

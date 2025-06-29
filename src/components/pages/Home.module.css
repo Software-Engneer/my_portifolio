@@ -512,31 +512,82 @@
 
 /* Hero Section */
 .hero {
-  background: #ffffff 100%;
-  color: rgb(0, 0, 0);
-  padding: 3rem 2rem;
+  background: white;
   border-radius: 16px;
+  padding: 3rem 4vw;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
   margin-bottom: 3rem;
   text-align: center;
 }
 
 .hero h3 {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
+  color: #333;
   margin-bottom: 1rem;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .hero h4 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  color: #666;
+  margin-bottom: 1.5rem;
   font-weight: 500;
-  opacity: 0.9;
 }
 
 .hero p {
   font-size: 1.1rem;
+  color: #555;
   line-height: 1.6;
-  opacity: 0.8;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Hero Card with Skyblue Sidebar */
+.heroCard {
+  position: relative;
+  border-left: 8px solid #87CEEB;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fbff 100%);
+  box-shadow: 0 8px 30px rgba(135, 206, 235, 0.2);
+  transform: scale(1.01);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.heroCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 100%;
+  background: linear-gradient(180deg, #87CEEB 0%, #5F9EA0 100%);
+  border-radius: 0 4px 4px 0;
+}
+
+.heroCard:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 40px rgba(135, 206, 235, 0.3);
+  border-left-color: #5F9EA0;
+}
+
+.heroCard h3 {
+  color: #2E86AB;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+}
+
+.heroCard h4 {
+  color: #4A90A4;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+}
+
+.heroCard p {
+  color: #555;
+  position: relative;
+  z-index: 1;
 }
 
 /* Featured Section */
