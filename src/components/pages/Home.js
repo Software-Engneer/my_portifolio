@@ -159,10 +159,11 @@ function Home() {
               {projects.slice(0, 4).map((project, index) => {
                 console.log('🔍 Rendering project:', project);
                 console.log('🔗 Project link:', project.projectLink);
+                const isFullStackCard = project.title && project.title.toLowerCase().includes('full stack developer');
                 return (
                   <div 
                     key={project.id} 
-                    className={`${styles.card} ${index === 0 ? styles.firstCard : ''}`}
+                    className={`${styles.card} ${isFullStackCard ? styles.fullStackCard : ''}`}
                   >
                     <div className={styles.cardImage}>
                       <img 
