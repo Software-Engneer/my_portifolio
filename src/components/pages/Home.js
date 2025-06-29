@@ -160,6 +160,7 @@ function Home() {
                 console.log('🔍 Rendering project:', project);
                 console.log('🔗 Project link:', project.projectLink);
                 const isFullStackCard = project.title && project.title.toLowerCase().includes('full stack developer');
+                console.log('🎯 Is Full Stack Card:', isFullStackCard, 'Title:', project.title);
                 return (
                   <div 
                     key={project.id} 
