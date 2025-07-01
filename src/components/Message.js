@@ -103,7 +103,7 @@ function Message({ onClose }) {
         <button type="button" style={closeBtnStyle} onClick={onClose} aria-label="Close">&times;</button>
         <h2 style={{ color: '#003366', marginBottom: '0.5rem', fontSize: window.innerWidth <= 500 ? '1.1rem' : '1.3rem' }}>Contact Us</h2>
         {submitted ? (
-          <div style={{ color: '#003366', fontWeight: 'bold', textAlign: 'center', fontSize: window.innerWidth <= 500 ? '1rem' : '1.1rem' }}>
+          <div style={{ color: '#003366', textAlign: 'center', fontSize: window.innerWidth <= 500 ? '1rem' : '1.1rem' }}>
             Thank you for reaching out!<br />We will get back to you soon.
           </div>
         ) : (
