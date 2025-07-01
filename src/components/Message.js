@@ -62,10 +62,11 @@ const useResponsiveFormStyle = () => {
       if (window.innerWidth <= 500) {
         setStyle({
           ...formStyle,
-          padding: '1rem',
+          padding: '0.5rem',
           borderRadius: '6px',
           minWidth: '0',
           maxWidth: '98vw',
+          gap: '0.5rem',
         });
       } else {
         setStyle(formStyle);
@@ -93,19 +94,22 @@ function Message({ onClose }) {
     // Here you would handle sending the message to your backend or email service
   };
 
+  const mobileInputStyle = window.innerWidth <= 500 ? { ...inputStyle, fontSize: '0.95rem', padding: '0.5rem' } : inputStyle;
+  const mobileTextareaStyle = window.innerWidth <= 500 ? { ...inputStyle, minHeight: '60px', fontSize: '0.95rem', padding: '0.5rem', resize: 'vertical' } : { ...inputStyle, minHeight: '100px', resize: 'vertical' };
+
   return (
     <div style={modalStyle}>
       <form style={responsiveFormStyle} onSubmit={handleSubmit}>
         <button type="button" style={closeBtnStyle} onClick={onClose} aria-label="Close">&times;</button>
-        <h2 style={{ color: '#003366', marginBottom: '1rem' }}>Contact Us</h2>
+        <h2 style={{ color: '#003366', marginBottom: '0.5rem', fontSize: window.innerWidth <= 500 ? '1.1rem' : '1.3rem' }}>Contact Us</h2>
         {submitted ? (
-          <div style={{ color: '#003366', fontWeight: 'bold', textAlign: 'center' }}>
+          <div style={{ color: '#003366', fontWeight: 'bold', textAlign: 'center', fontSize: window.innerWidth <= 500 ? '1rem' : '1.1rem' }}>
             Thank you for reaching out!<br />We will get back to you soon.
           </div>
         ) : (
           <>
             <input
-              style={inputStyle}
+              style={mobileInputStyle}
               type="text"
               name="name"
               placeholder="Full Name"
@@ -114,7 +118,7 @@ function Message({ onClose }) {
               required
             />
             <input
-              style={inputStyle}
+              style={mobileInputStyle}
               type="email"
               name="email"
               placeholder="Email"
@@ -123,7 +127,7 @@ function Message({ onClose }) {
               required
             />
             <textarea
-              style={{ ...inputStyle, minHeight: '100px', resize: 'vertical' }}
+              style={mobileTextareaStyle}
               name="message"
               placeholder="Your Message"
               value={form.message}
