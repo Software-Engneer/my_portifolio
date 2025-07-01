@@ -101,7 +101,7 @@
 .homeContainer h2 {
   font-size: 2.8rem;
   color: #333;
-  margin-bottom: 3.5rem;
+  margin-bottom: 1.2rem;
   text-align: center;
   font-weight: 600;
 }
@@ -111,7 +111,7 @@
   border-radius: 16px;
   padding: 1.5rem 1vw;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-  margin-bottom: 1.2rem;
+  margin-bottom: 0.7rem;
 }
 
 .intro p {
@@ -130,14 +130,19 @@
   }
   .homeContainer h2 {
     font-size: 2.2rem;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
   }
   .intro {
     padding: 1rem 1vw;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
   }
   .intro p {
     font-size: 1rem;
+  }
+  .projectsSection,
+  .featured,
+  .exploreMoreContainer {
+    margin-bottom: 1rem;
   }
 }
 
@@ -148,14 +153,19 @@
   }
   .homeContainer h2 {
     font-size: 1.8rem;
-    margin-bottom: 2.5rem;
+    margin-bottom: 0.7rem;
   }
   .intro {
     padding: 0.7rem 0.5vw;
-    margin-bottom: 0.7rem;
+    margin-bottom: 0.3rem;
   }
   .intro p {
     font-size: 0.95rem;
+  }
+  .projectsSection,
+  .featured,
+  .exploreMoreContainer {
+    margin-bottom: 0.7rem;
   }
 }
 
@@ -607,6 +617,7 @@
   padding: 3rem 2rem;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
   margin-top: 3rem;
+  margin-bottom: 1.2rem;
 }
 
 .featured h3 {
@@ -710,6 +721,7 @@
   margin-top: 3rem;
   padding-top: 2rem;
   border-top: 1px solid #e0e0e0;
+  margin-bottom: 1.2rem;
 }
 
 .exploreMoreButton {
