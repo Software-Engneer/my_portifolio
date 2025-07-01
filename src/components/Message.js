@@ -16,7 +16,6 @@ const modalStyle = {
 
 const formStyle = {
   background: '#fff',
-  borderRadius: '12px',
   padding: '2rem',
   minWidth: '320px',
   maxWidth: '90vw',
@@ -39,7 +38,6 @@ const closeBtnStyle = {
 
 const inputStyle = {
   padding: '0.75rem',
-  borderRadius: '6px',
   border: '1px solid #ccc',
   fontSize: '1rem',
 };
@@ -49,7 +47,6 @@ const submitBtnStyle = {
   color: '#fff',
   padding: '0.75rem',
   border: 'none',
-  borderRadius: '6px',
   fontSize: '1rem',
   cursor: 'pointer',
 };
@@ -62,7 +59,6 @@ const useResponsiveFormStyle = () => {
         setStyle({
           ...formStyle,
           padding: '0.5rem',
-          borderRadius: '6px',
           minWidth: '0',
           maxWidth: '98vw',
           gap: '0.5rem',
