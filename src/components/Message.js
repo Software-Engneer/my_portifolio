@@ -50,7 +50,6 @@ const submitBtnStyle = {
   padding: '0.75rem',
   border: 'none',
   borderRadius: '6px',
-  fontWeight: 'bold',
   fontSize: '1rem',
   cursor: 'pointer',
 };
