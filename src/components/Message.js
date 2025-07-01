@@ -11,6 +11,7 @@ const modalStyle = {
   alignItems: 'center',
   justifyContent: 'center',
   zIndex: 1000,
+  padding: '2vw',
 };
 
 const formStyle = {
@@ -54,9 +55,33 @@ const submitBtnStyle = {
   cursor: 'pointer',
 };
 
+const useResponsiveFormStyle = () => {
+  const [style, setStyle] = React.useState(formStyle);
+  React.useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 500) {
+        setStyle({
+          ...formStyle,
+          padding: '1rem',
+          borderRadius: '6px',
+          minWidth: '0',
+          maxWidth: '98vw',
+        });
+      } else {
+        setStyle(formStyle);
+      }
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  return style;
+};
+
 function Message({ onClose }) {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
+  const responsiveFormStyle = useResponsiveFormStyle();
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -70,7 +95,7 @@ function Message({ onClose }) {
 
   return (
     <div style={modalStyle}>
-      <form style={formStyle} onSubmit={handleSubmit}>
+      <form style={responsiveFormStyle} onSubmit={handleSubmit}>
         <button type="button" style={closeBtnStyle} onClick={onClose} aria-label="Close">&times;</button>
         <h2 style={{ color: '#003366', marginBottom: '1rem' }}>Contact Us</h2>
         {submitted ? (
