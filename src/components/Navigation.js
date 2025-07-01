@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import './Navigation.css';
+import Message from './Message';
 
 function Navigation() {
   const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showMessage, setShowMessage] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -63,7 +65,15 @@ function Navigation() {
             Log In
           </button>
         )}
+        <button
+          className="get-in-touch-btn"
+          style={{ background: '#003366', color: '#fff', marginTop: '2rem', padding: '1rem', borderRadius: '8px', fontWeight: 'bold', fontSize: '1rem', border: 'none', cursor: 'pointer' }}
+          onClick={() => setShowMessage(true)}
+        >
+          GET IN TOUCH
+        </button>
       </div>
+      {showMessage && <Message onClose={() => setShowMessage(false)} />}
     </nav>
   );
 }
