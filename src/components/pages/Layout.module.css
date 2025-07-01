@@ -69,7 +69,12 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  align-items: flex-end;
+  align-items: flex-start;
+}
+
+.socialLinks > div {
+  display: flex;
+  align-items: center;
 }
 
 .socialLinks a {
