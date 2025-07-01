@@ -94,4 +94,11 @@
     align-items: center;
     text-align: center;
   }
+}
+
+.icon {
+  display: inline-flex;
+  vertical-align: middle;
+  margin-right: 0.5em;
+  color: #4f8cff;
 } 
