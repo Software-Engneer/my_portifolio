@@ -68,3 +68,26 @@
   color: skyblue;
   text-align: center;
 }
+
+footer {
+  background: #0a2342;
+  color: #fff;
+  padding: 1.5rem 0 1rem 0;
+  text-align: center;
+}
+
+.footer-text {
+  color: #fff;
+  margin: 0.2rem 0;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: underline;
+  margin: 0 0.3rem;
+  transition: color 0.2s;
+}
+
+footer a:hover {
+  color: #64ffda;
+}
