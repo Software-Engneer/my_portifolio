@@ -118,7 +118,10 @@ const Header = () => {
                     cursor: 'pointer',
                     width: '100%',
                   }}
-                  onClick={() => setShowMessage(true)}
+                  onClick={() => {
+                    setShowMessage(true);
+                    setIsMenuOpen(false);
+                  }}
                 >
                   GET IN TOUCH
                 </button>
