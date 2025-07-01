@@ -9,9 +9,11 @@ function Navigation() {
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showMessage, setShowMessage] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     const handleResize = () => {
+      setWindowWidth(window.innerWidth);
       if (window.innerWidth <= 900) {
         setIsMenuOpen(true);
       } else {
@@ -65,13 +67,15 @@ function Navigation() {
             Log In
           </button>
         )}
-        <button
-          className="get-in-touch-btn"
-          style={{ background: '#003366', color: '#fff', marginTop: '2rem', padding: '1rem', borderRadius: '8px', fontWeight: 'bold', fontSize: '1rem', border: 'none', cursor: 'pointer' }}
-          onClick={() => setShowMessage(true)}
-        >
-          GET IN TOUCH
-        </button>
+        {windowWidth <= 900 && isMenuOpen && (
+          <button
+            className="get-in-touch-btn"
+            style={{ background: '#003366', color: '#fff', marginTop: '2rem', padding: '1rem', borderRadius: '8px', fontWeight: 'bold', fontSize: '1rem', border: 'none', cursor: 'pointer' }}
+            onClick={() => setShowMessage(true)}
+          >
+            GET IN TOUCH
+          </button>
+        )}
       </div>
       {showMessage && <Message onClose={() => setShowMessage(false)} />}
     </nav>
