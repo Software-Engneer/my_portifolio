@@ -169,18 +169,38 @@
   .creative-section {
     padding: 2rem 3vw;
   }
-  .creative-title {
-    font-size: 1.4rem;
-    margin-bottom: 1.5rem;
-  }
   .creative-image {
-    height: 180px;
+    height: 120px;
   }
   .creative-image img {
-    height: 180px;
+    height: 120px;
   }
   .creative-content {
-    padding: 1.5rem 1.5vw;
+    padding: 0.7rem 1vw;
+  }
+  .creative-title {
+    font-size: 1rem;
+    margin-bottom: 0.7rem;
+  }
+  .creative-description {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  .creative-tags {
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+  }
+  .creative-tag {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.7rem;
+  }
+  .view-more-link {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+  .creative-date {
+    font-size: 0.75rem;
+    margin-bottom: 0.4rem;
   }
 }
 
@@ -188,18 +208,38 @@
   .creative-section {
     padding: 1.5rem 2vw;
   }
-  .creative-title {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-  }
   .creative-image {
-    height: 150px;
+    height: 90px;
   }
   .creative-image img {
-    height: 150px;
+    height: 90px;
   }
   .creative-content {
-    padding: 1rem 1vw;
+    padding: 0.4rem 0.5vw;
+  }
+  .creative-title {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+  .creative-description {
+    font-size: 0.8rem;
+    margin-bottom: 0.7rem;
+  }
+  .creative-tags {
+    gap: 0.2rem;
+    margin-bottom: 0.7rem;
+  }
+  .creative-tag {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+  }
+  .view-more-link {
+    padding: 0.4rem 0.7rem;
+    font-size: 0.8rem;
+  }
+  .creative-date {
+    font-size: 0.7rem;
+    margin-bottom: 0.2rem;
   }
 }
 

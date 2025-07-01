@@ -169,13 +169,33 @@
     margin-bottom: 1.5rem;
   }
   .project-image {
-    height: 180px;
+    height: 120px;
   }
   .project-image img {
-    height: 180px;
+    height: 120px;
   }
   .project-content {
-    padding: 1.5rem 1.5vw;
+    padding: 0.7rem 1vw;
+  }
+  .project-title {
+    font-size: 1rem;
+    margin-bottom: 0.7rem;
+  }
+  .project-description {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  .project-technologies {
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+  }
+  .tech-tag {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.7rem;
+  }
+  .github-link {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
   }
 }
 
@@ -188,13 +208,33 @@
     margin-bottom: 1rem;
   }
   .project-image {
-    height: 150px;
+    height: 90px;
   }
   .project-image img {
-    height: 150px;
+    height: 90px;
   }
   .project-content {
-    padding: 1rem 1vw;
+    padding: 0.4rem 0.5vw;
+  }
+  .project-title {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+  .project-description {
+    font-size: 0.8rem;
+    margin-bottom: 0.7rem;
+  }
+  .project-technologies {
+    gap: 0.2rem;
+    margin-bottom: 0.7rem;
+  }
+  .tech-tag {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+  }
+  .github-link {
+    padding: 0.4rem 0.7rem;
+    font-size: 0.8rem;
   }
 }
 
