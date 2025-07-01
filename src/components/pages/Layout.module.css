@@ -59,6 +59,12 @@
   line-height: 1.7;
 }
 
+.contactInfo > div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.3em;
+}
+
 .socialLinks {
   display: flex;
   flex-direction: column;
