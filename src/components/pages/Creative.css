@@ -129,15 +129,16 @@
 
 @media (max-width: 900px) {
   .creative-section {
-    padding: 3rem 4vw;
+    max-width: 95vw;
+    padding: 1rem 1vw;
+  }
+  .creative-grid {
+    padding: 0;
+    gap: 1vw;
   }
   .creative-title {
     font-size: 2rem;
     margin-bottom: 2.5rem;
-  }
-  .creative-grid {
-    gap: 2vw;
-    padding: 0 1.5vw;
   }
   .creative-content {
     padding: 1.5rem 1.5vw;
@@ -167,7 +168,12 @@
 
 @media (max-width: 600px) {
   .creative-section {
-    padding: 2rem 3vw;
+    max-width: 99vw;
+    padding: 0.5rem 0.5vw;
+  }
+  .creative-grid {
+    padding: 0;
+    gap: 0.5vw;
   }
   .creative-image {
     height: 80px;
@@ -244,6 +250,15 @@
 }
 
 @media (min-width: 900px) {
+  .creative-section {
+    max-width: 800px;
+    padding: 1.5rem 0;
+  }
+  .creative-grid {
+    max-width: 800px;
+    padding: 0;
+    gap: 1.5vw;
+  }
   .creative-image {
     height: 120px;
   }

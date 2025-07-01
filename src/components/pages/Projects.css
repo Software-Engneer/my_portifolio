@@ -124,15 +124,16 @@
 
 @media (max-width: 900px) {
   .projects-section {
-    padding: 3rem 4vw;
+    max-width: 95vw;
+    padding: 1rem 1vw;
   }
   .section-title {
     font-size: 2rem;
     margin-bottom: 2.5rem;
   }
   .projects-grid {
-    gap: 2vw;
-    padding: 0 1.5vw;
+    padding: 0;
+    gap: 1vw;
   }
   .project-content {
     padding: 1.5rem 1.5vw;
@@ -162,7 +163,8 @@
 
 @media (max-width: 600px) {
   .projects-section {
-    padding: 2rem 3vw;
+    max-width: 99vw;
+    padding: 0.5rem 0.5vw;
   }
   .section-title {
     font-size: 1.4rem;
@@ -196,6 +198,10 @@
   .github-link {
     padding: 0.2rem 0.4rem;
     font-size: 0.7rem;
+  }
+  .projects-grid {
+    padding: 0;
+    gap: 0.5vw;
   }
 }
 
@@ -239,6 +245,10 @@
 }
 
 @media (min-width: 900px) {
+  .projects-section {
+    max-width: 800px;
+    padding: 1.5rem 0;
+  }
   .project-image {
     height: 120px;
   }
@@ -267,6 +277,11 @@
   .github-link {
     padding: 0.4rem 0.7rem;
     font-size: 0.8rem;
+  }
+  .projects-grid {
+    max-width: 800px;
+    padding: 0;
+    gap: 1.5vw;
   }
 }
 
