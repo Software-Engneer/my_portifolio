@@ -61,9 +61,10 @@
 
 .socialLinks {
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  align-items: flex-end;
+  flex-direction: row;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .socialLinks a {
@@ -93,6 +94,9 @@
   .contactInfo, .socialLinks {
     align-items: center;
     text-align: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 1.2rem;
   }
 }
 
