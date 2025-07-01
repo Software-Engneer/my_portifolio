@@ -238,6 +238,38 @@
   }
 }
 
+@media (min-width: 900px) {
+  .project-image {
+    height: 180px;
+  }
+  .project-image img {
+    height: 180px;
+  }
+  .project-content {
+    padding: 1.2rem 1.5vw;
+  }
+  .project-title {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+  .project-description {
+    font-size: 1rem;
+    margin-bottom: 1.2rem;
+  }
+  .project-technologies {
+    gap: 0.5rem;
+    margin-bottom: 1.2rem;
+  }
+  .tech-tag {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+  }
+  .github-link {
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+  }
+}
+
 .loading-container,
 .error-container {
   display: flex;
