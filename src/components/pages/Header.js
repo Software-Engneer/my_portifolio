@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./Header.module.css";
+import Message from "../Message";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showMessage, setShowMessage] = useState(false);
   const navRef = useRef(null);
 
   useEffect(() => {
@@ -100,8 +102,31 @@ const Header = () => {
                 <span className={styles.linkUnderline}></span>
               </a>
             </li>
+            {/* GET IN TOUCH button for mobile menu */}
+            {isMenuOpen && (
+              <li style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+                <button
+                  style={{
+                    background: '#003366',
+                    color: '#fff',
+                    marginTop: '1rem',
+                    padding: '1rem',
+                    borderRadius: '8px',
+                    fontWeight: 'bold',
+                    fontSize: '1rem',
+                    border: 'none',
+                    cursor: 'pointer',
+                    width: '100%',
+                  }}
+                  onClick={() => setShowMessage(true)}
+                >
+                  GET IN TOUCH
+                </button>
+              </li>
+            )}
           </ul>
         </nav>
+        {showMessage && <Message onClose={() => setShowMessage(false)} />}
       </div>
     </header>
   );
