@@ -135,7 +135,7 @@ function Home() {
       <h2>{homeData?.title || 'Welcome to My Portfolio'}</h2>
       
       {homeData?.hero && (
-        <div className={`${styles.hero} ${styles.heroCard}`}>
+        <div className={`${styles.hero} ${styles.heroCard}`} style={{ marginBottom: '1rem' }}>
           <h3>{homeData.hero.title}</h3>
           <h4>{homeData.hero.subtitle}</h4>
           <p>{homeData.hero.description}</p>
@@ -143,7 +143,7 @@ function Home() {
       )}
 
       {/* Projects Section */}
-      <section className={styles.projectsSection}>
+      <section className={styles.projectsSection} style={{ marginBottom: '1rem' }}>
         <h3 className={styles.sectionTitle}>Projects</h3>
         {projectsLoading ? (
           <div className={styles.loading}>
@@ -234,7 +234,7 @@ function Home() {
       </section>
 
       {/* Creative Work Section */}
-      <section className={styles.creativeSection}>
+      <section className={styles.creativeSection} style={{ marginBottom: '1rem' }}>
         <h3 className={styles.sectionTitle}>Creative Work</h3>
         {creativeLoading ? (
           <div className={styles.loading}>
