@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./Header.module.css";
-import Message from "../Message";
+import Messages from "./messages";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -129,7 +129,7 @@ const Header = () => {
             )}
           </ul>
         </nav>
-        {showMessage && <Message onClose={() => setShowMessage(false)} />}
+        {showMessage && <Messages onClose={() => setShowMessage(false)} />}
       </div>
     </header>
   );
