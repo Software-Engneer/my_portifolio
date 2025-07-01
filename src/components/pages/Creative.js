@@ -84,15 +84,15 @@ const Creative = () => {
   }
 
   return (
-    <section className="creative-section">
-      <h1 className="creative-title">Creative Works</h1>
+    <section className="projects-section" id="creative">
+      <h2 className="section-title">Creative Works</h2>
       {creativeWorks.length === 0 ? (
-        <p className="no-works">No creative works available at the moment.</p>
+        <p className="no-projects">No creative works available at the moment.</p>
       ) : (
-        <div className="creative-grid">
+        <div className="projects-grid">
           {creativeWorks.map((work) => (
-            <div className="creative-card" key={work.id}>
-              <div className="creative-image">
+            <div className="project-card" key={work.id}>
+              <div className="project-image">
                 <img 
                   src={work.imageUrl || work.image} 
                   alt={work.title || 'Creative Work'}
@@ -100,13 +100,13 @@ const Creative = () => {
                   loading="lazy"
                 />
               </div>
-              <div className="creative-content">
-                <h3 className="creative-title">{work.title}</h3>
-                <p className="creative-description">{work.description}</p>
+              <div className="project-content">
+                <h3 className="project-title">{work.title}</h3>
+                <p className="project-description">{work.description}</p>
                 {work.technologies && work.technologies.length > 0 && (
-                  <div className="creative-tags">
+                  <div className="project-technologies">
                     {work.technologies.map((tech, index) => (
-                      <span key={index} className="creative-tag">
+                      <span key={index} className="tech-tag">
                         {tech}
                       </span>
                     ))}
@@ -117,7 +117,7 @@ const Creative = () => {
                     href={work.link} 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    className="view-more-link"
+                    className="github-link"
                   >
                     View More
                   </a>
