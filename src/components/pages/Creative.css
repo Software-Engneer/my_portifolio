@@ -18,7 +18,7 @@
 
 .creative-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 2.5vw;
   max-width: 100%;
   margin: 0 auto;
@@ -133,8 +133,9 @@
     padding: 1rem 1vw;
   }
   .creative-grid {
-    padding: 0;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1vw;
+    padding: 0;
   }
   .creative-title {
     font-size: 2rem;
@@ -172,8 +173,9 @@
     padding: 0.5rem 0.5vw;
   }
   .creative-grid {
-    padding: 0;
+    grid-template-columns: 1fr;
     gap: 0.5vw;
+    padding: 0;
   }
   .creative-image {
     height: 80px;
