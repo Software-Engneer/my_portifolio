@@ -170,37 +170,37 @@
     padding: 2rem 3vw;
   }
   .creative-image {
-    height: 120px;
+    height: 80px;
   }
   .creative-image img {
-    height: 120px;
+    height: 80px;
   }
   .creative-content {
-    padding: 0.7rem 1vw;
+    padding: 0.3rem 0.5vw;
   }
   .creative-title {
-    font-size: 1rem;
-    margin-bottom: 0.7rem;
+    font-size: 0.8rem;
+    margin-bottom: 0.3rem;
   }
   .creative-description {
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
+    font-size: 0.7rem;
+    margin-bottom: 0.5rem;
   }
   .creative-tags {
-    gap: 0.4rem;
-    margin-bottom: 1rem;
+    gap: 0.1rem;
+    margin-bottom: 0.4rem;
   }
   .creative-tag {
-    font-size: 0.75rem;
-    padding: 0.3rem 0.7rem;
+    font-size: 0.6rem;
+    padding: 0.1rem 0.3rem;
   }
   .view-more-link {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
+    padding: 0.2rem 0.4rem;
+    font-size: 0.7rem;
   }
   .creative-date {
-    font-size: 0.75rem;
-    margin-bottom: 0.4rem;
+    font-size: 0.6rem;
+    margin-bottom: 0.2rem;
   }
 }
 
@@ -209,13 +209,49 @@
     padding: 1.5rem 2vw;
   }
   .creative-image {
-    height: 90px;
+    height: 60px;
   }
   .creative-image img {
-    height: 90px;
+    height: 60px;
   }
   .creative-content {
-    padding: 0.4rem 0.5vw;
+    padding: 0.2rem 0.2vw;
+  }
+  .creative-title {
+    font-size: 0.7rem;
+    margin-bottom: 0.2rem;
+  }
+  .creative-description {
+    font-size: 0.6rem;
+    margin-bottom: 0.3rem;
+  }
+  .creative-tags {
+    gap: 0.05rem;
+    margin-bottom: 0.3rem;
+  }
+  .creative-tag {
+    font-size: 0.5rem;
+    padding: 0.05rem 0.2rem;
+  }
+  .view-more-link {
+    padding: 0.1rem 0.2rem;
+    font-size: 0.6rem;
+  }
+  .creative-date {
+    font-size: 0.5rem;
+    margin-bottom: 0.1rem;
+  }
+}
+
+@media (min-width: 900px) {
+  .creative-image {
+    height: 120px;
+  }
+  .creative-image img {
+    height: 120px;
+  }
+  .creative-content {
+    padding: 0.7rem 1vw;
   }
   .creative-title {
     font-size: 0.9rem;
@@ -240,42 +276,6 @@
   .creative-date {
     font-size: 0.7rem;
     margin-bottom: 0.2rem;
-  }
-}
-
-@media (min-width: 900px) {
-  .creative-image {
-    height: 180px;
-  }
-  .creative-image img {
-    height: 180px;
-  }
-  .creative-content {
-    padding: 1.2rem 1.5vw;
-  }
-  .creative-title {
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-  }
-  .creative-description {
-    font-size: 1rem;
-    margin-bottom: 1.2rem;
-  }
-  .creative-tags {
-    gap: 0.5rem;
-    margin-bottom: 1.2rem;
-  }
-  .creative-tag {
-    font-size: 0.85rem;
-    padding: 0.4rem 0.8rem;
-  }
-  .view-more-link {
-    padding: 0.6rem 1.2rem;
-    font-size: 1rem;
-  }
-  .creative-date {
-    font-size: 0.85rem;
-    margin-bottom: 0.5rem;
   }
 }
 
