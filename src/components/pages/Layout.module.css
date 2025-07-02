@@ -136,4 +136,26 @@
   vertical-align: middle;
   margin-right: 0.5em;
   color: #4f8cff;
+}
+
+.socialLinksMobile {
+  display: none;
+}
+.socialLinksDesktop {
+  display: flex;
+}
+
+@media (max-width: 700px) {
+  .socialLinksMobile {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 1rem;
+  }
+  .socialLinksDesktop {
+    display: none;
+  }
 } 
