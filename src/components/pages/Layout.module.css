@@ -33,6 +33,26 @@
   .main {
     padding: 2rem 3vw;
   }
+  .footer {
+    padding: 1rem 2vw 0.5rem 2vw;
+    font-size: 0.92rem;
+  }
+  .footerContent {
+    gap: 0.5rem;
+  }
+  .contactInfo {
+    font-size: 0.95rem;
+  }
+  .socialLinks {
+    font-size: 0.95rem;
+  }
+  .copyright {
+    font-size: 0.85rem;
+  }
+  .icon svg {
+    width: 15px;
+    height: 15px;
+  }
 }
 
 .footer {
