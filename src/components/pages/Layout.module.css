@@ -143,6 +143,10 @@
 }
 .socialLinksDesktop {
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: left;
 }
 
 @media (max-width: 700px) {
