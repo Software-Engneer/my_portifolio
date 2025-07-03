@@ -162,4 +162,76 @@
   .socialLinksDesktop {
     display: none;
   }
+}
+
+.locationBox {
+  border: 2px solid red;
+  border-radius: 2em;
+  padding: 1em 1.5em;
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+  background: rgba(255,255,255,0.03);
+}
+.locationText {
+  font-weight: 600;
+  color: #fff;
+}
+.socialCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7em;
+}
+.socialHeading {
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-bottom: 0.3em;
+  color: #fff;
+}
+.socialIcons {
+  display: flex;
+  gap: 1.2em;
+}
+.socialIcons a {
+  color: #f0f2f3;
+  transition: color 0.2s;
+}
+.socialIcons a:hover {
+  color: #4f8cff;
+}
+.contactBox {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  text-align: right;
+  gap: 0.3em;
+}
+.contactHeading {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #fff;
+}
+.contactMessage {
+  color: #f0f2f3;
+  font-size: 1em;
+}
+@media (max-width: 700px) {
+  .footerContent {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+  }
+  .locationBox, .contactBox {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .contactBox {
+    align-items: center;
+    text-align: center;
+  }
 } 
