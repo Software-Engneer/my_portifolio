@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Layout.module.css";
 import Modal from "../Modal";
 import Contact from "./Contact";
+import Messages from "./messages";
 import { useState } from "react";
 
 function Layout({ children }) {
@@ -56,7 +57,7 @@ function Layout({ children }) {
               </button>
             </div>
             <Modal open={modalOpen} onClose={() => setModalOpen(false)}>
-              <Contact />
+              <Messages onClose={() => setModalOpen(false)} />
             </Modal>
           </div>
         </div>
