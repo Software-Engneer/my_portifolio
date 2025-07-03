@@ -129,4 +129,92 @@
   .infoItem {
     padding: 1rem 1vw;
   }
+}
+
+.contactForm {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  padding: 2.5rem 2rem;
+  max-width: 420px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: 1.5px solid #d1d5db;
+  border-radius: 12px;
+  font-size: 1.08rem;
+  background: #f8fafc;
+  color: #222;
+  transition: border 0.2s, box-shadow 0.2s;
+  outline: none;
+  box-sizing: border-box;
+}
+.input:focus,
+.textarea:focus {
+  border-color: #64ffda;
+  box-shadow: 0 0 0 2px #64ffda33;
+}
+.textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.submitBtn {
+  background: linear-gradient(90deg, #64ffda 0%, #1de9b6 100%);
+  color: #003366;
+  font-weight: 600;
+  padding: 0.85rem 0;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(100,255,218,0.08);
+}
+.submitBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+.submitBtn:hover:not(:disabled) {
+  background: linear-gradient(90deg, #1de9b6 0%, #64ffda 100%);
+  color: #003366;
+  box-shadow: 0 4px 16px rgba(100,255,218,0.15);
+}
+
+.successMsg {
+  color: #009688;
+  background: #e0f7fa;
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  margin-top: 0.5rem;
+  text-align: center;
+  font-size: 1rem;
+}
+.errorMsg {
+  color: #d32f2f;
+  background: #ffebee;
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  margin-top: 0.5rem;
+  text-align: center;
+  font-size: 1rem;
+}
+
+@media (max-width: 600px) {
+  .contactForm {
+    padding: 1.2rem 0.5rem;
+    max-width: 98vw;
+  }
+  .input,
+  .textarea {
+    font-size: 1rem;
+    padding: 0.7rem 0.7rem;
+  }
 } 

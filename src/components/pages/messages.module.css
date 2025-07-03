@@ -43,6 +43,7 @@
   border: 1px solid #ccc;
   font-size: 1rem;
   outline: none;
+  border-radius: 12px;
 }
 
 .input::placeholder,
@@ -58,6 +59,7 @@
   font-size: 1rem;
   cursor: pointer;
   transition: background 0.2s;
+  border-radius: 12px;
 }
 .submitBtn:hover {
   background: #0050b3;

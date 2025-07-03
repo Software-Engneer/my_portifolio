@@ -1,45 +1,66 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Contact.module.css";
+import { API_ENDPOINTS, fetchFromAPI } from '../../config/api';
 
 function Contact() {
+  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [status, setStatus] = useState({ loading: false, success: null, error: null });
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus({ loading: true, success: null, error: null });
+    try {
+      const data = await fetchFromAPI(`${API_ENDPOINTS.CONTACT}/message`, {
+        method: 'POST',
+        body: JSON.stringify(form),
+      });
+      setStatus({ loading: false, success: data.message || 'Message sent!', error: null });
+      setForm({ name: '', email: '', message: '' });
+    } catch (error) {
+      setStatus({ loading: false, success: null, error: error.message || 'Failed to send message.' });
+    }
+  };
+
   return (
     <div className={styles.contactContainer}>
       <h2>Get in Touch</h2>
-      <div className={styles.contactContent}>
-        <div className={styles.contactInfo}>
-          <div className={styles.infoCard}>
-            <div className={styles.infoItem}>
-              <i className="fas fa-envelope"></i>
-              <h4>Email</h4>
-              <p>chikondimatumula@gmail.com</p>
-            </div>
-            <div className={styles.infoItem}>
-              <i className="fas fa-phone"></i>
-              <h4>Phone</h4>
-              <p>+265 884588576 / 991337347</p>
-            </div>
-            <div className={styles.infoItem}>
-              <i className="fas fa-map-marker-alt"></i>
-              <h4>Location</h4>
-              <p>Lilongwe, Malawi</p>
-            </div>
-            <div className={styles.infoItem}>
-              <i className="fab fa-github"></i>
-              <h4>GitHub</h4>
-              <a href="https://github.com/Software-Engneer" target="_blank" rel="noopener noreferrer">
-                github.com/Software-Engineer
-              </a>
-            </div>
-            <div className={styles.infoItem}>
-              <i className="fab fa-linkedin"></i>
-              <h4>LinkedIn</h4>
-              <a href="https://linkedin.com/in/chikondi-matumula-521757302/" target="_blank" rel="noopener noreferrer">
-                linkedin.com/in/chikondi-matumula-521757302/
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+      <form className={styles.contactForm} onSubmit={handleSubmit}>
+        <input
+          className={styles.input}
+          type="text"
+          name="name"
+          placeholder="Full Name"
+          value={form.name}
+          onChange={handleChange}
+          required
+        />
+        <input
+          className={styles.input}
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={form.email}
+          onChange={handleChange}
+          required
+        />
+        <textarea
+          className={styles.textarea}
+          name="message"
+          placeholder="Your Message"
+          value={form.message}
+          onChange={handleChange}
+          required
+        />
+        <button type="submit" className={styles.submitBtn} disabled={status.loading}>
+          {status.loading ? 'Sending...' : 'Send Message'}
+        </button>
+        {status.success && <div className={styles.successMsg}>{status.success}</div>}
+        {status.error && <div className={styles.errorMsg}>{status.error}</div>}
+      </form>
     </div>
   );
 }
