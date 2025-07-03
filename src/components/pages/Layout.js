@@ -1,7 +1,12 @@
 import React from "react";
 import styles from "./Layout.module.css";
+import Modal from "../Modal";
+import Contact from "./Contact";
+import { useState } from "react";
 
 function Layout({ children }) {
+  const [modalOpen, setModalOpen] = useState(false);
+
   return (
     <div className={styles.layout}>
       <main className={styles.main}>
@@ -30,10 +35,24 @@ function Layout({ children }) {
           </div>
           {/* Right: Contact Us with message */}
           <div className={styles.contactBox}>
-            <div className={styles.contactHeading}>Contact Us</div>
-            <div className={styles.contactMessage}>We'd love to hear from you!</div>
+            <div className={styles.contactHeading}><b>Let's Discuss What Next</b></div>
+            <div className={styles.contactSubtext}>Have a project or question?<br />Would love to hear from you.</div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.7em', justifyContent: 'center' }}>
+              <span className={styles.contactUsText}>Contact Us</span>
+              <button
+                className={styles.arrowBtn}
+                onClick={() => setModalOpen(true)}
+                aria-label="Contact Us"
+              >
+                <span className={styles.arrowIcon}>&gt;</span>
+              </button>
+            </div>
+            <Modal open={modalOpen} onClose={() => setModalOpen(false)}>
+              <Contact />
+            </Modal>
           </div>
         </div>
+        <hr className={styles.footerLine} />
         <div className={styles.copyright}>
           &copy; {new Date().getFullYear()} Chikondi Matumula. All rights reserved.
         </div>

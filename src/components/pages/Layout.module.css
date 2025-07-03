@@ -204,9 +204,9 @@
 .contactBox {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
-  text-align: right;
+  text-align: center;
   gap: 0.3em;
 }
 .contactHeading {
@@ -234,4 +234,69 @@
     align-items: center;
     text-align: center;
   }
+}
+
+.contactBtn {
+  background: none;
+  border: none;
+  color: #2563eb;
+  font-size: 1.08em;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 0.5em;
+  padding: 0.2em 0.5em;
+  transition: color 0.2s;
+}
+.contactBtn:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+.contactSubtext {
+  color: #e0e0e0;
+  font-size: 0.98em;
+  margin: 0.3em 0 0.7em 0;
+  font-weight: 400;
+  text-align: justify;
+  padding: 0.5em 1em;
+}
+.arrowBtn {
+  background: #38bdf8;
+  border: none;
+  border-radius: 50%;
+  width: 2.4em;
+  height: 2.4em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-top: 0.7em;
+  transition: background 0.2s;
+}
+.arrowBtn:hover {
+  background: #0ea5e9;
+}
+.arrowIcon {
+  color: #fff;
+  font-size: 1.3em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+}
+
+.contactUsText {
+  color: #38bdf8;
+  font-weight: 600;
+  font-size: 1.05em;
+  margin-right: 0.5em;
+  letter-spacing: 0.01em;
+}
+
+.footerLine {
+  width: 100%;
+  border: none;
+  border-top: 1.5px solid #3b3b3b;
+  margin: 2.2em 0 1em 0;
+  background: none;
 } 
