@@ -45,6 +45,11 @@
   outline: none;
 }
 
+.input::placeholder,
+.textarea::placeholder {
+  border-radius: 12px;
+}
+
 .submitBtn {
   background: #003366;
   color: #fff;
