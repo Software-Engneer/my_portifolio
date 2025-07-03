@@ -57,7 +57,7 @@ function Layout({ children }) {
               </button>
             </div>
             <Modal open={modalOpen} onClose={() => setModalOpen(false)}>
-              <Messages onClose={() => setModalOpen(false)} />
+              <Contact />
             </Modal>
           </div>
         </div>
