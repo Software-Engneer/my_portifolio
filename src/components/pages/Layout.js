@@ -62,7 +62,8 @@ function Layout({ children }) {
         </div>
         <hr className={styles.footerLine} />
         <div className={styles.copyright}>
-          &copy; {new Date().getFullYear()} Chikondi Matumula. All rights reserved.
+          &copy; {new Date().getFullYear()} Chikondi Matumula.<br />
+          All rights reserved.
         </div>
       </footer>
     </div>
