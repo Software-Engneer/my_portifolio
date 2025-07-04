@@ -1,63 +1,70 @@
-import React, { useState } from 'react';
-import styles from './messages.module.css';
+import React, { useState } from "react";
+import styles from "./messages.module.css";
 
-function Messages({ onClose }) {
+const Messages = ({ onClose }) => {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState({ loading: false, success: null, error: null });
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    // Here you would handle sending the message to your backend or email service
+    setStatus({ loading: true, success: null, error: null });
+    try {
+      // Simulate API call
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      setStatus({ loading: false, success: 'Message sent!', error: null });
+      setForm({ name: '', email: '', message: '' });
+    } catch (error) {
+      setStatus({ loading: false, success: null, error: 'Failed to send message.' });
+    }
   };
 
   return (
-    <div className={styles.modalOverlay}>
-      <form className={styles.formContainer} onSubmit={handleSubmit}>
-        <button type="button" className={styles.closeBtn} onClick={onClose} aria-label="Close">&times;</button>
-        <h2 className={styles.heading}>Contact Us</h2>
-        {submitted ? (
-          <div className={styles.thankYouMsg}>
-            Thank you for reaching out!<br />We will get back to you soon.
-          </div>
-        ) : (
-          <>
-            <input
-              className={styles.input}
-              type="text"
-              name="name"
-              placeholder="Full Name"
-              value={form.name}
-              onChange={handleChange}
-              required
-            />
-            <input
-              className={styles.input}
-              type="email"
-              name="email"
-              placeholder="Email"
-              value={form.email}
-              onChange={handleChange}
-              required
-            />
-            <textarea
-              className={styles.textarea}
-              name="message"
-              placeholder="Your Message"
-              value={form.message}
-              onChange={handleChange}
-              required
-            />
-            <button type="submit" className={styles.submitBtn}>Send Message</button>
-          </>
-        )}
+    <div className={styles.messagesContainer}>
+      <h2>Send a Message</h2>
+      <form className={styles.messagesForm} onSubmit={handleSubmit}>
+        <input
+          className={styles.input}
+          type="text"
+          name="name"
+          placeholder="Full Name"
+          value={form.name}
+          onChange={handleChange}
+          required
+        />
+        <input
+          className={styles.input}
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={form.email}
+          onChange={handleChange}
+          required
+        />
+        <textarea
+          className={styles.textarea}
+          name="message"
+          placeholder="Your Message"
+          value={form.message}
+          onChange={handleChange}
+          required
+        />
+        <button type="submit" className={styles.submitBtn} disabled={status.loading}>
+          {status.loading ? 'Sending...' : 'Send Message'}
+        </button>
+        {status.success && <div className={styles.successMsg}>{status.success}</div>}
+        {status.error && <div className={styles.errorMsg}>{status.error}</div>}
       </form>
+      {onClose && (
+        <button className={styles.closeBtn} onClick={onClose}>
+          Close
+        </button>
+      )}
     </div>
   );
-}
+};
 
 export default Messages; 

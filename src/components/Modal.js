@@ -18,6 +18,8 @@ const modalBox = {
   padding: "2rem 1.5rem 1.5rem 1.5rem",
   minWidth: "320px",
   maxWidth: "90vw",
+  maxHeight: "80vh",
+  overflow: "auto",
   boxShadow: "0 4px 32px rgba(0,0,0,0.18)",
   position: "relative",
 };

@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./Header.module.css";
-import Messages from "./messages";
+import Contact from "./Contact";
+import Modal from "../Modal";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [showMessage, setShowMessage] = useState(false);
+  const [showContact, setShowContact] = useState(false);
   const navRef = useRef(null);
 
   useEffect(() => {
@@ -119,7 +120,7 @@ const Header = () => {
                     width: '100%',
                   }}
                   onClick={() => {
-                    setShowMessage(true);
+                    setShowContact(true);
                     setIsMenuOpen(false);
                   }}
                 >
@@ -129,7 +130,11 @@ const Header = () => {
             )}
           </ul>
         </nav>
-        {showMessage && <Messages onClose={() => setShowMessage(false)} />}
+        {showContact && (
+          <Modal open={showContact} onClose={() => setShowContact(false)}>
+            <Contact />
+          </Modal>
+        )}
       </div>
     </header>
   );

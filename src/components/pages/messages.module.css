@@ -1,98 +1,96 @@
-/* Modal overlay */
-.modalOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0,0,0,0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  padding: 2vw;
-}
-
-/* Form container */
-.formContainer {
+.messagesContainer {
+  padding: 2rem 1.5rem;
   background: #fff;
-  padding: 2rem;
-  min-width: 320px;
-  max-width: 90vw;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  max-width: 420px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  position: relative;
+  gap: 1.2rem;
 }
 
-/* Close button */
-.closeBtn {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: transparent;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
+.messagesForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
 }
 
 .input,
 .textarea {
-  padding: 0.75rem;
-  border: 1px solid #ccc;
-  font-size: 1rem;
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: 1.5px solid #d1d5db;
+  border-radius: 12px;
+  font-size: 1.08rem;
+  background: #f8fafc;
+  color: #222;
+  transition: border 0.2s, box-shadow 0.2s;
   outline: none;
-  border-radius: 12px;
+  box-sizing: border-box;
 }
-
-.input::placeholder,
-.textarea::placeholder {
-  border-radius: 12px;
+.input:focus,
+.textarea:focus {
+  border-color: #64ffda;
+  box-shadow: 0 0 0 2px #64ffda33;
+}
+.textarea {
+  min-height: 120px;
+  resize: vertical;
 }
 
 .submitBtn {
+  background: linear-gradient(90deg, #64ffda 0%, #1de9b6 100%);
+  color: #003366;
+  font-weight: 600;
+  padding: 0.85rem 0;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(100,255,218,0.08);
+}
+.submitBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+.submitBtn:hover:not(:disabled) {
+  background: linear-gradient(90deg, #1de9b6 0%, #64ffda 100%);
+  color: #003366;
+  box-shadow: 0 4px 16px rgba(100,255,218,0.15);
+}
+
+.successMsg {
+  color: #009688;
+  background: #e0f7fa;
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  margin-top: 0.5rem;
+  text-align: center;
+  font-size: 1rem;
+}
+.errorMsg {
+  color: #d32f2f;
+  background: #ffebee;
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  margin-top: 0.5rem;
+  text-align: center;
+  font-size: 1rem;
+}
+.closeBtn {
+  margin-top: 1.2rem;
   background: #003366;
   color: #fff;
-  padding: 0.75rem;
   border: none;
+  border-radius: 8px;
+  padding: 0.7rem 1.2rem;
   font-size: 1rem;
   cursor: pointer;
+  align-self: center;
   transition: background 0.2s;
-  border-radius: 12px;
 }
-.submitBtn:hover {
-  background: #0050b3;
-}
-
-.heading {
-  color: #003366;
-  margin-bottom: 0.5rem;
-  font-size: 1.3rem;
-}
-
-.thankYouMsg {
-  color: #003366;
-  text-align: center;
-  font-size: 1.1rem;
-}
-
-@media (max-width: 500px) {
-  .formContainer {
-    padding: 0.5rem;
-    min-width: 0;
-    max-width: 98vw;
-    gap: 0.5rem;
-  }
-  .input,
-  .textarea {
-    font-size: 0.95rem;
-    padding: 0.5rem;
-  }
-  .heading {
-    font-size: 1.1rem;
-  }
-  .thankYouMsg {
-    font-size: 1rem;
-  }
+.closeBtn:hover {
+  background: #001f4d;
 } 
