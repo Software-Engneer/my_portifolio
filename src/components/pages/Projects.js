@@ -23,11 +23,22 @@ const Projects = () => {
           console.log('API Base URL (for images):', apiBase);
           
           const projectsWithImages = response.projects.map(project => {
-            const imageUrl = project.image
-              ? (project.image.startsWith('http') ? project.image : `${apiBase}${project.image}`)
-              : DEFAULT_PROJECT_IMAGE;
+            let imageUrl = DEFAULT_PROJECT_IMAGE;
             
-            console.log(`Project: ${project.title}, Image URL: ${imageUrl}`);
+            if (project.image) {
+              if (project.image.startsWith('data:')) {
+                // Base64 image
+                imageUrl = project.image;
+              } else if (project.image.startsWith('http')) {
+                // Full URL
+                imageUrl = project.image;
+              } else {
+                // Local path
+                imageUrl = `${apiBase}${project.image}`;
+              }
+            }
+            
+            console.log(`Project: ${project.title}, Image URL: ${imageUrl.substring(0, 50)}...`);
             
             return {
               ...project,

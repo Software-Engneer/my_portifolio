@@ -29,16 +29,41 @@ const Creative = () => {
           const processedWorks = response.works.map(work => {
             // Handle multiple images for creative works
             const processedImages = work.images ? work.images.map(image => {
-              const imageUrl = image.startsWith('http') ? image : `${apiBase}${image}`;
-              console.log(`Creative Work: ${work.title}, Image URL: ${imageUrl}`);
+              let imageUrl = DEFAULT_CREATIVE_IMAGE;
+              
+              if (image.startsWith('data:')) {
+                // Base64 image
+                imageUrl = image;
+              } else if (image.startsWith('http')) {
+                // Full URL
+                imageUrl = image;
+              } else {
+                // Local path
+                imageUrl = `${apiBase}${image}`;
+              }
+              
+              console.log(`Creative Work: ${work.title}, Image URL: ${imageUrl.substring(0, 50)}...`);
               return imageUrl;
             }) : [];
             
+            // Determine main image URL
+            let mainImageUrl = DEFAULT_CREATIVE_IMAGE;
+            if (work.image) {
+              if (work.image.startsWith('data:')) {
+                mainImageUrl = work.image;
+              } else if (work.image.startsWith('http')) {
+                mainImageUrl = work.image;
+              } else {
+                mainImageUrl = `${apiBase}${work.image}`;
+              }
+            } else if (processedImages.length > 0) {
+              mainImageUrl = processedImages[0];
+            }
+            
             return {
               ...work,
-              image: work.image || (processedImages.length > 0 ? processedImages[0] : DEFAULT_CREATIVE_IMAGE),
-              // Ensure the image URL is absolute if it's a relative path
-              imageUrl: work.image ? (work.image.startsWith('http') ? work.image : `${apiBase}${work.image}`) : (processedImages.length > 0 ? processedImages[0] : DEFAULT_CREATIVE_IMAGE),
+              image: mainImageUrl,
+              imageUrl: mainImageUrl,
               processedImages: processedImages
             };
           });
