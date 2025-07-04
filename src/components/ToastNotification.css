@@ -1,0 +1,27 @@
+.toast-notification {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  z-index: 9999;
+  min-width: 220px;
+  max-width: 350px;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  opacity: 0.95;
+  animation: toast-in 0.3s ease;
+}
+
+.toast-success {
+  background: #28a745;
+}
+.toast-error {
+  background: #dc3545;
+}
+
+@keyframes toast-in {
+  from { transform: translateY(-40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 0.95; }
+} 

@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import styles from "./Contact.module.css";
 import { API_ENDPOINTS, fetchFromAPI } from '../../config/api';
+import ToastNotification from '../ToastNotification';
 
 function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [status, setStatus] = useState({ loading: false, success: null, error: null });
+  const [toast, setToast] = useState({ message: '', type: 'success' });
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -20,8 +22,10 @@ function Contact() {
       });
       setStatus({ loading: false, success: data.message || 'Message sent!', error: null });
       setForm({ name: '', email: '', message: '' });
+      setToast({ message: data.message || 'Message sent!', type: 'success' });
     } catch (error) {
       setStatus({ loading: false, success: null, error: error.message || 'Failed to send message.' });
+      setToast({ message: error.message || 'Failed to send message.', type: 'error' });
     }
   };
 
@@ -61,6 +65,12 @@ function Contact() {
         {status.success && <div className={styles.successMsg}>{status.success}</div>}
         {status.error && <div className={styles.errorMsg}>{status.error}</div>}
       </form>
+      <ToastNotification
+        message={toast.message}
+        type={toast.type}
+        onClose={() => setToast({ message: '', type: 'success' })}
+        duration={3500}
+      />
     </div>
   );
 }
