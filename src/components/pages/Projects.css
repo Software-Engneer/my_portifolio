@@ -95,7 +95,7 @@
 }
 
 .project-content {
-  padding: 2rem 2vw;
+  padding: 1.5rem 2vw;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
@@ -103,15 +103,16 @@
 
 .project-title {
   font-size: 1.4rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   color: #333;
   font-weight: 600;
+  line-height: 1.3;
 }
 
 .project-description {
   color: #666;
-  margin-bottom: 2rem;
-  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
   flex-grow: 1;
   font-size: 1.1rem;
 }
@@ -119,18 +120,19 @@
 .project-technologies {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-bottom: 2rem;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .tech-tag {
   background-color: #e9ecef;
   color: #495057;
-  padding: 0.5rem 1rem;
+  padding: 0.4rem 0.8rem;
   border-radius: 20px;
   font-size: 0.9rem;
   font-weight: 500;
   transition: all 0.2s ease;
+  line-height: 1.2;
 }
 
 .tech-tag:hover {
@@ -170,7 +172,7 @@
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   }
   .project-content {
-    padding: 1.5rem 1.5vw;
+    padding: 1.2rem 1.5vw;
   }
   .project-image {
     height: 280px;
@@ -187,13 +189,26 @@
   }
   .projects-grid {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 2vw;
+    padding: 0 1vw;
   }
   .project-image {
     height: 240px;
   }
   .project-card {
-    min-height: 450px;
+    min-height: 420px;
+  }
+  .project-content {
+    padding: 1rem 1.5vw;
+  }
+  .project-title {
+    margin-bottom: 0.8rem;
+  }
+  .project-description {
+    margin-bottom: 1.2rem;
+  }
+  .project-technologies {
+    margin-bottom: 1.2rem;
   }
 }
 
@@ -210,26 +225,29 @@
     height: 200px;
   }
   .project-card {
-    min-height: 400px;
+    min-height: 380px;
   }
   .project-content {
-    padding: 1rem 1vw;
+    padding: 0.8rem 1vw;
   }
   .project-title {
     font-size: 1.2rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.7rem;
+    line-height: 1.2;
   }
   .project-description {
     font-size: 1rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.4;
   }
   .project-technologies {
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
   }
   .tech-tag {
     font-size: 0.8rem;
-    padding: 0.4rem 0.8rem;
+    padding: 0.3rem 0.6rem;
+    line-height: 1.1;
   }
   .github-link {
     padding: 0.6rem 1.2rem;
@@ -257,26 +275,29 @@
     height: 180px;
   }
   .project-card {
-    min-height: 380px;
+    min-height: 350px;
   }
   .project-content {
-    padding: 0.8rem 0.8vw;
+    padding: 0.6rem 0.8vw;
   }
   .project-title {
     font-size: 1.1rem;
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.6rem;
+    line-height: 1.2;
   }
   .project-description {
     font-size: 0.9rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
   }
   .project-technologies {
     gap: 0.3rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
   }
   .tech-tag {
     font-size: 0.7rem;
-    padding: 0.3rem 0.6rem;
+    padding: 0.25rem 0.5rem;
+    line-height: 1.1;
   }
   .github-link {
     padding: 0.5rem 1rem;
@@ -296,23 +317,26 @@
     height: 350px;
   }
   .project-content {
-    padding: 2rem 2vw;
+    padding: 1.5rem 2vw;
   }
   .project-title {
     font-size: 1.5rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.3;
   }
   .project-description {
     font-size: 1.1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
   }
   .project-technologies {
-    gap: 0.75rem;
-    margin-bottom: 2rem;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
   }
   .tech-tag {
     font-size: 0.9rem;
-    padding: 0.5rem 1rem;
+    padding: 0.4rem 0.8rem;
+    line-height: 1.2;
   }
   .github-link {
     padding: 0.75rem 1.5rem;
