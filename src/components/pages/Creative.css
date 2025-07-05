@@ -64,7 +64,7 @@
 }
 
 .creative-content {
-  padding: 1.5rem 2vw;
+  padding: 1rem 2vw;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
@@ -72,16 +72,16 @@
 
 .creative-title {
   font-size: 1.4rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.6rem;
   color: #333;
   font-weight: 600;
-  line-height: 1.3;
+  line-height: 1.1;
 }
 
 .creative-description {
   color: #666;
-  margin-bottom: 1.5rem;
-  line-height: 1.5;
+  margin-bottom: 1rem;
+  line-height: 1.2;
   flex-grow: 1;
   font-size: 1.1rem;
 }
@@ -89,19 +89,19 @@
 .creative-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
+  gap: 0.3rem;
+  margin-bottom: 1rem;
 }
 
 .creative-tag {
   background-color: #e9ecef;
   color: #495057;
-  padding: 0.4rem 0.8rem;
+  padding: 0.3rem 0.6rem;
   border-radius: 20px;
   font-size: 0.9rem;
   font-weight: 500;
   transition: all 0.2s ease;
-  line-height: 1.2;
+  line-height: 1;
 }
 
 .creative-tag:hover {
@@ -113,13 +113,13 @@
   display: inline-block;
   background-color: #64ffda;
   color: white;
-  padding: 0.6rem 1.2rem;
+  padding: 0.5rem 1rem;
   border-radius: 6px;
   text-decoration: none;
   transition: all 0.3s ease;
   text-align: center;
   font-weight: 500;
-  line-height: 1.2;
+  line-height: 1;
 }
 
 .view-more-link:hover {
@@ -130,8 +130,8 @@
 .creative-date {
   color: #666;
   font-size: 0.9rem;
-  margin-bottom: 0.5rem;
-  line-height: 1.2;
+  margin-bottom: 0.3rem;
+  line-height: 1;
 }
 
 @media (max-width: 900px) {
@@ -149,7 +149,7 @@
     margin-bottom: 2.5rem;
   }
   .creative-content {
-    padding: 1.2rem 1.5vw;
+    padding: 0.8rem 1.5vw;
   }
   .creative-image {
     height: 280px;
@@ -173,19 +173,21 @@
     height: 240px;
   }
   .creative-card {
-    min-height: 420px;
+    min-height: 380px;
   }
   .creative-content {
-    padding: 1rem 1.5vw;
+    padding: 0.7rem 1.5vw;
   }
   .creative-title {
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.1;
   }
   .creative-description {
-    margin-bottom: 1.2rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.2;
   }
   .creative-tags {
-    margin-bottom: 1.2rem;
+    margin-bottom: 0.8rem;
   }
 }
 
@@ -203,37 +205,37 @@
     height: 200px;
   }
   .creative-card {
-    min-height: 380px;
+    min-height: 340px;
   }
   .creative-content {
-    padding: 0.8rem 1vw;
+    padding: 0.6rem 1vw;
   }
   .creative-title {
     font-size: 1.2rem;
-    margin-bottom: 0.7rem;
-    line-height: 1.2;
+    margin-bottom: 0.4rem;
+    line-height: 1.1;
   }
   .creative-description {
     font-size: 1rem;
-    margin-bottom: 1rem;
-    line-height: 1.4;
+    margin-bottom: 0.6rem;
+    line-height: 1.2;
   }
   .creative-tags {
-    gap: 0.4rem;
-    margin-bottom: 1rem;
+    gap: 0.25rem;
+    margin-bottom: 0.6rem;
   }
   .creative-tag {
     font-size: 0.8rem;
-    padding: 0.3rem 0.6rem;
-    line-height: 1.1;
+    padding: 0.25rem 0.5rem;
+    line-height: 1;
   }
   .view-more-link {
-    padding: 0.6rem 1.2rem;
+    padding: 0.5rem 1rem;
     font-size: 0.9rem;
   }
   .creative-date {
     font-size: 0.8rem;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.2rem;
   }
 }
 
@@ -246,37 +248,37 @@
     height: 180px;
   }
   .creative-card {
-    min-height: 350px;
+    min-height: 320px;
   }
   .creative-content {
-    padding: 0.6rem 0.8vw;
+    padding: 0.5rem 0.8vw;
   }
   .creative-title {
     font-size: 1.1rem;
-    margin-bottom: 0.6rem;
-    line-height: 1.2;
+    margin-bottom: 0.3rem;
+    line-height: 1.1;
   }
   .creative-description {
     font-size: 0.9rem;
-    margin-bottom: 0.8rem;
-    line-height: 1.3;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
   }
   .creative-tags {
-    gap: 0.3rem;
-    margin-bottom: 0.8rem;
+    gap: 0.2rem;
+    margin-bottom: 0.5rem;
   }
   .creative-tag {
     font-size: 0.7rem;
-    padding: 0.25rem 0.5rem;
-    line-height: 1.1;
+    padding: 0.2rem 0.4rem;
+    line-height: 1;
   }
   .view-more-link {
-    padding: 0.5rem 1rem;
+    padding: 0.4rem 0.8rem;
     font-size: 0.8rem;
   }
   .creative-date {
     font-size: 0.7rem;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.2rem;
   }
 }
 
@@ -296,33 +298,33 @@
     height: 350px;
   }
   .creative-content {
-    padding: 1.5rem 2vw;
+    padding: 1rem 2vw;
   }
   .creative-title {
     font-size: 1.5rem;
-    margin-bottom: 1rem;
-    line-height: 1.3;
+    margin-bottom: 0.6rem;
+    line-height: 1.1;
   }
   .creative-description {
     font-size: 1.1rem;
-    margin-bottom: 1.5rem;
-    line-height: 1.5;
+    margin-bottom: 1rem;
+    line-height: 1.2;
   }
   .creative-tags {
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
+    gap: 0.3rem;
+    margin-bottom: 1rem;
   }
   .creative-tag {
     font-size: 0.9rem;
-    padding: 0.4rem 0.8rem;
-    line-height: 1.2;
+    padding: 0.3rem 0.6rem;
+    line-height: 1;
   }
   .view-more-link {
-    padding: 0.6rem 1.2rem;
+    padding: 0.5rem 1rem;
   }
   .creative-date {
     font-size: 1rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
   }
 }
 
