@@ -102,7 +102,7 @@ function Contact() {
           className={styles.input}
           type="tel"
           name="phoneNumber"
-          placeholder="Phone Number"
+          placeholder="+265 Phone Number"
           value={form.phoneNumber}
           onChange={handleChange}
           required
