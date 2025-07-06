@@ -35,11 +35,14 @@
   border-radius: 4px;
   font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(135, 206, 235, 0.3);
 }
 
 .login-button:hover {
   background-color: #0056b3;
+  box-shadow: 0 6px 20px rgba(135, 206, 235, 0.5);
+  transform: translateY(-2px);
 }
 
 /* Forced Colors Mode Support */

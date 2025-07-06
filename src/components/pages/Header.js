@@ -107,18 +107,7 @@ const Header = () => {
             {isMenuOpen && (
               <li style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
                 <button
-                  style={{
-                    background: '#003366',
-                    color: '#fff',
-                    marginTop: '1rem',
-                    padding: '1rem',
-                    borderRadius: '8px',
-                    fontWeight: 'bold',
-                    fontSize: '1rem',
-                    border: 'none',
-                    cursor: 'pointer',
-                    width: '100%',
-                  }}
+                  className={styles.getInTouchButton}
                   onClick={() => {
                     setShowContact(true);
                     setIsMenuOpen(false);

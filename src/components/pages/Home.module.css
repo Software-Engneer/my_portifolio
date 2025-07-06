@@ -93,7 +93,7 @@
   align-items: center;
   justify-content: center;
   padding: 2rem 2vw;
-  max-width: 800px;
+  max-width: 100%;
   margin: 0 auto;
   min-height: 80vh;
 }
@@ -227,11 +227,13 @@
   cursor: pointer;
   transition: all 0.3s ease;
   margin-top: 1rem;
+  box-shadow: 0 4px 12px rgba(135, 206, 235, 0.3);
 }
 
 .retryButton:hover {
   background: #4cd6b3;
   transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(135, 206, 235, 0.5);
 }
 
 /* Projects and Creative Work Sections */
@@ -242,7 +244,7 @@
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
   border-radius: 20px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  max-width: 1200px;
+  max-width: 100%;
   width: 100%;
   box-sizing: border-box;
 }
@@ -274,7 +276,7 @@
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
   padding: 0 2rem;
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
   transition: all 0.3s ease;
 }
@@ -289,8 +291,8 @@
 }
 
 .card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+  transform: translateY(0);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
 .cardImage {
@@ -309,12 +311,12 @@
 }
 
 .card:hover .cardImage img {
-  transform: scale(1.05);
+  transform: scale(1);
 }
 
 .cardImage img:hover {
-  transform: scale(1.02);
-  filter: brightness(1.1);
+  transform: scale(1);
+  filter: brightness(1);
 }
 
 .websiteLink {
@@ -338,15 +340,15 @@
 }
 
 .card:hover .websiteLink {
-  opacity: 1;
+  opacity: 0.95;
   transform: translateY(0);
 }
 
 .websiteLink:hover {
-  background: #64ffda;
-  color: #1a1a1a;
-  transform: translateY(0) scale(1.1);
-  box-shadow: 0 6px 16px rgba(100, 255, 218, 0.3);
+  background: rgba(255, 255, 255, 0.95);
+  color: #333;
+  transform: translateY(0) scale(1);
+  box-shadow: none;
 }
 
 .websiteLink svg {
@@ -356,7 +358,7 @@
 }
 
 .websiteLink:hover svg {
-  transform: rotate(45deg);
+  transform: rotate(0deg);
 }
 
 .featuredBadge {
@@ -439,8 +441,8 @@
 }
 
 .techTag:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(100, 255, 218, 0.3);
+  transform: translateY(0);
+  box-shadow: none;
 }
 
 /* Responsive Design */
@@ -548,11 +550,11 @@
 .hero {
   background: white;
   border-radius: 16px;
-  padding: 3rem 2rem;
+  padding: 4rem 2.5rem;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
   margin-bottom: 3rem;
   text-align: center;
-  max-width: 1200px;
+  max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
@@ -587,7 +589,7 @@
   border-left: 8px solid #667eea;
   background: linear-gradient(135deg, #ffffff 0%, #f8faff 100%);
   box-shadow: 0 8px 30px rgba(102, 126, 234, 0.15);
-  transform: scale(1.01);
+  transform: scale(1.03);
   transition: all 0.3s ease;
   overflow: hidden;
 }
@@ -605,14 +607,14 @@
 }
 
 .heroCard:hover {
-  transform: scale(1.02);
-  box-shadow: 0 12px 40px rgba(102, 126, 234, 0.25);
-  border-left-color: #764ba2;
+  transform: scale(1.03);
+  box-shadow: 0 8px 30px rgba(102, 126, 234, 0.15);
+  border-left-color: #667eea;
 }
 
 .heroCard:hover::before {
-  background: linear-gradient(180deg, #667eea 0%, #764ba2 30%, #f093fb 70%, #f5576c 100%);
-  box-shadow: 2px 0 15px rgba(102, 126, 234, 0.4);
+  background: linear-gradient(180deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  box-shadow: 2px 0 10px rgba(102, 126, 234, 0.3);
 }
 
 .heroCard h3 {
@@ -765,20 +767,20 @@
   border-radius: 50px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(100, 255, 218, 0.3);
+  box-shadow: 0 4px 12px rgba(135, 206, 235, 0.3);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
 .exploreMoreButton:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(100, 255, 218, 0.4);
+  box-shadow: 0 6px 20px rgba(135, 206, 235, 0.5);
   background: linear-gradient(135deg, #00bcd4 0%, #64ffda 100%);
 }
 
 .exploreMoreButton:active {
   transform: translateY(0);
-  box-shadow: 0 2px 10px rgba(100, 255, 218, 0.3);
+  box-shadow: 0 2px 8px rgba(135, 206, 235, 0.4);
 }
 
 /* Full Stack Developer Card with Skyblue Sidebar */

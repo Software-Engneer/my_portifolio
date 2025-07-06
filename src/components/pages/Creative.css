@@ -38,8 +38,8 @@
 }
 
 .creative-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+  transform: translateY(0);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
 .creative-image {
@@ -78,11 +78,11 @@
 }
 
 .creative-card:hover .creative-image::after {
-  opacity: 1;
+  opacity: 0;
 }
 
 .creative-card:hover .creative-image img {
-  transform: scale(1.05);
+  transform: scale(1);
 }
 
 .creative-content {
@@ -126,8 +126,8 @@
 }
 
 .creative-tag:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(100, 255, 218, 0.3);
+  transform: translateY(0);
+  box-shadow: none;
 }
 
 .view-more-link {
@@ -145,8 +145,8 @@
 }
 
 .view-more-link:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(100, 255, 218, 0.3);
+  transform: translateY(0);
+  box-shadow: none;
 }
 
 .creative-date {
@@ -364,11 +364,13 @@
   cursor: pointer;
   font-size: 1rem;
   transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(135, 206, 235, 0.3);
 }
 
 .error-container button:hover {
   background-color: #4dd4b8;
   transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(135, 206, 235, 0.5);
 }
 
 .no-works {

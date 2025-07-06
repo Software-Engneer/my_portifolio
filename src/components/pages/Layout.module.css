@@ -285,10 +285,13 @@
   justify-content: center;
   cursor: pointer;
   margin-top: 0.7em;
-  transition: background 0.2s;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(135, 206, 235, 0.3);
 }
 .arrowBtn:hover {
   background: #0ea5e9;
+  box-shadow: 0 6px 20px rgba(135, 206, 235, 0.5);
+  transform: translateY(-2px);
 }
 .arrowIcon {
   color: #fff;

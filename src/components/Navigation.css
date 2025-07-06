@@ -8,10 +8,13 @@
   font-size: 1rem;
   border: none;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(135, 206, 235, 0.3);
 }
 .get-in-touch-btn:hover {
   background: #0050b3;
+  box-shadow: 0 6px 20px rgba(135, 206, 235, 0.5);
+  transform: translateY(-2px);
 }
 
 .navigation {
@@ -40,6 +43,13 @@
   border: none;
   cursor: pointer;
   z-index: 20;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(135, 206, 235, 0.3);
+}
+
+.nav-menu-button:hover {
+  box-shadow: 0 6px 20px rgba(135, 206, 235, 0.5);
+  transform: translateY(-2px);
 }
 
 .nav-menu-button span {
@@ -72,4 +82,24 @@
   .nav-links.open {
     display: flex;
   }
+}
+
+/* Auth button styles */
+.auth-button {
+  background: #003366;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(135, 206, 235, 0.3);
+}
+
+.auth-button:hover {
+  background: #0050b3;
+  box-shadow: 0 6px 20px rgba(135, 206, 235, 0.5);
+  transform: translateY(-2px);
 } 

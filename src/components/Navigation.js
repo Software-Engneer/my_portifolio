@@ -70,7 +70,6 @@ function Navigation() {
         {windowWidth <= 900 && isMenuOpen && (
           <button
             className="get-in-touch-btn"
-            style={{ background: '#003366', color: '#fff', marginTop: '2rem', padding: '1rem', borderRadius: '8px', fontWeight: 'bold', fontSize: '1rem', border: 'none', cursor: 'pointer' }}
             onClick={() => setShowMessage(true)}
           >
             GET IN TOUCH

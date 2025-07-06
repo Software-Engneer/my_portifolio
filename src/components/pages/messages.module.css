@@ -57,17 +57,19 @@
   border-radius: 12px;
   font-size: 1.1rem;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-  box-shadow: 0 2px 8px rgba(100,255,218,0.08);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(135, 206, 235, 0.3);
 }
 .submitBtn:disabled {
   opacity: 0.7;
   cursor: not-allowed;
+  box-shadow: 0 2px 8px rgba(135, 206, 235, 0.2);
 }
 .submitBtn:hover:not(:disabled) {
   background: linear-gradient(90deg, #1de9b6 0%, #64ffda 100%);
   color: #003366;
-  box-shadow: 0 4px 16px rgba(100,255,218,0.15);
+  box-shadow: 0 6px 20px rgba(135, 206, 235, 0.5);
+  transform: translateY(-2px);
 }
 
 .successMsg {
@@ -98,10 +100,13 @@
   font-size: 1rem;
   cursor: pointer;
   align-self: center;
-  transition: background 0.2s;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(135, 206, 235, 0.3);
 }
 .closeBtn:hover {
   background: #001f4d;
+  box-shadow: 0 6px 20px rgba(135, 206, 235, 0.5);
+  transform: translateY(-2px);
 }
 
 @media (max-width: 600px) {
