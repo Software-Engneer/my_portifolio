@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { API_ENDPOINTS, fetchFromAPI } from '../../config/api';
+import ImageModal from '../ImageModal';
 import './Projects.css';
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   // Default project image as a data URL
   const DEFAULT_PROJECT_IMAGE = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzJjM2U1MCIvPjx0ZXh0IHg9IjUwJSIgeT0iNDUlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5Qcm9qZWN0PC90ZXh0Pjx0ZXh0IHg9IjUwJSIgeT0iNTUlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5JbWFnZTwvdGV4dD48L3N2Zz4=';
@@ -80,6 +83,19 @@ const Projects = () => {
     );
   }
 
+  const handleImageClick = (project) => {
+    setSelectedImage({
+      url: project.imageUrl,
+      alt: project.title
+    });
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedImage(null);
+  };
+
   return (
     <section className="projects-section" id="projects">
       <h2 className="section-title">My Projects</h2>
@@ -93,6 +109,7 @@ const Projects = () => {
                 <img 
                   src={project.imageUrl} 
                   alt={project.title}
+                  onClick={() => handleImageClick(project)}
                   onError={(e) => {
                     e.target.onerror = null;
                     e.target.src = DEFAULT_PROJECT_IMAGE;
@@ -122,6 +139,13 @@ const Projects = () => {
           ))}
         </div>
       )}
+      
+      <ImageModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        imageUrl={selectedImage?.url}
+        imageAlt={selectedImage?.alt}
+      />
     </section>
   );
 };

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect, useMemo } from "react";
 import { fetchFromAPI, API_ENDPOINTS } from "../../config/api";
+import ImageModal from "../ImageModal";
 import styles from "./Home.module.css";
 
 // Get the API URL from environment variables, with fallback to deployed API
@@ -16,7 +16,9 @@ function Home() {
   const [error, setError] = useState(null);
   const [projectsError, setProjectsError] = useState(null);
   const [creativeError, setCreativeError] = useState(null);
-  const navigate = useNavigate();
+  const [showAllWorks, setShowAllWorks] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   // Helper function to construct full image URL
   const getImageUrl = (imagePath) => {
@@ -34,6 +36,22 @@ function Home() {
     
     // Construct full URL with API base
     return `${API_BASE_URL}${imagePath}`;
+  };
+
+  // Handle image click to open modal
+  const handleImageClick = (work) => {
+    const imageUrl = getImageUrl(work.image);
+    setSelectedImage({
+      url: imageUrl,
+      alt: work.title
+    });
+    setIsModalOpen(true);
+  };
+
+  // Close modal
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedImage(null);
   };
 
   useEffect(() => {
@@ -100,7 +118,39 @@ function Home() {
     fetchCreativeWorks();
   }, []);
 
-  console.log('🎯 Current state:', { homeData, loading, error, projects, creativeWorks });
+  // Combine and sort projects and creative works by creation date
+  const combinedWorks = useMemo(() => {
+    const allWorks = [];
+    
+    // Add projects with type identifier
+    projects.forEach((project, index) => {
+      allWorks.push({
+        ...project,
+        type: 'project',
+        displayType: 'Project',
+        createdAt: project.createdAt || new Date().toISOString(),
+        image: project.image,
+        uniqueId: project.id || `project-${index}-${Date.now()}`
+      });
+    });
+    
+    // Add creative works with type identifier
+    creativeWorks.forEach((work, index) => {
+      allWorks.push({
+        ...work,
+        type: 'creative',
+        displayType: 'Creative Work',
+        createdAt: work.createdAt || new Date().toISOString(),
+        image: work.images && work.images[0] ? work.images[0] : work.image,
+        uniqueId: work.id || `creative-${index}-${Date.now()}`
+      });
+    });
+    
+    // Sort by creation date (newest first)
+    return allWorks.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  }, [projects, creativeWorks]);
+
+  console.log('🎯 Current state:', { homeData, loading, error, projects, creativeWorks, combinedWorks });
 
   if (loading) {
     console.log('⏳ Rendering loading state');
@@ -142,41 +192,48 @@ function Home() {
         </div>
       )}
 
-      {/* Projects Section */}
+      {/* Combined Projects & Creative Works Section */}
       <section className={styles.projectsSection} style={{ marginBottom: '1rem' }}>
-        <h3 className={styles.sectionTitle}>Projects</h3>
-        {projectsLoading ? (
+        <h3 className={styles.sectionTitle}>Latest Work</h3>
+        {(projectsLoading || creativeLoading) ? (
           <div className={styles.loading}>
-            <p>Loading projects...</p>
+            <p>Loading latest work...</p>
           </div>
-        ) : projectsError ? (
+        ) : (projectsError || creativeError) ? (
           <div className={styles.error}>
-            <p>Error loading projects: {projectsError}</p>
+            <p>Error loading content: {projectsError || creativeError}</p>
           </div>
         ) : (
           <>
             <div className={styles.cardsGrid}>
-              {projects.slice(0, 4).map((project, index) => {
-                console.log('🔍 Rendering project:', project);
-                console.log('🔗 Project link:', project.projectLink);
-                const isFullStackCard = project.title && project.title.toLowerCase().includes('full stack developer');
-                console.log('🎯 Is Full Stack Card:', isFullStackCard, 'Title:', project.title);
+              {combinedWorks.slice(0, showAllWorks ? combinedWorks.length : 6).map((work, index) => {
+                const isFullStackCard = work.type === 'project' && work.title && work.title.toLowerCase().includes('full stack developer');
+                const isAdditionalCard = index >= 6;
+                
                 return (
                   <div 
-                    key={project.id} 
-                    className={`${styles.card} ${isFullStackCard ? styles.fullStackCard : ''}`}
+                    key={work.uniqueId} 
+                    className={`${styles.card} ${isFullStackCard ? styles.fullStackCard : ''} ${isAdditionalCard ? styles.additionalCard : ''}`}
+                    style={{
+                      animation: isAdditionalCard && showAllWorks ? 'fadeInUp 0.5s ease forwards' : 'none',
+                      opacity: isAdditionalCard && !showAllWorks ? 0 : 1
+                    }}
                   >
                     <div className={styles.cardImage}>
                       <img 
-                        src={getImageUrl(project.image)} 
-                        alt={project.title}
+                        src={getImageUrl(work.image)} 
+                        alt={work.title}
+                        onClick={() => handleImageClick(work)}
+                        style={{ cursor: 'pointer' }}
                         onError={(e) => {
-                          e.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2U5ZWNlZiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiM2NjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5Qcm9qZWN0IEltYWdlPC90ZXh0Pjwvc3ZnPg==';
+                          e.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2U5ZWNlZiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiM2NjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5JbWFnZTwvdGV4dD48L3N2Zz4=';
                         }}
                       />
-                      {project.projectLink && (
+                      
+                      {/* Project links */}
+                      {work.type === 'project' && work.projectLink && (
                         <a 
-                          href={project.projectLink} 
+                          href={work.projectLink} 
                           target="_blank" 
                           rel="noopener noreferrer"
                           className={styles.websiteLink}
@@ -187,9 +244,9 @@ function Home() {
                           </svg>
                         </a>
                       )}
-                      {!project.projectLink && project.githubLink && (
+                      {work.type === 'project' && !work.projectLink && work.githubLink && (
                         <a 
-                          href={project.githubLink} 
+                          href={work.githubLink} 
                           target="_blank" 
                           rel="noopener noreferrer"
                           className={styles.websiteLink}
@@ -200,17 +257,33 @@ function Home() {
                           </svg>
                         </a>
                       )}
+                      
+                      {/* Creative work featured badge */}
+                      {work.type === 'creative' && work.featured && (
+                        <div className={styles.featuredBadge}>Featured</div>
+                      )}
                     </div>
+                    
                     <div className={styles.cardContent}>
-                      <h4 className={styles.cardTitle}>{project.title}</h4>
-                      <p className={styles.cardDescription}>{project.description}</p>
-                      {project.technologies && project.technologies.length > 0 && (
+                      <h4 className={styles.cardTitle}>{work.title}</h4>
+                      <p className={styles.cardDescription}>{work.description}</p>
+                      
+                      {/* Work type and year for creative works */}
+                      {work.type === 'creative' && (
+                        <div className={styles.workMeta}>
+                          <span className={styles.workType}>{work.type || 'Creative Work'}</span>
+                          {work.year && <span className={styles.workYear}>{work.year}</span>}
+                        </div>
+                      )}
+                      
+                      {/* Technologies */}
+                      {work.technologies && work.technologies.length > 0 && (
                         <div className={styles.technologies}>
-                          {project.technologies.slice(0, 3).map((tech, index) => (
+                          {work.technologies.slice(0, work.type === 'project' ? 3 : 2).map((tech, index) => (
                             <span key={index} className={styles.techTag}>{tech}</span>
                           ))}
-                          {project.technologies.length > 3 && (
-                            <span className={styles.techTag}>+{project.technologies.length - 3}</span>
+                          {work.technologies.length > (work.type === 'project' ? 3 : 2) && (
+                            <span className={styles.techTag}>+{work.technologies.length - (work.type === 'project' ? 3 : 2)}</span>
                           )}
                         </div>
                       )}
@@ -219,76 +292,15 @@ function Home() {
                 );
               })}
             </div>
-            {projects.length > 4 && (
+            
+            {/* Show explore more button if there are more than 6 items */}
+            {combinedWorks.length > 6 && (
               <div className={styles.exploreMoreContainer}>
                 <button 
-                  onClick={() => navigate('/projects')} 
+                  onClick={() => setShowAllWorks(!showAllWorks)} 
                   className={styles.exploreMoreButton}
                 >
-                  Explore More Projects
-                </button>
-              </div>
-            )}
-          </>
-        )}
-      </section>
-
-      {/* Creative Work Section */}
-      <section className={styles.creativeSection} style={{ marginBottom: '1rem' }}>
-        <h3 className={styles.sectionTitle}>Creative Work</h3>
-        {creativeLoading ? (
-          <div className={styles.loading}>
-            <p>Loading creative works...</p>
-          </div>
-        ) : creativeError ? (
-          <div className={styles.error}>
-            <p>Error loading creative works: {creativeError}</p>
-          </div>
-        ) : (
-          <>
-            <div className={styles.cardsGrid}>
-              {creativeWorks.slice(0, 4).map((work) => (
-                <div key={work.id} className={styles.card}>
-                  <div className={styles.cardImage}>
-                    <img 
-                      src={getImageUrl(work.images && work.images[0])} 
-                      alt={work.title}
-                      onError={(e) => {
-                        e.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2U5ZWNlZiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiM2NjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5DcmVhdGl2ZSBJbWFnZTwvdGV4dD48L3N2Zz4=';
-                      }}
-                    />
-                    {work.featured && (
-                      <div className={styles.featuredBadge}>Featured</div>
-                    )}
-                  </div>
-                  <div className={styles.cardContent}>
-                    <h4 className={styles.cardTitle}>{work.title}</h4>
-                    <p className={styles.cardDescription}>{work.description}</p>
-                    <div className={styles.workMeta}>
-                      <span className={styles.workType}>{work.type}</span>
-                      <span className={styles.workYear}>{work.year}</span>
-                    </div>
-                    {work.technologies && work.technologies.length > 0 && (
-                      <div className={styles.technologies}>
-                        {work.technologies.slice(0, 2).map((tech, index) => (
-                          <span key={index} className={styles.techTag}>{tech}</span>
-                        ))}
-                        {work.technologies.length > 2 && (
-                          <span className={styles.techTag}>+{work.technologies.length - 2}</span>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
-            {creativeWorks.length > 4 && (
-              <div className={styles.exploreMoreContainer}>
-                <button 
-                  onClick={() => navigate('/creative')} 
-                  className={styles.exploreMoreButton}
-                >
-                  Explore More Creative Work
+                  {showAllWorks ? 'Show Less' : 'Explore More'}
                 </button>
               </div>
             )}
@@ -309,6 +321,13 @@ function Home() {
           </div>
         </div>
       )}
+      
+      <ImageModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        imageUrl={selectedImage?.url}
+        imageAlt={selectedImage?.alt}
+      />
     </div>
   );
 }

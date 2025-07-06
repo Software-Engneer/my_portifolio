@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { API_ENDPOINTS, fetchFromAPI } from '../../config/api';
+import ImageModal from '../ImageModal';
 import './Creative.css';
 
 const Creative = () => {
   const [creativeWorks, setCreativeWorks] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const [selectedWork, setSelectedWork] = useState(null);
 
   // Default creative work image as a data URL
   const DEFAULT_CREATIVE_IMAGE = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzJjM2U1MCIvPjx0ZXh0IHg9IjUwJSIgeT0iNDUlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5DcmVhdGl2ZTwvdGV4dD48dGV4dCB4PSI1MCUiIHk9IjU1JSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE2IiBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+V29yazwvdGV4dD48L3N2Zz4=';
@@ -91,6 +95,42 @@ const Creative = () => {
     e.target.src = DEFAULT_CREATIVE_IMAGE;
   };
 
+  const handleImageClick = (work) => {
+    setSelectedWork(work);
+    setSelectedImageIndex(0);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedWork(null);
+    setSelectedImageIndex(0);
+  };
+
+  const handlePreviousImage = () => {
+    if (selectedWork && selectedImageIndex > 0) {
+      setSelectedImageIndex(selectedImageIndex - 1);
+    }
+  };
+
+  const handleNextImage = () => {
+    if (selectedWork && selectedImageIndex < selectedWork.processedImages.length - 1) {
+      setSelectedImageIndex(selectedImageIndex + 1);
+    }
+  };
+
+  const getCurrentImageUrl = () => {
+    if (!selectedWork) return '';
+    
+    // If there are multiple images, use the selected index
+    if (selectedWork.processedImages && selectedWork.processedImages.length > 0) {
+      return selectedWork.processedImages[selectedImageIndex];
+    }
+    
+    // Fallback to main image
+    return selectedWork.imageUrl || selectedWork.image;
+  };
+
   if (loading) {
     return (
       <div className="loading-container">
@@ -121,6 +161,7 @@ const Creative = () => {
                 <img 
                   src={work.imageUrl || work.image} 
                   alt={work.title || 'Creative Work'}
+                  onClick={() => handleImageClick(work)}
                   onError={(e) => handleImageError(e, work.id)}
                   loading="lazy"
                 />
@@ -155,6 +196,17 @@ const Creative = () => {
           ))}
         </div>
       )}
+      
+      <ImageModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        imageUrl={getCurrentImageUrl()}
+        imageAlt={selectedWork?.title || 'Creative Work'}
+        onPrevious={handlePreviousImage}
+        onNext={handleNextImage}
+        hasPrevious={selectedWork && selectedImageIndex > 0}
+        hasNext={selectedWork && selectedWork.processedImages && selectedImageIndex < selectedWork.processedImages.length - 1}
+      />
     </section>
   );
 };
