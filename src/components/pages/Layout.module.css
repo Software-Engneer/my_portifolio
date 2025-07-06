@@ -173,10 +173,24 @@
   gap: 0.7em;
   background: rgba(255,255,255,0.03);
 }
+
+.locationInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+}
+
 .locationText {
   font-weight: 600;
   color: #fff;
 }
+
+.phoneText {
+  font-weight: 500;
+  color: #ccc;
+  font-size: 0.9em;
+}
+
 .socialCenter {
   display: flex;
   flex-direction: column;
