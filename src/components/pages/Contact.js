@@ -31,6 +31,8 @@ function Contact() {
         ...(showSecurityQuestion && { securityAnswer, securityQuestion })
       };
 
+      console.log('Sending request with body:', requestBody);
+
       const data = await fetchFromAPI(`${API_ENDPOINTS.CONTACT}/message`, {
         method: 'POST',
         body: JSON.stringify(requestBody),
@@ -43,10 +45,14 @@ function Contact() {
       setSecurityQuestion('');
       setToast({ message: data.message || 'Message sent!', type: 'success' });
     } catch (error) {
-      const errorData = error.response?.data || error;
+      console.log('Error caught:', error);
+      console.log('Error response:', error.response);
+      
+      const errorData = error.response?.data || {};
       
       // Handle security question requirement
       if (errorData.requiresSecurity && errorData.securityQuestion) {
+        console.log('Security question required:', errorData.securityQuestion);
         setSecurityQuestion(errorData.securityQuestion);
         setShowSecurityQuestion(true);
         setStatus({ loading: false, success: null, error: errorData.message });
@@ -54,8 +60,8 @@ function Contact() {
         return;
       }
       
-      setStatus({ loading: false, success: null, error: errorData.message || 'Failed to send message.' });
-      setToast({ message: errorData.message || 'Failed to send message.', type: 'error' });
+      setStatus({ loading: false, success: null, error: errorData.message || error.message || 'Failed to send message.' });
+      setToast({ message: errorData.message || error.message || 'Failed to send message.', type: 'error' });
     }
   };
 
@@ -113,13 +119,16 @@ function Contact() {
         {/* Security Question */}
         {showSecurityQuestion && (
           <div className={styles.securityContainer}>
+            <div className={styles.securityAlert}>
+              ⚠️ Security verification required for this phone number
+            </div>
             <label className={styles.securityLabel}>
               Security Question: {securityQuestion}
             </label>
             <input
               className={styles.input}
               type="text"
-              placeholder="Your answer"
+              placeholder="Enter your answer"
               value={securityAnswer}
               onChange={(e) => setSecurityAnswer(e.target.value)}
               required

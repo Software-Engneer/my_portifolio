@@ -58,15 +58,16 @@ export const fetchFromAPI = async (endpoint, options = {}) => {
       throw new Error(`Expected JSON response but got ${contentType}`);
     }
 
-    if (!response.ok) {
-      const errorData = await response.json().catch(() => ({}));
-      throw new Error(
-        errorData.message || `HTTP error! status: ${response.status}`
-      );
-    }
-
     const data = await response.json();
     console.log('✅ Parsed response data:', data);
+
+    if (!response.ok) {
+      // Create a custom error that preserves the response data
+      const error = new Error(data.message || `HTTP error! status: ${response.status}`);
+      error.response = { data, status: response.status };
+      throw error;
+    }
+
     return data;
   } catch (error) {
     if (error.name === 'AbortError') {
