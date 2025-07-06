@@ -9,6 +9,7 @@ const Projects = () => {
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [showAll, setShowAll] = useState(false);
 
   // Default project image as a data URL
   const DEFAULT_PROJECT_IMAGE = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzJjM2U1MCIvPjx0ZXh0IHg9IjUwJSIgeT0iNDUlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5Qcm9qZWN0PC90ZXh0Pjx0ZXh0IHg9IjUwJSIgeT0iNTUlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5JbWFnZTwvdGV4dD48L3N2Zz4=';
@@ -96,48 +97,64 @@ const Projects = () => {
     setSelectedImage(null);
   };
 
+  const toggleShowAll = () => {
+    setShowAll(!showAll);
+  };
+
   return (
     <section className="projects-section" id="projects">
       <h2 className="section-title">My Projects</h2>
       {projects.length === 0 ? (
         <p className="no-projects">No projects available at the moment.</p>
       ) : (
-        <div className="projects-grid">
-          {projects.map((project) => (
-            <div className="project-card" key={project.id}>
-              <div className="project-image">
-                <img 
-                  src={project.imageUrl} 
-                  alt={project.title}
-                  onClick={() => handleImageClick(project)}
-                  onError={(e) => {
-                    e.target.onerror = null;
-                    e.target.src = DEFAULT_PROJECT_IMAGE;
-                  }}
-                />
-              </div>
-              <div className="project-content">
-                <h3 className="project-title">{project.title}</h3>
-                <p className="project-description">{project.description}</p>
-                <div className="project-technologies">
-                  {project.technologies.map((tech, index) => (
-                    <span key={index} className="tech-tag">
-                      {tech}
-                    </span>
-                  ))}
+        <>
+          <div className="projects-grid">
+            {(showAll ? projects : projects.slice(0, 4)).map((project) => (
+              <div className="project-card" key={project.id}>
+                <div className="project-image">
+                  <img 
+                    src={project.imageUrl} 
+                    alt={project.title}
+                    onClick={() => handleImageClick(project)}
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = DEFAULT_PROJECT_IMAGE;
+                    }}
+                  />
                 </div>
-                <a
-                  href={project.githubLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="github-link"
-                >
-                  View on GitHub
-                </a>
+                <div className="project-content">
+                  <h3 className="project-title">{project.title}</h3>
+                  <p className="project-description">{project.description}</p>
+                  <div className="project-technologies">
+                    {project.technologies.map((tech, index) => (
+                      <span key={index} className="tech-tag">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                  <a
+                    href={project.githubLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="github-link"
+                  >
+                    View on GitHub
+                  </a>
+                </div>
               </div>
+            ))}
+          </div>
+          {projects.length > 4 && (
+            <div className="explore-more-container">
+              <button 
+                onClick={toggleShowAll} 
+                className="explore-more-btn"
+              >
+                {showAll ? 'Show Less' : 'Explore More'}
+              </button>
             </div>
-          ))}
-        </div>
+          )}
+        </>
       )}
       
       <ImageModal

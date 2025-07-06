@@ -10,6 +10,7 @@ const Creative = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [selectedWork, setSelectedWork] = useState(null);
+  const [showAll, setShowAll] = useState(false);
 
   // Default creative work image as a data URL
   const DEFAULT_CREATIVE_IMAGE = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzJjM2U1MCIvPjx0ZXh0IHg9IjUwJSIgeT0iNDUlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5DcmVhdGl2ZTwvdGV4dD48dGV4dCB4PSI1MCUiIHk9IjU1JSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE2IiBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+V29yazwvdGV4dD48L3N2Zz4=';
@@ -131,6 +132,10 @@ const Creative = () => {
     return selectedWork.imageUrl || selectedWork.image;
   };
 
+  const toggleShowAll = () => {
+    setShowAll(!showAll);
+  };
+
   if (loading) {
     return (
       <div className="loading-container">
@@ -154,47 +159,59 @@ const Creative = () => {
       {creativeWorks.length === 0 ? (
         <p className="no-works">No creative works available at the moment.</p>
       ) : (
-        <div className="creative-grid">
-          {creativeWorks.map((work) => (
-            <div className="creative-card" key={work.id}>
-              <div className="creative-image">
-                <img 
-                  src={work.imageUrl || work.image} 
-                  alt={work.title || 'Creative Work'}
-                  onClick={() => handleImageClick(work)}
-                  onError={(e) => handleImageError(e, work.id)}
-                  loading="lazy"
-                />
+        <>
+          <div className="creative-grid">
+            {(showAll ? creativeWorks : creativeWorks.slice(0, 4)).map((work) => (
+              <div className="creative-card" key={work.id}>
+                <div className="creative-image">
+                  <img 
+                    src={work.imageUrl || work.image} 
+                    alt={work.title || 'Creative Work'}
+                    onClick={() => handleImageClick(work)}
+                    onError={(e) => handleImageError(e, work.id)}
+                    loading="lazy"
+                  />
+                </div>
+                <div className="creative-content">
+                  <h3 className="creative-title">{work.title}</h3>
+                  <p className="creative-description">{work.description}</p>
+                  {work.technologies && work.technologies.length > 0 && (
+                    <div className="creative-tags">
+                      {work.technologies.map((tech, index) => (
+                        <span key={index} className="creative-tag">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                  {work.link && (
+                    <a 
+                      href={work.link} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="view-more-link"
+                    >
+                      View More
+                    </a>
+                  )}
+                  {work.year && (
+                    <p className="creative-date">{work.year}</p>
+                  )}
+                </div>
               </div>
-              <div className="creative-content">
-                <h3 className="creative-title">{work.title}</h3>
-                <p className="creative-description">{work.description}</p>
-                {work.technologies && work.technologies.length > 0 && (
-                  <div className="creative-tags">
-                    {work.technologies.map((tech, index) => (
-                      <span key={index} className="creative-tag">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                )}
-                {work.link && (
-                  <a 
-                    href={work.link} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="view-more-link"
-                  >
-                    View More
-                  </a>
-                )}
-                {work.year && (
-                  <p className="creative-date">{work.year}</p>
-                )}
-              </div>
+            ))}
+          </div>
+          {creativeWorks.length > 4 && (
+            <div className="explore-more-container">
+              <button 
+                onClick={toggleShowAll} 
+                className="explore-more-btn"
+              >
+                {showAll ? 'Show Less' : 'Explore More'}
+              </button>
             </div>
-          ))}
-        </div>
+          )}
+        </>
       )}
       
       <ImageModal
