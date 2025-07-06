@@ -13,6 +13,9 @@ function Contact() {
   });
   const [status, setStatus] = useState({ loading: false, success: null, error: null });
   const [toast, setToast] = useState({ message: '', type: 'success' });
+  const [securityQuestion, setSecurityQuestion] = useState('');
+  const [securityAnswer, setSecurityAnswer] = useState('');
+  const [showSecurityQuestion, setShowSecurityQuestion] = useState(false);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -21,17 +24,38 @@ function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus({ loading: true, success: null, error: null });
+    
     try {
+      const requestBody = {
+        ...form,
+        ...(showSecurityQuestion && { securityAnswer, securityQuestion })
+      };
+
       const data = await fetchFromAPI(`${API_ENDPOINTS.CONTACT}/message`, {
         method: 'POST',
-        body: JSON.stringify(form),
+        body: JSON.stringify(requestBody),
       });
+      
       setStatus({ loading: false, success: data.message || 'Message sent!', error: null });
       setForm({ firstName: '', lastName: '', email: '', phoneNumber: '', message: '' });
+      setSecurityAnswer('');
+      setShowSecurityQuestion(false);
+      setSecurityQuestion('');
       setToast({ message: data.message || 'Message sent!', type: 'success' });
     } catch (error) {
-      setStatus({ loading: false, success: null, error: error.message || 'Failed to send message.' });
-      setToast({ message: error.message || 'Failed to send message.', type: 'error' });
+      const errorData = error.response?.data || error;
+      
+      // Handle security question requirement
+      if (errorData.requiresSecurity && errorData.securityQuestion) {
+        setSecurityQuestion(errorData.securityQuestion);
+        setShowSecurityQuestion(true);
+        setStatus({ loading: false, success: null, error: errorData.message });
+        setToast({ message: errorData.message, type: 'error' });
+        return;
+      }
+      
+      setStatus({ loading: false, success: null, error: errorData.message || 'Failed to send message.' });
+      setToast({ message: errorData.message || 'Failed to send message.', type: 'error' });
     }
   };
 
@@ -85,6 +109,24 @@ function Contact() {
           onChange={handleChange}
           required
         />
+        
+        {/* Security Question */}
+        {showSecurityQuestion && (
+          <div className={styles.securityContainer}>
+            <label className={styles.securityLabel}>
+              Security Question: {securityQuestion}
+            </label>
+            <input
+              className={styles.input}
+              type="text"
+              placeholder="Your answer"
+              value={securityAnswer}
+              onChange={(e) => setSecurityAnswer(e.target.value)}
+              required
+            />
+          </div>
+        )}
+
         <button type="submit" className={styles.submitBtn} disabled={status.loading}>
           {status.loading ? 'Sending...' : 'Send Message'}
         </button>
