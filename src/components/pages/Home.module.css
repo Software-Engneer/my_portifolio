@@ -581,12 +581,12 @@
   margin: 0 auto;
 }
 
-/* Hero Card with Skyblue Sidebar */
+/* Hero Card with Attractive Gradient Sidebar */
 .heroCard {
   position: relative;
-  border-left: 8px solid #87CEEB;
-  background: linear-gradient(135deg, #ffffff 0%, #f8fbff 100%);
-  box-shadow: 0 8px 30px rgba(135, 206, 235, 0.2);
+  border-left: 8px solid #667eea;
+  background: linear-gradient(135deg, #ffffff 0%, #f8faff 100%);
+  box-shadow: 0 8px 30px rgba(102, 126, 234, 0.15);
   transform: scale(1.01);
   transition: all 0.3s ease;
   overflow: hidden;
@@ -599,25 +599,31 @@
   left: 0;
   width: 8px;
   height: 100%;
-  background: linear-gradient(180deg, #87CEEB 0%, #5F9EA0 100%);
+  background: linear-gradient(180deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
   border-radius: 0 4px 4px 0;
+  box-shadow: 2px 0 10px rgba(102, 126, 234, 0.3);
 }
 
 .heroCard:hover {
   transform: scale(1.02);
-  box-shadow: 0 12px 40px rgba(135, 206, 235, 0.3);
-  border-left-color: #5F9EA0;
+  box-shadow: 0 12px 40px rgba(102, 126, 234, 0.25);
+  border-left-color: #764ba2;
+}
+
+.heroCard:hover::before {
+  background: linear-gradient(180deg, #667eea 0%, #764ba2 30%, #f093fb 70%, #f5576c 100%);
+  box-shadow: 2px 0 15px rgba(102, 126, 234, 0.4);
 }
 
 .heroCard h3 {
-  color: #2E86AB;
+  color: #4c51bf;
   font-weight: 700;
   position: relative;
   z-index: 1;
 }
 
 .heroCard h4 {
-  color: #4A90A4;
+  color: #667eea;
   font-weight: 600;
   position: relative;
   z-index: 1;
