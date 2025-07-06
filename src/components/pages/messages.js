@@ -2,7 +2,13 @@ import React, { useState } from "react";
 import styles from "./messages.module.css";
 
 const Messages = ({ onClose }) => {
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [form, setForm] = useState({ 
+    firstName: '', 
+    lastName: '', 
+    email: '', 
+    phoneNumber: '', 
+    message: '' 
+  });
   const [status, setStatus] = useState({ loading: false, success: null, error: null });
 
   const handleChange = (e) => {
@@ -16,7 +22,7 @@ const Messages = ({ onClose }) => {
       // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 1000));
       setStatus({ loading: false, success: 'Message sent!', error: null });
-      setForm({ name: '', email: '', message: '' });
+      setForm({ firstName: '', lastName: '', email: '', phoneNumber: '', message: '' });
     } catch (error) {
       setStatus({ loading: false, success: null, error: 'Failed to send message.' });
     }
@@ -26,21 +32,41 @@ const Messages = ({ onClose }) => {
     <div className={styles.messagesContainer}>
       <h2>Send a Message</h2>
       <form className={styles.messagesForm} onSubmit={handleSubmit}>
-        <input
-          className={styles.input}
-          type="text"
-          name="name"
-          placeholder="Full Name"
-          value={form.name}
-          onChange={handleChange}
-          required
-        />
+        <div className={styles.nameRow}>
+          <input
+            className={styles.input}
+            type="text"
+            name="firstName"
+            placeholder="First Name"
+            value={form.firstName}
+            onChange={handleChange}
+            required
+          />
+          <input
+            className={styles.input}
+            type="text"
+            name="lastName"
+            placeholder="Last Name"
+            value={form.lastName}
+            onChange={handleChange}
+            required
+          />
+        </div>
         <input
           className={styles.input}
           type="email"
           name="email"
           placeholder="Email"
           value={form.email}
+          onChange={handleChange}
+          required
+        />
+        <input
+          className={styles.input}
+          type="tel"
+          name="phoneNumber"
+          placeholder="Phone Number"
+          value={form.phoneNumber}
           onChange={handleChange}
           required
         />

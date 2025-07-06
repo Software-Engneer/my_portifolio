@@ -4,7 +4,13 @@ import { API_ENDPOINTS, fetchFromAPI } from '../../config/api';
 import ToastNotification from '../ToastNotification';
 
 function Contact() {
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [form, setForm] = useState({ 
+    firstName: '', 
+    lastName: '', 
+    email: '', 
+    phoneNumber: '', 
+    message: '' 
+  });
   const [status, setStatus] = useState({ loading: false, success: null, error: null });
   const [toast, setToast] = useState({ message: '', type: 'success' });
 
@@ -21,7 +27,7 @@ function Contact() {
         body: JSON.stringify(form),
       });
       setStatus({ loading: false, success: data.message || 'Message sent!', error: null });
-      setForm({ name: '', email: '', message: '' });
+      setForm({ firstName: '', lastName: '', email: '', phoneNumber: '', message: '' });
       setToast({ message: data.message || 'Message sent!', type: 'success' });
     } catch (error) {
       setStatus({ loading: false, success: null, error: error.message || 'Failed to send message.' });
@@ -33,21 +39,41 @@ function Contact() {
     <div className={styles.contactContainer}>
       <h2>Get in Touch</h2>
       <form className={styles.contactForm} onSubmit={handleSubmit}>
-        <input
-          className={styles.input}
-          type="text"
-          name="name"
-          placeholder="Full Name"
-          value={form.name}
-          onChange={handleChange}
-          required
-        />
+        <div className={styles.nameRow}>
+          <input
+            className={styles.input}
+            type="text"
+            name="firstName"
+            placeholder="First Name"
+            value={form.firstName}
+            onChange={handleChange}
+            required
+          />
+          <input
+            className={styles.input}
+            type="text"
+            name="lastName"
+            placeholder="Last Name"
+            value={form.lastName}
+            onChange={handleChange}
+            required
+          />
+        </div>
         <input
           className={styles.input}
           type="email"
           name="email"
           placeholder="Email"
           value={form.email}
+          onChange={handleChange}
+          required
+        />
+        <input
+          className={styles.input}
+          type="tel"
+          name="phoneNumber"
+          placeholder="Phone Number"
+          value={form.phoneNumber}
           onChange={handleChange}
           required
         />

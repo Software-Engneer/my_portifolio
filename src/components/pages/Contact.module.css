@@ -143,6 +143,15 @@
   gap: 1.2rem;
 }
 
+.nameRow {
+  display: flex;
+  gap: 1rem;
+}
+
+.nameRow .input {
+  flex: 1;
+}
+
 .input,
 .textarea {
   width: 100%;
@@ -156,11 +165,13 @@
   outline: none;
   box-sizing: border-box;
 }
+
 .input:focus,
 .textarea:focus {
   border-color: #64ffda;
   box-shadow: 0 0 0 2px #64ffda33;
 }
+
 .textarea {
   min-height: 120px;
   resize: vertical;
@@ -178,10 +189,12 @@
   transition: background 0.2s, color 0.2s, box-shadow 0.2s;
   box-shadow: 0 2px 8px rgba(100,255,218,0.08);
 }
+
 .submitBtn:disabled {
   opacity: 0.7;
   cursor: not-allowed;
 }
+
 .submitBtn:hover:not(:disabled) {
   background: linear-gradient(90deg, #1de9b6 0%, #64ffda 100%);
   color: #003366;
@@ -197,6 +210,7 @@
   text-align: center;
   font-size: 1rem;
 }
+
 .errorMsg {
   color: #d32f2f;
   background: #ffebee;
@@ -211,6 +225,10 @@
   .contactForm {
     padding: 1.2rem 0.5rem;
     max-width: 98vw;
+  }
+  .nameRow {
+    flex-direction: column;
+    gap: 0.8rem;
   }
   .input,
   .textarea {
