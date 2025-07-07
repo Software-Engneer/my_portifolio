@@ -136,6 +136,9 @@ const Creative = () => {
     setShowAll(!showAll);
   };
 
+  // Filter only active creative works
+  const activeCreativeWorks = creativeWorks.filter(work => (work.status || 'Active') === 'Active');
+
   if (loading) {
     return (
       <div className="loading-container">
@@ -156,12 +159,12 @@ const Creative = () => {
   return (
     <section className="creative-section" id="creative">
       <h2 className="creative-title">Creative Works</h2>
-      {creativeWorks.length === 0 ? (
+      {activeCreativeWorks.length === 0 ? (
         <p className="no-works">No creative works available at the moment.</p>
       ) : (
         <>
           <div className="creative-grid">
-            {(showAll ? creativeWorks : creativeWorks.slice(0, 4)).map((work) => (
+            {(showAll ? activeCreativeWorks : activeCreativeWorks.slice(0, 4)).map((work) => (
               <div className="creative-card" key={work.id}>
                 <div className="creative-image">
                   <img 
@@ -201,7 +204,7 @@ const Creative = () => {
               </div>
             ))}
           </div>
-          {creativeWorks.length > 4 && (
+          {activeCreativeWorks.length > 4 && (
             <div className="explore-more-container">
               <button 
                 onClick={toggleShowAll} 

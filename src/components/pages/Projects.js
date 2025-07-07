@@ -101,15 +101,18 @@ const Projects = () => {
     setShowAll(!showAll);
   };
 
+  // Filter only active projects
+  const activeProjects = projects.filter(project => (project.status || 'Active') === 'Active');
+
   return (
     <section className="projects-section" id="projects">
       <h2 className="section-title">My Projects</h2>
-      {projects.length === 0 ? (
+      {activeProjects.length === 0 ? (
         <p className="no-projects">No projects available at the moment.</p>
       ) : (
         <>
           <div className="projects-grid">
-            {(showAll ? projects : projects.slice(0, 4)).map((project) => (
+            {(showAll ? activeProjects : activeProjects.slice(0, 4)).map((project) => (
               <div className="project-card" key={project.id}>
                 <div className="project-image">
                   <img 
@@ -144,7 +147,7 @@ const Projects = () => {
               </div>
             ))}
           </div>
-          {projects.length > 4 && (
+          {activeProjects.length > 4 && (
             <div className="explore-more-container">
               <button 
                 onClick={toggleShowAll} 
