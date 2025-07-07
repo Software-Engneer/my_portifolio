@@ -118,12 +118,15 @@ function Home() {
     fetchCreativeWorks();
   }, []);
 
+  // Filter only active projects and creative works
+  const activeProjects = projects.filter(project => (project.status || 'Active') === 'Active');
+  const activeCreativeWorks = creativeWorks.filter(work => (work.status || 'Active') === 'Active');
+
   // Combine and sort projects and creative works by creation date
   const combinedWorks = useMemo(() => {
     const allWorks = [];
-    
     // Add projects with type identifier
-    projects.forEach((project, index) => {
+    activeProjects.forEach((project, index) => {
       allWorks.push({
         ...project,
         type: 'project',
@@ -133,9 +136,8 @@ function Home() {
         uniqueId: project.id || `project-${index}-${Date.now()}`
       });
     });
-    
     // Add creative works with type identifier
-    creativeWorks.forEach((work, index) => {
+    activeCreativeWorks.forEach((work, index) => {
       allWorks.push({
         ...work,
         type: 'creative',
@@ -145,10 +147,9 @@ function Home() {
         uniqueId: work.id || `creative-${index}-${Date.now()}`
       });
     });
-    
     // Sort by creation date (newest first)
     return allWorks.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-  }, [projects, creativeWorks]);
+  }, [activeProjects, activeCreativeWorks]);
 
   console.log('🎯 Current state:', { homeData, loading, error, projects, creativeWorks, combinedWorks });
 
