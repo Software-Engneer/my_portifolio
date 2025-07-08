@@ -137,13 +137,14 @@ const Projects = () => {
                       </span>
                     ))}
                   </div>
+                  <span className="project-link-text">View Project</span>
                   <a
                     href={project.projectLink || project.githubLink}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="project-link"
                   >
-                    View Project <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+                    <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
                   </a>
                 </div>
               </div>
