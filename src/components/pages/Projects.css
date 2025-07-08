@@ -165,7 +165,6 @@
   background: linear-gradient(135deg, #64ffda, #4cd6b3);
   color: #1a1a1a;
   padding: 0.75rem 1.5rem;
-  border-radius: 12px;
   text-decoration: none;
   transition: all 0.3s ease;
   text-align: center;
@@ -180,13 +179,7 @@
 }
 
 .project-link::after {
-  content: '↗';
-  position: absolute;
-  top: 50%;
-  right: 1rem;
-  transform: translateY(-50%);
-  font-size: 1.2rem;
-  font-weight: bold;
+  content: none;
 }
 
 @media (max-width: 900px) {

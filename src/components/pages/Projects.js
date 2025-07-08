@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { API_ENDPOINTS, fetchFromAPI } from '../../config/api';
 import ImageModal from '../ImageModal';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import './Projects.css';
 
 const Projects = () => {
@@ -141,7 +143,7 @@ const Projects = () => {
                     rel="noopener noreferrer"
                     className="project-link"
                   >
-                    View Project
+                    View Project <FontAwesomeIcon icon={faArrowUpRightFromSquare} style={{marginLeft: '0.5em'}} />
                   </a>
                 </div>
               </div>
