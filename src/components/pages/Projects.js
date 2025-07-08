@@ -138,20 +138,26 @@ const Projects = () => {
                   <div className="project-link-row">
                     <span className="project-link-text">View Project</span>
                     <a
-                      href={project.projectLink || project.githubLink}
+                      href={project.projectLink || '/not-available'}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="project-link"
                       aria-label="View Project"
+                      onClick={e => {
+                        if (!project.projectLink) {
+                          e.preventDefault();
+                          window.location.href = '/not-available';
+                        }
+                      }}
                     >
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="url(#arrow-gradient)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style={{display: 'inline', verticalAlign: 'middle'}}>
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="url(#arrow-gradient)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{display: 'inline', verticalAlign: 'middle'}}>
                         <defs>
                           <linearGradient id="arrow-gradient" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#38bdf8" />
-                            <stop offset="1" stop-color="#0ea5e9" />
+                            <stop stopColor="#38bdf8" />
+                            <stop offset="1" stopColor="#0ea5e9" />
                           </linearGradient>
                         </defs>
-                        <rect x="4" y="4" width="16" height="16" rx="3" stroke="url(#arrow-gradient)" stroke-width="1.5"/>
+                        <rect x="4" y="4" width="16" height="16" rx="3" stroke="url(#arrow-gradient)" strokeWidth="1.5"/>
                         <path d="M9 15L15 9" />
                         <path d="M11 9h4v4" />
                       </svg>
