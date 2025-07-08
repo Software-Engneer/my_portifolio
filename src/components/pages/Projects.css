@@ -162,21 +162,17 @@
 
 .project-link {
   display: inline-block;
-  background: linear-gradient(135deg, #64ffda, #4cd6b3);
-  color: #1a1a1a;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0;
+  color: #64ffda;
   text-decoration: none;
   transition: all 0.3s ease;
-  text-align: center;
-  font-weight: 600;
+  font-size: 1.5rem;
   margin-top: auto;
   position: relative;
 }
 
 .project-link:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(100, 255, 218, 0.3);
+  color: #4cd6b3;
 }
 
 .project-link::after {
