@@ -165,6 +165,7 @@
   background: linear-gradient(135deg, #64ffda, #4cd6b3);
   color: #1a1a1a;
   padding: 0.75rem 1.5rem;
+  border-radius: 0;
   text-decoration: none;
   transition: all 0.3s ease;
   text-align: center;
