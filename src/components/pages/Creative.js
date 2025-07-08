@@ -158,7 +158,7 @@ const Creative = () => {
 
   return (
     <section className="creative-section" id="creative">
-      <h2 className="creative-title">Creative Works</h2>
+      <h2 className="creative-section-title">Creative Works</h2>
       {activeCreativeWorks.length === 0 ? (
         <p className="no-works">No creative works available at the moment.</p>
       ) : (
