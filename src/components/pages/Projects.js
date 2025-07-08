@@ -143,7 +143,7 @@ const Projects = () => {
                     rel="noopener noreferrer"
                     className="project-link"
                   >
-                    <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+                    View Project <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
                   </a>
                 </div>
               </div>
