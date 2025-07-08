@@ -432,6 +432,20 @@
   text-align: right;
 }
 
+.workYearBottomRight {
+  position: absolute;
+  right: 1em;
+  bottom: 1em;
+  color: #0ea5e9;
+  font-size: 1rem;
+  font-weight: 600;
+  background: none;
+  border-radius: 0;
+  padding: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
 .technologies {
   display: flex;
   flex-wrap: wrap;

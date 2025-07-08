@@ -221,9 +221,9 @@ function Home() {
                       position: 'relative',
                     }}
                   >
-                    {/* Year in top right for creative works */}
+                    {/* Year in bottom right for creative works */}
                     {work.type === 'creative' && work.year && (
-                      <span className={styles.workYearTop}>{work.year}</span>
+                      <span className={styles.workYearBottomRight}>{work.year}</span>
                     )}
                     <div className={styles.cardImage}>
                       <img 
@@ -291,10 +291,6 @@ function Home() {
                             <span className={styles.techTag}>+{work.technologies.length - (work.type === 'project' ? 3 : 2)}</span>
                           )}
                         </div>
-                      )}
-                      {/* Year at the bottom for creative works */}
-                      {work.type === 'creative' && work.year && (
-                        <span className={styles.workYearBottom}>{work.year}</span>
                       )}
                     </div>
                   </div>
