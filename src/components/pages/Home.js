@@ -217,9 +217,14 @@ function Home() {
                     className={`${styles.card} ${isFullStackCard ? styles.fullStackCard : ''} ${isAdditionalCard ? styles.additionalCard : ''}`}
                     style={{
                       animation: isAdditionalCard && showAllWorks ? 'fadeInUp 0.5s ease forwards' : 'none',
-                      opacity: isAdditionalCard && !showAllWorks ? 0 : 1
+                      opacity: isAdditionalCard && !showAllWorks ? 0 : 1,
+                      position: 'relative',
                     }}
                   >
+                    {/* Year in top right for creative works */}
+                    {work.type === 'creative' && work.year && (
+                      <span className={styles.workYearTop}>{work.year}</span>
+                    )}
                     <div className={styles.cardImage}>
                       <img 
                         src={getImageUrl(work.image)} 
@@ -273,7 +278,6 @@ function Home() {
                       {work.type === 'creative' && (
                         <div className={styles.workMeta}>
                           <span className={styles.workType}>{work.type || 'Creative Work'}</span>
-                          {work.year && <span className={styles.workYear}>{work.year}</span>}
                         </div>
                       )}
                       
