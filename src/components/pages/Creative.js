@@ -166,9 +166,6 @@ const Creative = () => {
           <div className="creative-grid">
             {(showAll ? activeCreativeWorks : activeCreativeWorks.slice(0, 4)).map((work) => (
               <div className="creative-card" key={work.id}>
-                {work.year && (
-                  <span className="creative-year-top">{work.year}</span>
-                )}
                 <div className="creative-image">
                   <img 
                     src={work.imageUrl || work.image} 
@@ -199,6 +196,9 @@ const Creative = () => {
                     >
                       View More
                     </a>
+                  )}
+                  {work.year && (
+                    <span className="creative-year-bottom">{work.year}</span>
                   )}
                 </div>
               </div>

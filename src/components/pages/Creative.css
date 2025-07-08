@@ -463,4 +463,16 @@
 
 .creative-card {
   position: relative;
+}
+
+.creative-year-bottom {
+  display: block;
+  margin-top: 1.2em;
+  color: #0ea5e9;
+  font-size: 1rem;
+  font-weight: 600;
+  background: rgba(56, 189, 248, 0.12);
+  padding: 0.2em 0.8em;
+  border-radius: 12px;
+  text-align: right;
 } 
