@@ -136,12 +136,12 @@ const Projects = () => {
                     ))}
                   </div>
                   <a
-                    href={project.githubLink}
+                    href={project.projectLink || project.githubLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="github-link"
+                    className="project-link"
                   >
-                    View on GitHub
+                    View Project -&gt;
                   </a>
                 </div>
               </div>
