@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { API_ENDPOINTS, fetchFromAPI } from '../../config/api';
 import ImageModal from '../ImageModal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
+import { faArrowUpRightFromSquare as faArrowUpRightFromSquareSolid } from '@fortawesome/free-solid-svg-icons';
+import { faArrowUpRightFromSquare as faArrowUpRightFromSquareRegular } from '@fortawesome/free-regular-svg-icons';
 import './Projects.css';
 
 const Projects = () => {
@@ -137,15 +138,17 @@ const Projects = () => {
                       </span>
                     ))}
                   </div>
-                  <span className="project-link-text">View Project</span>
-                  <a
-                    href={project.projectLink || project.githubLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="project-link"
-                  >
-                    <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
-                  </a>
+                  <div className="project-link-row">
+                    <span className="project-link-text">View Project</span>
+                    <a
+                      href={project.projectLink || project.githubLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="project-link"
+                    >
+                      <FontAwesomeIcon icon={faArrowUpRightFromSquareRegular || faArrowUpRightFromSquareSolid} />
+                    </a>
+                  </div>
                 </div>
               </div>
             ))}
