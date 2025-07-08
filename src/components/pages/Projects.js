@@ -138,7 +138,7 @@ const Projects = () => {
                   <div className="project-link-row">
                     <span className="project-link-text">View Project</span>
                     <a
-                      href={project.projectLink || '/not-available'}
+                      href={project.projectLink || '/projects'}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="project-link"
@@ -146,7 +146,7 @@ const Projects = () => {
                       onClick={e => {
                         if (!project.projectLink) {
                           e.preventDefault();
-                          window.location.href = '/not-available';
+                          window.location.href = '/projects';
                         }
                       }}
                     >
