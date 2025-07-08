@@ -163,6 +163,7 @@
 .project-link {
   display: inline-block;
   color: #64ffda;
+  text-shadow: 0 0 8px #87ceeb, 0 0 16px #87ceeb;
   text-decoration: none;
   transition: all 0.3s ease;
   font-size: 1.5rem;
