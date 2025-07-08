@@ -292,6 +292,10 @@ function Home() {
                           )}
                         </div>
                       )}
+                      {/* Year at the bottom for creative works */}
+                      {work.type === 'creative' && work.year && (
+                        <span className={styles.workYearBottom}>{work.year}</span>
+                      )}
                     </div>
                   </div>
                 );
