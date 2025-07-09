@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { API_ENDPOINTS, fetchFromAPI } from '../../config/api';
 import ImageModal from '../ImageModal';
 import './Creative.css';
+import Spinner from '../Spinner';
 
 const Creative = () => {
   const [creativeWorks, setCreativeWorks] = useState([]);
@@ -142,7 +143,7 @@ const Creative = () => {
   if (loading) {
     return (
       <div className="loading-container">
-        <p>Loading creative works...</p>
+        <Spinner />
       </div>
     );
   }

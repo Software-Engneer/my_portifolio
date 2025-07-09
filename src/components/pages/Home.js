@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import { fetchFromAPI, API_ENDPOINTS } from "../../config/api";
 import ImageModal from "../ImageModal";
 import styles from "./Home.module.css";
+import Spinner from '../Spinner';
 
 // Get the API URL from environment variables, with fallback to deployed API
 const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://portifolio-api-1-wtml.onrender.com/api';
@@ -157,9 +158,7 @@ function Home() {
     console.log('⏳ Rendering loading state');
     return (
       <div className={styles.homeContainer}>
-        <div className={styles.loading}>
-          <p>Loading data...</p>
-        </div>
+        <Spinner />
       </div>
     );
   }
@@ -197,9 +196,7 @@ function Home() {
       <section className={styles.projectsSection} style={{ marginBottom: '1rem' }}>
         <h3 className={styles.sectionTitle}>Latest Work</h3>
         {(projectsLoading || creativeLoading) ? (
-          <div className={styles.loading}>
-            <p>Loading latest work...</p>
-          </div>
+          <Spinner />
         ) : (projectsError || creativeError) ? (
           <div className={styles.error}>
             <p>Error loading content: {projectsError || creativeError}</p>

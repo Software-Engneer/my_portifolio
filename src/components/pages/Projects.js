@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { API_ENDPOINTS, fetchFromAPI } from '../../config/api';
 import ImageModal from '../ImageModal';
+import Spinner from '../Spinner';
 import './Projects.css';
 
 const Projects = () => {
@@ -69,7 +70,7 @@ const Projects = () => {
   if (loading) {
     return (
       <div className="loading-container">
-        <p>Loading projects...</p>
+        <Spinner />
       </div>
     );
   }
