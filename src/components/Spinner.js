@@ -7,7 +7,6 @@ const Spinner = ({ size = 90, color = '#888', loading = true, style = {} }) => (
       size={size} 
       color={color} 
       loading={loading} 
-      cssOverride={{ borderWidth: '8px' }}
     />
   </div>
 );
