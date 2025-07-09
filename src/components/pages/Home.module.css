@@ -615,6 +615,11 @@
   transform: scale(1.03);
   transition: all 0.3s ease;
   overflow: hidden;
+  max-width: 420px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem 1.2rem;
+  box-sizing: border-box;
 }
 
 .heroCard::before {
