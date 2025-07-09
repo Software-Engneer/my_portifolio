@@ -1,5 +1,7 @@
 import React from 'react';
-import ClipLoader from 'react-spinners/ClipLoader';
+import ClipLoaderImport from 'react-spinners/ClipLoader';
+
+const ClipLoader = ClipLoaderImport.default || ClipLoaderImport;
 
 const Spinner = ({ size = 48, color = '#36d7b7', loading = true, style = {} }) => (
   <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: 100, ...style }}>
