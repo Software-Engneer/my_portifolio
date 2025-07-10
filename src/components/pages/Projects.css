@@ -197,6 +197,36 @@
   text-fill-color: transparent;
 }
 
+.project-date-bottom {
+  display: block;
+  margin-left: auto;
+  margin-top: 1rem;
+  text-align: right;
+  width: 100%;
+}
+
+.project-date-green {
+  color: #1abc1a;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.project-technologies-left {
+  justify-content: flex-start !important;
+  text-align: left !important;
+  width: 100%;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.tech-tag-green {
+  background: #d4fcdc !important;
+  color: #1a4d1a !important;
+  border-radius: 12px;
+  margin-right: 0.3rem;
+  margin-bottom: 0.3rem;
+}
+
 @media (max-width: 900px) {
   .projects-section {
     margin: 3rem 0;
