@@ -615,8 +615,8 @@
   transform: scale(1.03);
   transition: all 0.3s ease;
   overflow: hidden;
-  padding: 1rem 1.2rem;
-  margin-bottom: 0.5rem;
+  padding: 1rem 1.2rem 2.5rem 1.2rem; /* Keep increased bottom padding */
+  margin-bottom: 0.5rem; /* Restore original margin below hero card */
 }
 
 .heroCard::before {
