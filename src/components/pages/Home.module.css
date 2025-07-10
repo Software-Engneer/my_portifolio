@@ -609,7 +609,7 @@
 /* Hero Card with Attractive Gradient Sidebar */
 .heroCard {
   position: relative;
-  border-left: 4px solid #40e0d0;
+  border-left: 4px solid #28a745;
   background: linear-gradient(135deg, #ffffff 0%, #f8faff 100%);
   box-shadow: 0 8px 30px rgba(102, 126, 234, 0.15);
   transform: scale(1.03);
@@ -624,7 +624,7 @@
   left: 0;
   width: 4px;
   height: 100%;
-  background: linear-gradient(180deg, #40e0d0 0%, #7fffd4 100%);
+  background: linear-gradient(180deg, #28a745 0%, #a8e063 100%);
   border-radius: 0 4px 4px 0;
   box-shadow: 2px 0 10px rgba(102, 126, 234, 0.3);
 }
@@ -632,11 +632,11 @@
 .heroCard:hover {
   transform: scale(1.03);
   box-shadow: 0 8px 30px rgba(102, 126, 234, 0.15);
-  border-left-color: #40e0d0;
+  border-left-color: #28a745;
 }
 
 .heroCard:hover::before {
-  background: linear-gradient(180deg, #40e0d0 0%, #7fffd4 100%);
+  background: linear-gradient(180deg, #28a745 0%, #a8e063 100%);
   box-shadow: 2px 0 10px rgba(102, 126, 234, 0.3);
 }
 
