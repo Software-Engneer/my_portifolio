@@ -647,6 +647,7 @@
   font-weight: 700;
   position: relative;
   z-index: 1;
+  margin-bottom: 0.4rem;
 }
 
 .heroCard h4 {
@@ -654,6 +655,7 @@
   font-weight: 600;
   position: relative;
   z-index: 1;
+  margin-bottom: 0.4rem;
 }
 
 .heroCard p {
