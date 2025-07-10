@@ -51,6 +51,8 @@ const Projects = () => {
             };
           });
           setProjects(projectsWithImages);
+          // DEBUG: Log projects with imageUrl to check image sources
+          console.log('Projects with imageUrl:', projectsWithImages);
         } else {
           console.error('Invalid API response format:', response);
           setError('Invalid data format received from server');
