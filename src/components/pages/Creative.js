@@ -180,9 +180,9 @@ const Creative = () => {
                   <h3 className="creative-title">{work.title}</h3>
                   <p className="creative-description">{work.description}</p>
                   {work.technologies && work.technologies.length > 0 && (
-                    <div className="creative-tags">
+                    <div className="creative-tags creative-tags-left">
                       {work.technologies.map((tech, index) => (
-                        <span key={index} className="creative-tag">
+                        <span key={index} className="creative-tag creative-tag-green">
                           {tech}
                         </span>
                       ))}
@@ -199,7 +199,7 @@ const Creative = () => {
                     </a>
                   )}
                   {work.year && (
-                    <span className="creative-year-bottom">{work.year}</span>
+                    <span className="creative-date creative-date-green creative-date-bottom">{work.year}</span>
                   )}
                 </div>
               </div>

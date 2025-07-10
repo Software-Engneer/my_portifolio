@@ -480,10 +480,48 @@
   text-align: right;
 }
 
+.creative-date-bottom {
+  display: block;
+  margin-left: auto;
+  margin-top: 1rem;
+  text-align: right;
+  width: 100%;
+}
+
 .creative-section-title {
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 3.5rem;
   color: #333;
   font-weight: 700;
+}
+
+.creative-meta-row {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.creative-date-green {
+  color: #1abc1a;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.creative-tags-left {
+  justify-content: flex-start !important;
+  text-align: left !important;
+  width: 100%;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.creative-tag-green {
+  background: #d4fcdc !important;
+  color: #1a4d1a !important;
+  border-radius: 12px;
+  margin-right: 0.3rem;
+  margin-bottom: 0.3rem;
 } 
