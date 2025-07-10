@@ -97,15 +97,6 @@
   opacity: 0;
 }
 
-.project-image img[src] {
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.project-image img[src]:not([src=""]) {
-  opacity: 1;
-}
-
 .project-image img[src]:not([src=""]) + .project-image::before {
   opacity: 0;
 }
