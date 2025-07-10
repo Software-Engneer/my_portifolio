@@ -50,6 +50,8 @@
   overflow: hidden;
   position: relative;
   background: #f8f9fa;
+  border: 2px solid red; /* DEBUG: highlight image area */
+  background-color: #ffeaea; /* DEBUG: light red background for visibility */
 }
 
 .project-image::before {
