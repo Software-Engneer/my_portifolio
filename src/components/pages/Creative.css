@@ -62,7 +62,7 @@
 
 .creative-image {
   width: 100%;
-  height: 240px;
+  height: 260px;
   overflow: hidden;
   position: relative;
   background-color: #f8f9fa;
@@ -229,7 +229,7 @@
     font-size: 1.2rem;
   }
   .creative-image {
-    height: 220px;
+    height: 240px;
   }
 }
 
@@ -248,7 +248,7 @@
     padding: 0 1rem;
   }
   .creative-image {
-    height: 190px;
+    height: 210px;
   }
   .creative-title {
     font-size: 1.1rem;
@@ -275,7 +275,7 @@
     padding: 0;
   }
   .creative-image {
-    height: 190px;
+    height: 210px;
   }
   .creative-card {
     min-height: 340px;
@@ -318,7 +318,7 @@
     padding: 0.5rem 0.5vw;
   }
   .creative-image {
-    height: 200px;
+    height: 220px;
   }
   .creative-card {
     min-height: 320px;
