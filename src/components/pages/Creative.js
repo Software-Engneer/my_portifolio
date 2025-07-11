@@ -175,6 +175,9 @@ const Creative = () => {
                     onError={(e) => handleImageError(e, work.id)}
                     loading="lazy"
                   />
+                  {work.featured && (
+                    <div className="featured-badge">Featured</div>
+                  )}
                 </div>
                 <div className="creative-content">
                   <h3 className="creative-title">{work.title}</h3>
