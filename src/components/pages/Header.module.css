@@ -234,7 +234,7 @@
 
 /* Get in Touch button for mobile menu */
 .getInTouchButton {
-  background: #003366;
+  background: linear-gradient(90deg, #0ea5e9 0%, #38bdf8 100%);
   color: #fff;
   margin-top: 1rem;
   padding: 1rem;
