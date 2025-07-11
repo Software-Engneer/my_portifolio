@@ -106,7 +106,6 @@
   border-radius: 15px;
   font-size: 0.75rem;
   font-weight: 600;
-  text-transform: uppercase;
   letter-spacing: 0.5px;
   z-index: 4;
   box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
@@ -249,7 +248,7 @@
     padding: 0 1rem;
   }
   .creative-image {
-    height: 160px;
+    height: 150px;
   }
   .creative-title {
     font-size: 1.1rem;
@@ -276,7 +275,7 @@
     padding: 0;
   }
   .creative-image {
-    height: 200px;
+    height: 150px;
   }
   .creative-card {
     min-height: 340px;
@@ -319,7 +318,7 @@
     padding: 0.5rem 0.5vw;
   }
   .creative-image {
-    height: 180px;
+    height: 160px;
   }
   .creative-card {
     min-height: 320px;

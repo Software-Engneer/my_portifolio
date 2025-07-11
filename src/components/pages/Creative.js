@@ -176,7 +176,7 @@ const Creative = () => {
                     loading="lazy"
                   />
                   {work.featured && (
-                    <div className="featured-badge">Featured</div>
+                    <div className="featured-badge">featured</div>
                   )}
                 </div>
                 <div className="creative-content">
