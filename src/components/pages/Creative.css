@@ -18,7 +18,7 @@
 
 .creative-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -28,7 +28,7 @@
 
 @media (max-width: 900px) {
   .creative-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
     padding: 0 1.5rem;
   }
@@ -62,7 +62,7 @@
 
 .creative-image {
   width: 100%;
-  height: 260px;
+  height: 200px;
   overflow: hidden;
   position: relative;
   background-color: #f8f9fa;
@@ -229,7 +229,7 @@
     font-size: 1.2rem;
   }
   .creative-image {
-    height: 240px;
+    height: 200px;
   }
 }
 
@@ -248,7 +248,7 @@
     padding: 0 1rem;
   }
   .creative-image {
-    height: 210px;
+    height: 180px;
   }
   .creative-title {
     font-size: 1.1rem;
@@ -318,7 +318,7 @@
     padding: 0.5rem 0.5vw;
   }
   .creative-image {
-    height: 220px;
+    height: 160px;
   }
   .creative-card {
     min-height: 320px;
@@ -363,7 +363,7 @@
 
 @media (min-width: 900px) {
   .creative-grid {
-    grid-template-columns: repeat(3, 1fr) !important;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
     gap: 2rem;
     max-width: 1200px;
     margin: 0 auto;
