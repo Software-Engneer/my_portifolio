@@ -249,7 +249,7 @@
 }
 
 .getInTouchButton:hover {
-  background: #0050b3;
+  background: linear-gradient(90deg, #0ea5e9 0%, #38bdf8 100%);
   box-shadow: 0 6px 20px rgba(135, 206, 235, 0.5);
   transform: translateY(-2px);
 } 
