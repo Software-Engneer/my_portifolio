@@ -402,6 +402,7 @@
   gap: 1rem;
   margin-bottom: 1rem;
   align-items: center;
+  justify-content: space-between;
 }
 
 .workType {
@@ -450,7 +451,8 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-top: auto;
+  margin-top: 0;
+  align-items: center;
 }
 
 .techTag {
@@ -542,9 +544,20 @@
   }
 
   .workMeta {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
     gap: 0.5rem;
+    justify-content: space-between;
+  }
+  
+  .workMeta .technologies {
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+  
+  .workMeta .techTag {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
   }
 }
 
@@ -566,6 +579,21 @@
 
   .cardImage {
     height: 160px;
+  }
+  
+  .workMeta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+  
+  .workMeta .technologies {
+    gap: 0.2rem;
+  }
+  
+  .workMeta .techTag {
+    font-size: 0.65rem;
+    padding: 0.15rem 0.4rem;
   }
 }
 

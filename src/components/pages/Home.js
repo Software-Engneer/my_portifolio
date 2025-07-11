@@ -271,21 +271,31 @@ function Home() {
                       <h4 className={styles.cardTitle}>{work.title}</h4>
                       <p className={styles.cardDescription}>{work.description}</p>
                       
-                      {/* Work type and year for creative works */}
+                      {/* Work type and technologies for creative works */}
                       {work.type === 'creative' && (
                         <div className={styles.workMeta}>
                           <span className={styles.workType}>{work.type || 'Creative Work'}</span>
+                          {work.technologies && work.technologies.length > 0 && (
+                            <div className={styles.technologies}>
+                              {work.technologies.slice(0, 2).map((tech, index) => (
+                                <span key={index} className={styles.techTag}>{tech}</span>
+                              ))}
+                              {work.technologies.length > 2 && (
+                                <span className={styles.techTag}>+{work.technologies.length - 2}</span>
+                              )}
+                            </div>
+                          )}
                         </div>
                       )}
                       
-                      {/* Technologies */}
-                      {work.technologies && work.technologies.length > 0 && (
+                      {/* Technologies for projects */}
+                      {work.type === 'project' && work.technologies && work.technologies.length > 0 && (
                         <div className={styles.technologies}>
-                          {work.technologies.slice(0, work.type === 'project' ? 3 : 2).map((tech, index) => (
+                          {work.technologies.slice(0, 3).map((tech, index) => (
                             <span key={index} className={styles.techTag}>{tech}</span>
                           ))}
-                          {work.technologies.length > (work.type === 'project' ? 3 : 2) && (
-                            <span className={styles.techTag}>+{work.technologies.length - (work.type === 'project' ? 3 : 2)}</span>
+                          {work.technologies.length > 3 && (
+                            <span className={styles.techTag}>+{work.technologies.length - 3}</span>
                           )}
                         </div>
                       )}
