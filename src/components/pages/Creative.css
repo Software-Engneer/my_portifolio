@@ -62,7 +62,7 @@
 
 .creative-image {
   width: 100%;
-  height: 200px;
+  height: 220px;
   overflow: hidden;
   position: relative;
   background-color: #f8f9fa;
@@ -72,7 +72,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: top center;
   border-radius: 8px 8px 0 0;
   filter: none;
   box-shadow: none;
@@ -229,7 +229,7 @@
     font-size: 1.2rem;
   }
   .creative-image {
-    height: 180px;
+    height: 200px;
   }
 }
 
@@ -248,7 +248,7 @@
     padding: 0 1rem;
   }
   .creative-image {
-    height: 150px;
+    height: 170px;
   }
   .creative-title {
     font-size: 1.1rem;
@@ -275,7 +275,7 @@
     padding: 0;
   }
   .creative-image {
-    height: 150px;
+    height: 170px;
   }
   .creative-card {
     min-height: 340px;
@@ -318,7 +318,7 @@
     padding: 0.5rem 0.5vw;
   }
   .creative-image {
-    height: 160px;
+    height: 180px;
   }
   .creative-card {
     min-height: 320px;
