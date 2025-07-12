@@ -15,7 +15,7 @@
 }
 
 .logo {
-  color: #ffffff;
+  color: #87CEEB;
   font-size: 2rem;
   font-weight: 700;
   text-decoration: none;
@@ -23,7 +23,7 @@
 }
 
 .logo:hover {
-  color: #64ffda;
+  color: #5F9EA0;
 }
 
 .nav {
