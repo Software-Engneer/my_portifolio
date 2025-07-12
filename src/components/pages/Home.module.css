@@ -15,7 +15,7 @@
 }
 
 .logo {
-  color: #87CEEB;
+  color: #00BFFF;
   font-size: 2rem;
   font-weight: 700;
   text-decoration: none;
@@ -23,7 +23,7 @@
 }
 
 .logo:hover {
-  color: #5F9EA0;
+  color: #0099CC;
 }
 
 .nav {
@@ -638,9 +638,9 @@
 /* Hero Card with Attractive Gradient Sidebar */
 .heroCard {
   position: relative;
-  border-left: 4px solid #87CEEB;
+  border-left: 4px solid #00BFFF;
   background: linear-gradient(135deg, #ffffff 0%, #f8faff 100%);
-  box-shadow: 0 8px 30px rgba(135, 206, 235, 0.15);
+  box-shadow: 0 8px 30px rgba(0, 191, 255, 0.15);
   transform: scale(1.03);
   transition: all 0.3s ease;
   overflow: hidden;
@@ -655,24 +655,24 @@
   left: 0;
   width: 4px;
   height: 100%;
-  background: linear-gradient(180deg, #87CEEB 0%, #5F9EA0 100%);
+  background: linear-gradient(180deg, #00BFFF 0%, #0099CC 100%);
   border-radius: 0 4px 4px 0;
-  box-shadow: 2px 0 10px rgba(135, 206, 235, 0.3);
+  box-shadow: 2px 0 10px rgba(0, 191, 255, 0.3);
 }
 
 .heroCard:hover {
   transform: scale(1.03);
-  box-shadow: 0 8px 30px rgba(135, 206, 235, 0.15);
-  border-left-color: #87CEEB;
+  box-shadow: 0 8px 30px rgba(0, 191, 255, 0.15);
+  border-left-color: #00BFFF;
 }
 
 .heroCard:hover::before {
-  background: linear-gradient(180deg, #87CEEB 0%, #5F9EA0 100%);
-  box-shadow: 2px 0 10px rgba(135, 206, 235, 0.3);
+  background: linear-gradient(180deg, #00BFFF 0%, #0099CC 100%);
+  box-shadow: 2px 0 10px rgba(0, 191, 255, 0.3);
 }
 
 .heroCard h3 {
-  color: #2E86AB;
+  color: #0066CC;
   font-weight: 700;
   position: relative;
   z-index: 1;
@@ -680,7 +680,7 @@
 }
 
 .heroCard h4 {
-  color: #2E86AB;
+  color: #0066CC;
   font-weight: 600;
   position: relative;
   z-index: 1;
