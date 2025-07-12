@@ -139,18 +139,19 @@
 }
 
 .tech-tag {
-  background: linear-gradient(135deg, #64ffda, #4cd6b3);
-  color: #1a1a1a;
+  background: #00BFFF;
+  color: #ffffff;
   padding: 0.3rem 0.6rem;
-  border-radius: 12px;
+  border-radius: 8px;
   font-size: 0.75rem;
   font-weight: 600;
   transition: all 0.3s ease;
 }
 
 .tech-tag:hover {
-  transform: translateY(0);
-  box-shadow: none;
+  background: #0099CC;
+  transform: translateY(-1px);
+  color: #ffffff;
 }
 
 .project-link-row {
@@ -163,7 +164,7 @@
 
 .project-link-text {
   font-size: 1rem;
-  color: #333;
+  color: #00BFFF;
   margin: 0;
 }
 
@@ -213,9 +214,9 @@
 }
 
 .tech-tag-green {
-  background: #d4fcdc !important;
-  color: #1a4d1a !important;
-  border-radius: 12px;
+  background: #00BFFF !important;
+  color: #ffffff !important;
+  border-radius: 8px;
   margin-right: 0.3rem;
   margin-bottom: 0.3rem;
 }

@@ -18,7 +18,7 @@
 
 .creative-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -28,7 +28,7 @@
 
 @media (max-width: 900px) {
   .creative-grid {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
     padding: 0 1.5rem;
   }
@@ -37,7 +37,7 @@
 @media (max-width: 600px) {
   .creative-grid {
     grid-template-columns: 1fr;
-    gap: 1.2rem;
+    gap: 1.5rem;
     padding: 0 1rem;
   }
 }
@@ -168,18 +168,19 @@
 }
 
 .creative-tag {
-  background: linear-gradient(135deg, #64ffda, #4cd6b3);
-  color: #1a1a1a;
+  background: #00BFFF;
+  color: #ffffff;
   padding: 0.3rem 0.6rem;
-  border-radius: 12px;
+  border-radius: 8px;
   font-size: 0.75rem;
   font-weight: 600;
   transition: all 0.3s ease;
 }
 
 .creative-tag:hover {
-  transform: translateY(0);
-  box-shadow: none;
+  background: #0099CC;
+  transform: translateY(-1px);
+  color: #ffffff;
 }
 
 .view-more-link {
@@ -317,7 +318,7 @@
 
 @media (min-width: 900px) {
   .creative-grid {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    grid-template-columns: repeat(3, 1fr) !important;
     gap: 2rem;
     max-width: 1200px;
     margin: 0 auto;
@@ -496,9 +497,9 @@
 }
 
 .creative-tag-green {
-  background: #d4fcdc !important;
-  color: #1a4d1a !important;
-  border-radius: 12px;
+  background: #00BFFF !important;
+  color: #ffffff !important;
+  border-radius: 8px;
   margin-right: 0.3rem;
   margin-bottom: 0.3rem;
 } 
