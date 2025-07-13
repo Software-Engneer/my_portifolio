@@ -94,12 +94,14 @@
   transform-origin: left;
 }
 
+
+
 .menuButton {
   display: none;
   flex-direction: column;
   justify-content: space-between;
-  width: 2.2rem;
-  height: 0.9rem;
+  width: 0.8rem;
+  height: 1.2rem;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -114,11 +116,13 @@
   transform: translateY(-2px);
 }
 
-.menuButton span {
-  width: 100%;
-  height: 0.1rem;
+
+
+.menuButton .dot {
+  width: 0.25rem;
+  height: 0.25rem;
   background: #000;
-  border-radius: 1px;
+  border-radius: 50%;
   transition: all 0.3s ease;
   display: block;
   transform-origin: center;
@@ -126,27 +130,7 @@
   text-shadow: none;
 }
 
-.menuButton span:nth-child(1),
-.menuButton span:nth-child(2),
-.menuButton span:nth-child(3) {
-  height: 0.1rem !important;
-  background: #000 !important;
-  border-radius: 1px !important;
-  opacity: 1 !important;
-  filter: none !important;
-}
 
-.menuButton.active span:nth-child(1) {
-  transform: translateY(9px) rotate(45deg);
-  background: #333 !important;
-}
-.menuButton.active span:nth-child(2) {
-  opacity: 0;
-}
-.menuButton.active span:nth-child(3) {
-  transform: translateY(-9px) rotate(-45deg);
-  background: #333 !important;
-}
 
 @media (max-width: 900px) {
   .headerContent {
@@ -334,4 +318,6 @@
   background: linear-gradient(90deg, #0ea5e9 0%, #38bdf8 100%);
   box-shadow: 0 6px 20px rgba(135, 206, 235, 0.5);
   transform: translateY(-2px);
-} 
+}
+
+ 
