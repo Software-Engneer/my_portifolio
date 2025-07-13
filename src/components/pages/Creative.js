@@ -165,8 +165,8 @@ const Creative = () => {
       ) : (
         <>
           <div className="creative-grid">
-            {(showAll ? activeCreativeWorks : activeCreativeWorks.slice(0, 4)).map((work) => (
-              <div className="creative-card" key={work.id}>
+            {(showAll ? activeCreativeWorks : activeCreativeWorks.slice(0, 4)).map((work, index) => (
+              <div className="creative-card" key={work.id || `creative-${index}`}>
                 <div className="creative-image">
                   <img 
                     src={work.imageUrl || work.image} 
@@ -185,7 +185,7 @@ const Creative = () => {
                   {work.technologies && work.technologies.length > 0 && (
                     <div className="creative-tags creative-tags-left">
                       {work.technologies.map((tech, index) => (
-                        <span key={index} className="creative-tag creative-tag-green">
+                        <span key={`${work.id}-tech-${index}`} className="creative-tag creative-tag-green">
                           {tech}
                         </span>
                       ))}

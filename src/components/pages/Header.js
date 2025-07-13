@@ -1,13 +1,19 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom";
 import styles from "./Header.module.css";
 import Contact from "./Contact";
 import Modal from "../Modal";
 
 const Header = () => {
+  const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showContact, setShowContact] = useState(false);
   const navRef = useRef(null);
+
+  const isActive = (path) => {
+    return location.pathname === path ? styles.active : '';
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -74,31 +80,31 @@ const Header = () => {
         >
           <ul className={styles.navList}>
             <li>
-              <a href="/" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>
+              <a href="/" className={`${styles.navLink} ${isActive('/')}`} onClick={() => setIsMenuOpen(false)}>
                 <span className={styles.linkText}>Home</span>
                 <span className={styles.linkUnderline}></span>
               </a>
             </li>
             <li>
-              <a href="/projects" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>
+              <a href="/projects" className={`${styles.navLink} ${isActive('/projects')}`} onClick={() => setIsMenuOpen(false)}>
                 <span className={styles.linkText}>Projects</span>
                 <span className={styles.linkUnderline}></span>
               </a>
             </li>
             <li>
-              <a href="/creative" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>
+              <a href="/creative" className={`${styles.navLink} ${isActive('/creative')}`} onClick={() => setIsMenuOpen(false)}>
                 <span className={styles.linkText}>Creative</span>
                 <span className={styles.linkUnderline}></span>
               </a>
             </li>
             <li>
-              <a href="/contact" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>
+              <a href="/contact" className={`${styles.navLink} ${isActive('/contact')}`} onClick={() => setIsMenuOpen(false)}>
                 <span className={styles.linkText}>Contact</span>
                 <span className={styles.linkUnderline}></span>
               </a>
             </li>
             <li>
-              <a href="/about" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>
+              <a href="/about" className={`${styles.navLink} ${isActive('/about')}`} onClick={() => setIsMenuOpen(false)}>
                 <span className={styles.linkText}>About</span>
                 <span className={styles.linkUnderline}></span>
               </a>
