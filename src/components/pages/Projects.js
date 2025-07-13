@@ -115,7 +115,7 @@ const Projects = () => {
       ) : (
         <>
           <div className="projects-grid">
-            {(showAll ? activeProjects : activeProjects.slice(0, 4)).map((project) => (
+            {(showAll ? activeProjects : activeProjects.slice(0, 6)).map((project) => (
               <div className="project-card" key={project.id}>
                 <div className="project-image">
                   <img 
@@ -173,7 +173,7 @@ const Projects = () => {
               </div>
             ))}
           </div>
-          {activeProjects.length > 4 && (
+          {activeProjects.length > 6 && (
             <div className="explore-more-container">
               <button 
                 onClick={toggleShowAll} 

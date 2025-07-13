@@ -165,7 +165,7 @@ const Creative = () => {
       ) : (
         <>
           <div className="creative-grid">
-            {(showAll ? activeCreativeWorks : activeCreativeWorks.slice(0, 4)).map((work, index) => (
+            {(showAll ? activeCreativeWorks : activeCreativeWorks.slice(0, 6)).map((work, index) => (
               <div className="creative-card" key={work.id || `creative-${index}`}>
                 <div className="creative-image">
                   <img 
@@ -208,7 +208,7 @@ const Creative = () => {
               </div>
             ))}
           </div>
-          {activeCreativeWorks.length > 4 && (
+          {activeCreativeWorks.length > 6 && (
             <div className="explore-more-container">
               <button 
                 onClick={toggleShowAll} 
