@@ -474,6 +474,44 @@
   color: #ffffff;
 }
 
+/* Project Link Styles */
+.projectLinkRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.1em;
+  margin-top: 1em;
+}
+
+.projectLinkText {
+  font-size: 1rem;
+  color: #00BFFF;
+  margin: 0;
+}
+
+.projectLink {
+  color: #38bdf8;
+  background: linear-gradient(90deg, #38bdf8 0%, #0ea5e9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  font-size: 1.3rem;
+  text-shadow: none;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+}
+
+.projectLink:hover {
+  color: #0ea5e9;
+  background: linear-gradient(90deg, #0ea5e9 0%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
 /* Responsive Design */
 @media (max-width: 900px) {
   .projectsSection,
@@ -563,6 +601,18 @@
     font-size: 0.7rem;
     padding: 0.2rem 0.5rem;
   }
+  
+  .projectLinkRow {
+    margin-top: 0.5em;
+  }
+  
+  .projectLinkText {
+    font-size: 0.9rem;
+  }
+  
+  .projectLink {
+    font-size: 1.1rem;
+  }
 }
 
 @media (max-width: 400px) {
@@ -598,6 +648,18 @@
   .workMeta .techTag {
     font-size: 0.65rem;
     padding: 0.15rem 0.4rem;
+  }
+  
+  .projectLinkRow {
+    margin-top: 0.3em;
+  }
+  
+  .projectLinkText {
+    font-size: 0.8rem;
+  }
+  
+  .projectLink {
+    font-size: 1rem;
   }
 }
 

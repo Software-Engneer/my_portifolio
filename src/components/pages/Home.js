@@ -233,33 +233,7 @@ function Home() {
                         }}
                       />
                       
-                      {/* Project links */}
-                      {work.type === 'project' && work.projectLink && (
-                        <a 
-                          href={work.projectLink} 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className={styles.websiteLink}
-                          title="View Live Project"
-                        >
-                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                          </svg>
-                        </a>
-                      )}
-                      {work.type === 'project' && !work.projectLink && work.githubLink && (
-                        <a 
-                          href={work.githubLink} 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className={styles.websiteLink}
-                          title="View Source Code"
-                        >
-                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                          </svg>
-                        </a>
-                      )}
+
                       
                       {/* Creative work featured badge */}
                       {work.type === 'creative' && work.featured && (
@@ -297,6 +271,38 @@ function Home() {
                           {work.technologies.length > 3 && (
                             <span className={styles.techTag}>+{work.technologies.length - 3}</span>
                           )}
+                        </div>
+                      )}
+                      
+                      {/* View Project link for projects */}
+                      {work.type === 'project' && (
+                        <div className={styles.projectLinkRow}>
+                          <span className={styles.projectLinkText}>View Project</span>
+                          <a
+                            href={work.projectLink || '/projects'}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={styles.projectLink}
+                            aria-label="View Project"
+                            onClick={e => {
+                              if (!work.projectLink) {
+                                e.preventDefault();
+                                window.location.href = '/projects';
+                              }
+                            }}
+                          >
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="url(#arrow-gradient)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{display: 'inline', verticalAlign: 'middle'}}>
+                              <defs>
+                                <linearGradient id="arrow-gradient" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+                                  <stop stopColor="#38bdf8" />
+                                  <stop offset="1" stopColor="#0ea5e9" />
+                                </linearGradient>
+                              </defs>
+                              <rect x="4" y="4" width="16" height="16" rx="3" stroke="url(#arrow-gradient)" strokeWidth="1.5"/>
+                              <path d="M9 15L15 9" />
+                              <path d="M11 9h4v4" />
+                            </svg>
+                          </a>
                         </div>
                       )}
                     </div>
