@@ -1,0 +1,105 @@
+.get-in-touch-btn {
+  background: #003366;
+  color: #fff;
+  margin-top: 2rem;
+  padding: 1rem;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(135, 206, 235, 0.3);
+}
+.get-in-touch-btn:hover {
+  background: #0050b3;
+  box-shadow: 0 6px 20px rgba(135, 206, 235, 0.5);
+  transform: translateY(-2px);
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: #fff;
+  position: relative;
+  z-index: 10;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.nav-menu-button {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 20;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(135, 206, 235, 0.3);
+}
+
+.nav-menu-button:hover {
+  box-shadow: 0 6px 20px rgba(135, 206, 235, 0.5);
+  transform: translateY(-2px);
+}
+
+.nav-menu-button span {
+  display: block;
+  height: 1px !important;
+  width: 80% !important;
+  background: #003366 !important;
+  margin: 2px auto !important;
+  border-radius: 0.5px !important;
+  transition: 0.3s;
+}
+
+@media (max-width: 900px) {
+  .nav-menu-button {
+    display: flex;
+  }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100vw;
+    flex-direction: column;
+    background: #fff;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    padding: 2rem 1rem 1rem 1rem;
+    gap: 1.5rem;
+    z-index: 15;
+  }
+  .nav-links.open {
+    display: flex;
+  }
+}
+
+/* Auth button styles */
+.auth-button {
+  background: #003366;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(135, 206, 235, 0.3);
+}
+
+.auth-button:hover {
+  background: #0050b3;
+  box-shadow: 0 6px 20px rgba(135, 206, 235, 0.5);
+  transform: translateY(-2px);
+} 

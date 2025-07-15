@@ -1,0 +1,267 @@
+.contactContainer {
+  padding-top: 90px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 8vw;
+  box-sizing: border-box;
+}
+
+.contactContainer h2 {
+  font-size: 2.8rem;
+  color: #333;
+  margin-bottom: 4rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.contactContent {
+  display: flex;
+  justify-content: center;
+}
+
+.contactInfo {
+  background: white;
+  border-radius: 16px;
+  padding: 4rem 4vw;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 800px;
+  box-sizing: border-box;
+}
+
+.infoCard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5vw;
+}
+
+.infoItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 2vw;
+  background: #f8f9fa;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.infoItem:hover {
+  transform: translateY(-5px);
+}
+
+.infoItem i {
+  font-size: 2.5rem;
+  color: #64ffda;
+  margin-bottom: 1.5rem;
+}
+
+.infoItem h4 {
+  color: #333;
+  font-size: 1.3rem;
+  margin-bottom: 0.75rem;
+}
+
+.infoItem p,
+.infoItem a {
+  color: #666;
+  text-decoration: none;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.infoItem a:hover {
+  color: #64ffda;
+}
+
+@media (max-width: 900px) {
+  .contactContainer {
+    padding: 3rem 4vw;
+  }
+  .contactContainer h2 {
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+  }
+  .contactInfo {
+    padding: 2.5rem 2.5vw;
+  }
+  .infoCard {
+    gap: 2vw;
+  }
+  .infoItem {
+    padding: 1.5rem 1.5vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .contactContainer {
+    padding: 2.5rem 3vw;
+  }
+  .contactContainer h2 {
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+  }
+  .contactInfo {
+    padding: 2rem 2vw;
+  }
+  .infoCard {
+    gap: 1.5vw;
+  }
+  .infoItem {
+    padding: 1.5rem 1.5vw;
+  }
+}
+
+@media (max-width: 400px) {
+  .contactContainer {
+    padding: 2rem 2vw;
+  }
+  .contactContainer h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+  }
+  .contactInfo {
+    padding: 1.5rem 1.5vw;
+  }
+  .infoCard {
+    gap: 1vw;
+  }
+  .infoItem {
+    padding: 1rem 1vw;
+  }
+}
+
+.contactForm {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  padding: 2.5rem 2rem;
+  max-width: 420px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.nameRow {
+  display: flex;
+  gap: 1rem;
+}
+
+.nameRow .input {
+  flex: 1;
+}
+
+.securityContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border: 2px solid #ff9800;
+  border-radius: 12px;
+  padding: 1rem;
+  background: #fff3e0;
+  margin-bottom: 1rem;
+}
+
+.securityAlert {
+  background: #ff9800;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.securityLabel {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: 1.5px solid #d1d5db;
+  border-radius: 12px;
+  font-size: 1.08rem;
+  background: #f8fafc;
+  color: #222;
+  transition: border 0.2s, box-shadow 0.2s;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.input:focus,
+.textarea:focus {
+  border-color: #64ffda;
+  box-shadow: 0 0 0 2px #64ffda33;
+}
+
+.textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.submitBtn {
+  background: linear-gradient(90deg, #38bdf8 0%, #0ea5e9 100%);
+  color: white;
+  font-weight: 600;
+  padding: 0.85rem 0;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(135, 206, 235, 0.3);
+}
+
+.submitBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  box-shadow: 0 2px 8px rgba(135, 206, 235, 0.2);
+}
+
+.submitBtn:hover:not(:disabled) {
+  background: linear-gradient(90deg, #0ea5e9 0%, #38bdf8 100%);
+  color: white;
+  box-shadow: 0 6px 20px rgba(135, 206, 235, 0.5);
+  transform: translateY(-2px);
+}
+
+.successMsg {
+  color: #009688;
+  background: #e0f7fa;
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  margin-top: 0.5rem;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.errorMsg {
+  color: #d32f2f;
+  background: #ffebee;
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  margin-top: 0.5rem;
+  text-align: center;
+  font-size: 1rem;
+}
+
+@media (max-width: 600px) {
+  .contactForm {
+    padding: 1.2rem 0.5rem;
+    max-width: 98vw;
+  }
+  .nameRow {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  .input,
+  .textarea {
+    font-size: 1rem;
+    padding: 0.7rem 0.7rem;
+  }
+} 

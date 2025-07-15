@@ -1,0 +1,126 @@
+.messagesContainer {
+  padding: 2rem 1.5rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  max-width: 420px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.messagesForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.nameRow {
+  display: flex;
+  gap: 1rem;
+}
+
+.nameRow .input {
+  flex: 1;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: 1.5px solid #d1d5db;
+  border-radius: 12px;
+  font-size: 1.08rem;
+  background: #f8fafc;
+  color: #222;
+  transition: border 0.2s, box-shadow 0.2s;
+  outline: none;
+  box-sizing: border-box;
+}
+.input:focus,
+.textarea:focus {
+  border-color: #64ffda;
+  box-shadow: 0 0 0 2px #64ffda33;
+}
+.textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.submitBtn {
+  background: linear-gradient(90deg, #64ffda 0%, #1de9b6 100%);
+  color: #003366;
+  font-weight: 600;
+  padding: 0.85rem 0;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(135, 206, 235, 0.3);
+}
+.submitBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  box-shadow: 0 2px 8px rgba(135, 206, 235, 0.2);
+}
+.submitBtn:hover:not(:disabled) {
+  background: linear-gradient(90deg, #1de9b6 0%, #64ffda 100%);
+  color: #003366;
+  box-shadow: 0 6px 20px rgba(135, 206, 235, 0.5);
+  transform: translateY(-2px);
+}
+
+.successMsg {
+  color: #009688;
+  background: #e0f7fa;
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  margin-top: 0.5rem;
+  text-align: center;
+  font-size: 1rem;
+}
+.errorMsg {
+  color: #d32f2f;
+  background: #ffebee;
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  margin-top: 0.5rem;
+  text-align: center;
+  font-size: 1rem;
+}
+.closeBtn {
+  margin-top: 1.2rem;
+  background: #003366;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 1.2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  align-self: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(135, 206, 235, 0.3);
+}
+.closeBtn:hover {
+  background: #001f4d;
+  box-shadow: 0 6px 20px rgba(135, 206, 235, 0.5);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+  .messagesContainer {
+    padding: 1.2rem 0.5rem;
+    max-width: 98vw;
+  }
+  .nameRow {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  .input,
+  .textarea {
+    font-size: 1rem;
+    padding: 0.7rem 0.7rem;
+  }
+} 

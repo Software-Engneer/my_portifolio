@@ -1,0 +1,53 @@
+/* Forced Colors Mode (High Contrast) Styles */
+@media (forced-colors: active) {
+  /* Navigation */
+  .navigation {
+    border: 1px solid CanvasText;
+  }
+
+  .nav-brand a {
+    color: CanvasText;
+  }
+
+  .nav-links a {
+    color: CanvasText;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: LinkText;
+  }
+
+  .nav-links a.active::after {
+    background-color: LinkText;
+  }
+
+  .auth-button {
+    background-color: ButtonFace;
+    color: ButtonText;
+    border: 1px solid ButtonText;
+  }
+
+  .auth-button:hover {
+    background-color: Highlight;
+    color: HighlightText;
+  }
+
+  /* Social Links */
+  .social-links a {
+    color: LinkText;
+  }
+
+  .social-links a:hover {
+    color: ActiveText;
+  }
+
+  .social-links a:visited {
+    color: VisitedText;
+  }
+
+  /* Footer */
+  .footer-text {
+    color: CanvasText;
+  }
+} 

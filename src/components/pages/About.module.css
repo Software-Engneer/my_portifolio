@@ -1,0 +1,221 @@
+.aboutContainer {
+  padding-top: 90px;
+  min-height: calc(100vh - 80px);
+  background-color: #f8f9fa;
+  padding: 4rem 8vw;
+  box-sizing: border-box;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.aboutContent {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.qualificationSection,
+.contactSection {
+  margin-bottom: 5rem;
+}
+
+.qualificationSection h2,
+.contactSection h2 {
+  font-size: 2.8rem;
+  color: #333;
+  margin-bottom: 4rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.qualificationCard {
+  background: white;
+  border-radius: 16px;
+  padding: 4rem 4vw;
+  margin-bottom: 3rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.qualificationCard h3 {
+  color: #2d2d2d;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #64ffda;
+  padding-bottom: 0.75rem;
+  text-align: center;
+}
+
+.qualificationItem {
+  margin-bottom: 2rem;
+}
+
+.qualificationItem h4 {
+  color: #333;
+  font-size: 1.3rem;
+  margin-bottom: 0.75rem;
+  text-align: center;
+}
+
+.institution {
+  color: #666;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.year {
+  color: #888;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.skillsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5vw;
+  margin-top: 2rem;
+}
+
+.skillCategory {
+  background: #f8f9fa;
+  padding: 2rem 2vw;
+  border-radius: 10px;
+}
+
+.skillCategory h4 {
+  color: #333;
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #64ffda;
+  padding-bottom: 0.75rem;
+  text-align: center;
+}
+
+.skillCategory ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.skillCategory li {
+  color: #666;
+  margin-bottom: 0.75rem;
+  padding-left: 1.5rem;
+  position: relative;
+  font-size: 1.1rem;
+}
+
+.skillCategory li::before {
+  content: "▹";
+  position: absolute;
+  left: 0;
+  color: #64ffda;
+}
+
+.contactCard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5vw;
+  background: white;
+  border-radius: 12px;
+  padding: 3rem 3vw;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contactItem {
+  text-align: center;
+  padding: 2rem 2vw;
+  background: #f8f9fa;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.contactItem:hover {
+  transform: translateY(-5px);
+}
+
+.contactItem i {
+  font-size: 2.5rem;
+  color: #64ffda;
+  margin-bottom: 1.5rem;
+}
+
+.contactItem h4 {
+  color: #333;
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.contactItem p,
+.contactItem a {
+  color: #666;
+  text-decoration: none;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.contactItem a:hover {
+  color: #64ffda;
+}
+
+@media (max-width: 900px) {
+  .aboutContainer {
+    padding: 3rem 5vw;
+  }
+  .qualificationSection h2,
+  .contactSection h2 {
+    font-size: 2.2rem;
+    margin-bottom: 3rem;
+  }
+  .qualificationCard h3 {
+    font-size: 1.6rem;
+  }
+  .skillsGrid, .contactCard {
+    gap: 2.5vw;
+  }
+  .qualificationCard, .contactCard {
+    padding: 3rem 3vw;
+    margin-bottom: 2.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .aboutContainer {
+    padding: 2.5rem 4vw;
+  }
+  .qualificationSection h2,
+  .contactSection h2 {
+    font-size: 1.8rem;
+    margin-bottom: 2.5rem;
+  }
+  .qualificationCard, .contactCard {
+    padding: 2.5rem 2.5vw;
+    margin-bottom: 2rem;
+  }
+  .skillsGrid, .contactCard {
+    gap: 2vw;
+  }
+  .contactItem {
+    padding: 2rem 2vw;
+  }
+}
+
+@media (max-width: 400px) {
+  .aboutContainer {
+    padding: 2rem 3vw;
+  }
+  .qualificationSection h2,
+  .contactSection h2 {
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+  }
+  .qualificationCard, .contactCard {
+    padding: 2rem 2vw;
+    margin-bottom: 1.5rem;
+  }
+  .skillsGrid, .contactCard {
+    gap: 1.5vw;
+  }
+  .contactItem {
+    padding: 1.5rem 1.5vw;
+  }
+} 
