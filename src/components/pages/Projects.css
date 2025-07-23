@@ -18,25 +18,23 @@
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
   padding: 0 2rem;
-  box-sizing: border-box;
+  max-width: 100%;
+  margin: 0 auto;
+  transition: all 0.3s ease;
 }
 
 .project-card {
-  min-height: 400px;
-  max-height: 400px;
   background: white;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
+  position: relative;
   display: flex;
   flex-direction: column;
-  position: relative;
 }
 
 .project-card:hover {
@@ -45,10 +43,9 @@
 }
 
 .project-image {
-  width: 100%;
-  height: 260px;
-  overflow: hidden;
   position: relative;
+  height: 200px;
+  overflow: hidden;
   background: #f8f9fa;
 }
 
@@ -70,12 +67,8 @@
   height: 100%;
   object-fit: cover;
   object-position: top center;
-  border-radius: 8px 8px 0 0;
-  filter: none;
-  box-shadow: none;
-  display: block;
-  position: relative;
-  z-index: 2;
+  transition: transform 0.3s ease;
+  cursor: pointer;
 }
 
 .project-image::after {
@@ -109,7 +102,7 @@
 }
 
 .project-content {
-  padding: 1rem;
+  padding: 1.5rem;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -127,8 +120,9 @@
   color: #666;
   font-size: 0.95rem;
   line-height: 1.6;
-  margin-bottom: 1rem;
+  margin-bottom: 0.4rem;
   flex: 1;
+  /* Remove scrollable and max-height */
 }
 
 .project-technologies {
@@ -231,7 +225,7 @@
     margin-bottom: 2rem;
   }
   .projects-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
     padding: 0 1.5rem;
   }
@@ -240,9 +234,13 @@
   }
   .project-title {
     font-size: 1.2rem;
+    margin-bottom: 0.2rem !important;
   }
-  .project-image {
-    height: 240px;
+  .project-card {
+    padding: 0.5rem 0.5vw;
+  }
+  .project-image, .project-image img {
+    height: 180px;
   }
 }
 
@@ -257,7 +255,7 @@
   }
   .projects-grid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 1rem;
     padding: 0 1rem;
   }
   .project-image {
@@ -265,6 +263,7 @@
   }
   .project-title {
     font-size: 1.1rem;
+    margin-bottom: 0.2rem !important;
   }
   .project-description {
     font-size: 0.9rem;
