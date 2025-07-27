@@ -88,11 +88,13 @@ const Projects = () => {
   }
 
   const handleImageClick = (project) => {
+    console.log('Image clicked:', project.title, 'URL:', project.imageUrl);
     setSelectedImage({
       url: project.imageUrl,
       alt: project.title
     });
     setIsModalOpen(true);
+    console.log('Modal state set to open');
   };
 
   const closeModal = () => {
@@ -121,11 +123,16 @@ const Projects = () => {
                   <img 
                     src={project.imageUrl} 
                     alt={project.title}
-                    onClick={() => handleImageClick(project)}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      handleImageClick(project);
+                    }}
                     onError={(e) => {
                       e.target.onerror = null;
                       e.target.src = DEFAULT_PROJECT_IMAGE;
                     }}
+                    style={{ cursor: 'pointer' }}
                   />
                 </div>
                 <div className="project-content">
@@ -192,6 +199,25 @@ const Projects = () => {
         imageUrl={selectedImage?.url}
         imageAlt={selectedImage?.alt}
       />
+      {/* Debug info */}
+      {process.env.NODE_ENV === 'development' && (
+        <div style={{ position: 'fixed', bottom: '10px', right: '10px', background: 'rgba(0,0,0,0.8)', color: 'white', padding: '10px', fontSize: '12px', zIndex: 10000 }}>
+          Modal Open: {isModalOpen.toString()}<br/>
+          Selected Image: {selectedImage?.url ? 'Yes' : 'No'}<br/>
+          <button 
+            onClick={() => {
+              setSelectedImage({
+                url: 'https://via.placeholder.com/400x300/0066cc/ffffff?text=Test+Image',
+                alt: 'Test Image'
+              });
+              setIsModalOpen(true);
+            }}
+            style={{ marginTop: '5px', padding: '5px', fontSize: '10px' }}
+          >
+            Test Modal
+          </button>
+        </div>
+      )}
     </section>
   );
 };

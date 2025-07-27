@@ -69,6 +69,8 @@
   object-position: top center;
   transition: transform 0.3s ease;
   cursor: pointer;
+  position: relative;
+  z-index: 2;
 }
 
 .project-image::after {
