@@ -1,9 +1,8 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import './ImageModal.css';
 
 const ImageModal = ({ isOpen, onClose, imageUrl, imageAlt, onPrevious, onNext, hasPrevious, hasNext }) => {
-  console.log('ImageModal props:', { isOpen, imageUrl, imageAlt });
-  
   const handleBackdropClick = (e) => {
     if (e.target === e.currentTarget) {
       onClose();
@@ -33,13 +32,10 @@ const ImageModal = ({ isOpen, onClose, imageUrl, imageAlt, onPrevious, onNext, h
   }, [isOpen, handleKeyDown]);
 
   if (!isOpen) {
-    console.log('ImageModal: Not rendering because isOpen is false');
     return null;
   }
 
-  console.log('ImageModal: Rendering modal with imageUrl:', imageUrl);
-  
-  return (
+  const modalContent = (
     <div 
       className="image-modal-backdrop" 
       onClick={handleBackdropClick}
@@ -53,10 +49,10 @@ const ImageModal = ({ isOpen, onClose, imageUrl, imageAlt, onPrevious, onNext, h
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        zIndex: 9999
+        zIndex: 99999
       }}
     >
-      <div className="image-modal-container">
+      <div className="image-modal-container" onClick={(e) => e.stopPropagation()}>
         <button className="image-modal-close" onClick={onClose} aria-label="Close">
           &times;
         </button>
@@ -94,6 +90,8 @@ const ImageModal = ({ isOpen, onClose, imageUrl, imageAlt, onPrevious, onNext, h
       </div>
     </div>
   );
+
+  return ReactDOM.createPortal(modalContent, document.body);
 };
 
 export default ImageModal; 
