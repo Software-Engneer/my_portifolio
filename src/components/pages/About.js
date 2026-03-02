@@ -43,15 +43,36 @@ function About() {
     );
   }
 
+  const personal = aboutData?.personal || {};
   const cvUrl = aboutData?.cvUrl;
   const resumeUrl = aboutData?.resumeUrl;
   const hasDownloads = cvUrl || resumeUrl;
+  const hasPersonal = personal.name || personal.title || personal.bio || personal.location || personal.email;
 
   return (
     <div className={styles.aboutContainer}>
       <div className={styles.aboutContent}>
-        <section className={styles.downloadSection}>
+        <section className={styles.aboutSection}>
           <h2>About</h2>
+
+          {hasPersonal && (
+            <div className={styles.personalCard}>
+              {personal.name && <h3 className={styles.personalName}>{personal.name}</h3>}
+              {personal.title && <p className={styles.personalTitle}>{personal.title}</p>}
+              {personal.bio && <p className={styles.personalBio}>{personal.bio}</p>}
+              <div className={styles.personalMeta}>
+                {personal.location && (
+                  <span className={styles.personalMetaItem}>{personal.location}</span>
+                )}
+                {personal.email && (
+                  <a href={`mailto:${personal.email}`} className={styles.personalEmail}>
+                    {personal.email}
+                  </a>
+                )}
+              </div>
+            </div>
+          )}
+
           {hasDownloads ? (
             <div className={styles.downloadCard}>
               <p className={styles.downloadDescription}>
